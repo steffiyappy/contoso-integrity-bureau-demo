@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<title>Contoso Pizza Co · M365 Copilot Executive Workshop</title>
+<style>
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#dc2626;--brand2:#f87171}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1020;--panel:#0e1633;--panel2:#0a1228;--ink:#e2e8f0;--muted:#94a3b8;--border:#1e2d4a;--sidebar-a:#0e1530;--sidebar-b:#0a0f24;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#172244;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
+@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#d97706;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;color:#e2e8f0}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand .logo{width:36px;height:36px;border-radius:9px;background:var(--brand);display:grid;place-items:center;font-weight:900;color:#fff;font-size:12px;letter-spacing:-.5px}
+.brand h1{font-size:15px;margin:0;letter-spacing:.2px;color:#fff}
+.tag{font-size:11px;color:#94a3b8;margin-bottom:18px}
+nav h3{font-size:10px;letter-spacing:1.2px;color:#94a3b8;text-transform:uppercase;margin:18px 0 8px}
+nav a{display:block;color:#e2e8f0;padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
+nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;border-color:rgba(255,255,255,.2);color:#fff}
+main{padding:28px 48px 80px;max-width:1400px}
+.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(0,48,135,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(0,100,200,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
+.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
+.hero p{color:var(--muted);margin:0;max-width:780px}
+.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
+.meta-row span b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}.card .lead{color:var(--muted);margin:0 0 14px}
+.card h4{margin:18px 0 6px;font-size:15px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
+.modulehead{display:flex;align-items:center;gap:14px;margin:32px 0 12px}
+.modulehead .num{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
+.modulehead h2{margin:0;font-size:22px}.modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--panel)}
+.activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
+.activity .time{color:var(--muted);font-size:12px}
+.activity .file{font-size:12px;color:var(--accent2);background:var(--badge-bg);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
+.activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
+.activity p{margin:6px 0;color:var(--muted);font-size:14px}
+.activity.bonus{border-left:4px solid var(--brand)}
+.task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
+.task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
+.prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
+.prompt .copy:hover{background:var(--brand);color:#fff}.prompt .copy.copied{background:var(--good);color:#0a0f24}
+.callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
+.callout.warn{border-color:var(--warn);background:var(--callout-warn)}
+.callout.good{border-color:var(--good);background:var(--callout-good)}.callout b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--accent2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
+.agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
+.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:var(--panel)}
+.agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
+.agenda>div:nth-last-child(-n+3){border-bottom:0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.tool-card .icon{font-size:22px;margin-bottom:6px}
+.tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
+.badge.blue{background:rgba(0,100,200,.2);color:var(--accent2);border:1px solid var(--accent)}
+.badge.green{background:rgba(34,197,94,.15);color:var(--good);border:1px solid var(--good)}
+.badge.yellow{background:rgba(245,158,11,.15);color:var(--warn);border:1px solid var(--warn)}
+#lock{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(0,48,135,.5),transparent 60%),#0b1020;z-index:9999;display:flex;align-items:center;justify-content:center}
+.lock-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lock-box .blogo{width:56px;height:56px;border-radius:14px;background:var(--brand);display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;margin:0 auto 18px}
+.lock-box h2{margin:0 0 6px;font-size:22px}.lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
+.pw-wrap{position:relative;margin-bottom:12px}
+.lock-box input{width:100%;background:var(--badge-bg);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 44px 12px 16px;outline:none;font-family:inherit;transition:border-color .2s}
+.lock-box input:focus{border-color:var(--brand)}
+.pw-toggle{position:absolute!important;right:12px;top:50%;transform:translateY(-50%);background:none!important;border:none!important;width:auto!important;padding:0!important;cursor:pointer;opacity:.7;color:var(--muted)}
+.pw-toggle:hover{background:none!important;opacity:1}
+.pw-toggle svg{width:18px;height:18px;fill:currentColor;display:block}
+.lock-box button{width:100%;background:var(--brand);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer}
+.lock-box .err{color:var(--danger);font-size:13px;margin-top:8px;min-height:18px}
+.lock-box .conf{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:900px){
+ .layout{grid-template-columns:1fr}
+ aside{display:none}
+ main{padding:16px 14px 60px;max-width:100%;min-width:0}
+ .hero{padding:20px 16px;border-radius:14px;background:var(--panel)}
+ .hero h2{font-size:20px;line-height:1.25}
+ .hero p{font-size:13.5px}
+ .hero .pill{font-size:10px}
+ .meta-row{gap:10px;font-size:12px}
+ .modulehead{gap:10px;margin:24px 0 10px}
+ .modulehead .num{width:38px;height:38px;font-size:15px;flex:0 0 auto}
+ .modulehead h2{font-size:17px}
+ .activity{padding:14px}
+ .activity .head{gap:8px}
+ .card{padding:16px;border-radius:12px}
+ .card h3{font-size:16px}
+ .card h4{font-size:13px}
+ .agenda{grid-template-columns:1fr}.agenda>div:nth-child(3n+3){text-align:left}
+ .tools-grid{grid-template-columns:1fr}
+ .prompt{font-size:12px;padding:42px 12px 12px;border-left-width:3px;overflow-wrap:anywhere;word-break:break-word}
+ .prompt .copy{top:6px;right:6px}
+ pre,code{overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap}
+ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .lock-box{padding:28px 22px;border-radius:16px;max-width:92%}
+ .lock-box h2{font-size:19px}
+ img,svg{max-width:100%;height:auto}
+ h1,h2,h3,h4{overflow-wrap:anywhere}
+}
+@media(max-width:480px){
+ main{padding:12px 10px 50px}
+ .hero{padding:16px 14px}
+ .hero h2{font-size:18px}
+ body{font-size:13.5px}
+ .modulehead h2{font-size:16px}
+}
+</style><style id="bcard-css">
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+.bcard{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .18s;box-shadow:0 1px 3px rgba(0,0,0,.04);text-align:left;font-family:inherit;color:#111827;width:100%}
+.bcard:hover{transform:translateY(-2px);border-color:#0f766e;box-shadow:0 6px 18px rgba(15,118,110,.15)}
+.bcard .ico{font-size:22px;margin-bottom:6px;display:block}
+.bcard h4{margin:0 0 4px;font-size:15px;color:#111827;line-height:1.3}
+.bcard p{margin:0;font-size:12.5px;color:#4b5563;line-height:1.4}
+.modal-overlay{position:fixed;inset:0;background:rgba(8,12,28,.78);z-index:8000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:14px;max-width:1100px;width:100%;padding:28px 32px;margin:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.modal-close{position:absolute;top:12px;right:16px;font-size:28px;background:transparent;border:none;cursor:pointer;color:#6b7280;line-height:1}
+.modal-close:hover{color:#111827}
+.modal h3{margin:0 0 12px;font-size:22px;color:#0f172a}
+</style><style id="ihh-override">
+/* ========== IHH-STYLE OVERRIDES ========== */
+.layout { grid-template-columns: 1fr !important; }
+aside { display:none !important; }
+main { max-width:100% !important; margin:0 !important; padding:0 !important; }
+
+/* Kill original hero + files inline (they now live inside tabs) */
+main > .modulehead,
+main > #files,
+main > #overview,
+main > #story { /* handled via wrapping */ }
+
+body.ihh-active { background:#f7fafa; }
+body.ihh-active .hero-ihh {
+  background:linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);
+  color:#fff; padding:36px 32px 60px; position:relative; overflow:hidden;
+  margin:0 0 0; border-radius:0;
+}
+body.ihh-active .hero-ihh::before {
+  content:''; position:absolute; right:-100px; top:-50px;
+  width:400px; height:400px; background:rgba(255,255,255,0.06); border-radius:50%;
+}
+body.ihh-active .hero-ihh::after {
+  content:''; position:absolute; right:80px; bottom:-80px;
+  width:200px; height:200px; background:rgba(255,255,255,0.04); border-radius:50%;
+}
+body.ihh-active .hero-ihh-inner {
+  max-width:1600px; margin:0 auto; position:relative; z-index:2;
+  padding:0 40px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+}
+body.ihh-active .hero-brand-ihh { display:flex; align-items:center; gap:18px; }
+body.ihh-active .hero-logo-ihh {
+  width:72px; height:72px; background:#fff; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18); flex-shrink:0;
+  color:#7f1d1d; font-weight:900; font-size:26px; letter-spacing:-1px;
+}
+body.ihh-active .hero-brand-ihh h1 {
+  margin:0; font-size:13px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; opacity:0.85; color:#fff;
+}
+body.ihh-active .hero-brand-ihh h2 {
+  margin:0; font-size:26px; font-weight:700; color:#fff;
+}
+body.ihh-active .brand-rule-ihh {
+  width:1px; height:46px; background:rgba(255,255,255,0.25); margin:0 2px;
+}
+body.ihh-active .hero-meta-ihh { font-size:13px; opacity:0.9; text-align:right; }
+body.ihh-active .hero-meta-ihh .pill {
+  display:inline-block; padding:4px 12px; background:rgba(255,255,255,0.15);
+  border-radius:12px; margin-left:8px; font-weight:600;
+}
+body.ihh-active .hero-title-ihh {
+  max-width:1600px; margin:32px auto 0; position:relative; z-index:2;
+  padding:0 40px;
+}
+body.ihh-active .hero-title-ihh h3 { margin:0 0 10px; font-size:38px; font-weight:700; line-height:1.2; color:#fff; }
+body.ihh-active .hero-title-ihh p { margin:0; font-size:17px; opacity:0.92; max-width:800px; color:#fff; }
+
+/* Sticky tab bar */
+body.ihh-active nav.tabs-ihh {
+  background:#fff; border-bottom:1px solid #fecaca;
+  padding:0; position:sticky; top:0; z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+body.ihh-active nav.tabs-ihh::-webkit-scrollbar { display:none; }
+body.ihh-active nav.tabs-ihh .tabs-inner {
+  max-width:1600px; margin:0 auto; padding:0 40px;
+  display:flex; flex-wrap:wrap; gap:4px; border-bottom:2px solid #fecaca;
+}
+body.ihh-active nav.tabs-ihh .tab {
+  padding:14px 14px; background:transparent; border:none;
+  color:#5e7480; cursor:pointer; font-size:13px; font-weight:600;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+  display:flex; align-items:center; gap:8px; white-space:nowrap;
+  transition:all 0.2s; font-family:inherit;
+}
+body.ihh-active nav.tabs-ihh .tab:hover { color:#7f1d1d; background:#fef2f2; }
+body.ihh-active nav.tabs-ihh .tab.active {
+  color:#7f1d1d; border-bottom-color:#eab308; background:#fff;
+}
+body.ihh-active nav.tabs-ihh .tab .tab-num {
+  min-width:24px; height:24px; padding:0 6px;
+  background:#fecaca; color:#7f1d1d;
+  border-radius:12px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700;
+}
+body.ihh-active nav.tabs-ihh .tab.active .tab-num { background:#eab308; color:#fff; }
+
+/* Main container after tabs */
+body.ihh-active .ihh-main { max-width:1600px; margin:0 auto; padding:32px 40px; }
+
+/* Widen modal popouts (was 780px in original) */
+body.ihh-active .modal { max-width:1200px !important; }
+body.ihh-active .modal-overlay { padding:40px 30px !important; }
+body.ihh-active .hero p { max-width:none !important; }
+
+/* Whitespace + typography polish */
+body.ihh-active .card { padding:22px 24px !important; margin:14px 0 !important; }
+body.ihh-active .card p, body.ihh-active .card li { font-size:15.5px !important; line-height:1.55 !important; }
+body.ihh-active .card h3 { font-size:20px !important; margin:2px 0 12px !important; }
+body.ihh-active .card h4 { font-size:16px !important; margin:8px 0 6px !important; }
+body.ihh-active .prompt { font-size:14.5px !important; line-height:1.5 !important; padding:16px 56px 16px 18px !important; }
+body.ihh-active .prompt .copy { top:8px !important; right:8px !important; z-index:2 !important; background:#b91c1c !important; color:#fff !important; border-color:transparent !important; padding:5px 12px !important; font-size:12px !important; font-weight:600 !important; }
+body.ihh-active .prompt .copy:hover { background:#7f1d1d !important; }
+body.ihh-active .callout { padding:14px 18px !important; margin:8px 0 16px !important; font-size:15px !important; }
+body.ihh-active .activity { padding:14px 16px !important; margin:10px 0 !important; }
+body.ihh-active .activity .head { margin-bottom:6px !important; font-size:13px !important; }
+body.ihh-active .modulehead { padding:14px 18px !important; margin:0 0 12px !important; }
+body.ihh-active .modulehead h2 { font-size:22px !important; }
+body.ihh-active .modulehead h2 small { font-size:13px !important; }
+body.ihh-active .modulehead .num { width:44px !important; height:44px !important; font-size:20px !important; }
+
+/* Views */
+body.ihh-active .view-ihh { display:none; animation:fadeInIhh 0.4s ease; }
+body.ihh-active .view-ihh.active { display:block; }
+@keyframes fadeInIhh {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Prev/Next nav */
+body.ihh-active .lab-nav-ihh {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:32px; gap:16px;
+}
+body.ihh-active .lab-nav-ihh button {
+  background:#b91c1c; color:#fff; border:none; padding:12px 20px;
+  border-radius:8px; cursor:pointer; font-size:14px; font-weight:600;
+  font-family:inherit; transition:background 0.2s;
+}
+body.ihh-active .lab-nav-ihh button:hover { background:#7f1d1d; }
+body.ihh-active .lab-nav-ihh button.secondary {
+  background:transparent; color:#5e7480; border:1px solid #fecaca;
+}
+body.ihh-active .lab-nav-ihh button.secondary:hover { background:#fef2f2; color:#7f1d1d; }
+body.ihh-active .lab-nav-ihh button:disabled { opacity:0.4; cursor:not-allowed; }
+
+/* Force original exercise sections to look right inside tab views */
+body.ihh-active .view-ihh > section { display:block !important; margin:0 !important; }
+body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
+
+/* Force main to show even before auth (auth JS toggles display) — keep original behaviour */
+</style></head>
+<body class="ihh-active">
+<div id="lock">
+<div class="lock-box">
+<div class="blogo">CP</div>
+<h2>Contoso Pizza · Copilot Immersion</h2>
+<p>M365 Copilot Executive Workshop<br/>Enter the session password to continue.</p>
+<div class="pw-wrap">
+<input autocomplete="off" id="pw" placeholder="Session password" type="password"/>
+<button aria-label="Show password" class="pw-toggle" id="pwToggle" onclick="togglePw()" title="Show password" type="button"><svg id="eye-svg" viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"></path></svg></button>
+</div>
+<button onclick="unlock()">Enter Workshop →</button>
+<div class="err" id="err"></div>
+<div class="conf">Confidential · For executive workshop use only</div>
+</div>
+</div>
+<div class="layout" id="main" style="display:none">
+<aside>
+<div class="brand"><div class="logo">CP</div><h1>M365 Copilot<br/>GM Immersion</h1></div>
+<div class="tag">Executive Immersion</div>
+<nav>
+<h3>Overview</h3>
+<a href="#files">📁 Sample files (start here)</a>
+<a href="#overview">About this session</a>
+<a href="#story">The Story</a>
+<h3>Exercises</h3>
+<a href="#ex1">1 · Daily Briefing</a>
+<a href="#ex3">2 · Researcher · Critique + Model Council</a>
+<a href="#ex4">3 · Menu Rationalisation &amp; Waste (Excel + Cowork)</a>
+<a href="#ex5">4 · Create a Visual Infographic</a>
+<a href="#extras">6 · Teams Recap → Word Minutes (in Bonus)</a>
+<a href="#extras">7 · Excel Power Hour (in Bonus)</a>
+<a href="#extras">8 · Analyst Agent (in Bonus)</a>
+<a href="#extras">9 · Personalised Mail Merge (in Bonus)</a>
+<a href="#extras">Build Your Own Agent - see Exercise 5 above</a>
+<h3>Extras</h3>
+<a href="#extras">＋ Extras (Outlook · Word interrogate · Power move)</a>
+<h3>Resources</h3>
+<a href="#tips">Prompt tips</a>
+</nav>
+</aside>
+<main>
+<!--IHH-INJECT-START-->
+<header class="hero-ihh">
+<div class="hero-ihh-inner">
+<div class="hero-brand-ihh">
+<div class="hero-logo-ihh">CP</div>
+<div class="brand-rule-ihh"></div>
+<div>
+<h1>Contoso Pizza</h1>
+<h2>Microsoft 365 Copilot · GM Immersion</h2>
+</div>
+</div>
+<div class="hero-meta-ihh">
+<div>Workshop Edition · 2026</div>
+<div style="margin-top:6px">
+<span class="pill">5 Exercises</span>
+</div>
+</div>
+</div>
+<div class="hero-title-ihh">
+<h3>One workday, one GM, five Copilot moments</h3>
+<p>A hands-on immersion for Contoso Pizza Co executives. Work through each tab at your own pace. Every prompt is copy-and-paste ready.</p>
+</div>
+</header>
+<nav class="tabs-ihh"><div class="tabs-inner"><button class="tab active" data-view="intro"><span class="tab-num">0</span> Get Started</button>
+<button class="tab" data-view="files"><span class="tab-num">📁</span> Sample Files</button>
+<button class="tab" data-view="ex1"><span class="tab-num">1</span> Daily Briefing</button>
+<button class="tab" data-view="ex3"><span class="tab-num">2</span> Market Intelligence</button>
+<button class="tab" data-view="ex4"><span class="tab-num">3</span> Menu Rationalisation with Copilot…</button>
+<button class="tab" data-view="ex5"><span class="tab-num">4</span> Create a Visual Infographic</button>
+<button class="tab" data-view="ex6"><span class="tab-num">5</span> Build Your Own Agent</button>
+<button class="tab" data-view="extras"><span class="tab-num">＋</span> Bonus</button>
+</div></nav><div class="ihh-main"><div class="view-ihh active" id="view-intro"><section id="overview">
+<div class="hero">
+<h2>Contoso Pizza Co · M365 Copilot Executive Workshop</h2>
+<p>QSR pizza chain — dine-in, delivery, take-away across Indonesia. A hands-on, GM-level immersion: from market scan to a live HTML dashboard, all inside Microsoft 365 Copilot.</p>
+<div class="meta-row">
+<span><b>Audience</b> GM &amp; direct reports</span>
+<span><b>Format</b> Demo + guided hands-on</span>
+<span><b>Tool</b> Microsoft 365 Copilot</span>
+</div>
+</div>
+<div class="card">
+<h3>About this workshop</h3>
+<p class="lead">A practical, GM-level immersion designed specifically for Contoso Pizza Co. Five Copilot moments across one workday — every exercise lands a deliverable a GM can use.</p>
+<h4>What you will leave with</h4>
+<ul>
+<li>A daily GM briefing generated by Researcher from real inbox, calendar, chats and files</li>
+<li>A market-intelligence brief on quick-service restaurant, stress-tested with Researcher Critique and Model Council</li>
+<li>A complete Menu Rationalisation pack — Excel dashboard (four focused charts, KPI scorecards, Excel Table filters), 5-slide BCG-style deck, 1-page ops memo, and an offline HTML dashboard — either built app-by-app (Excel then PowerPoint then Word) or all in one Cowork run that also drafts the email to the Operations Manager and books the quarterly review meeting</li>
+<li>A plain-English, brand-aligned visual infographic from Copilot Create — no design tool needed</li>
+<li>A Potential Merger meeting recap, a reusable Word meeting-minutes template, and the minutes auto-filled from the transcript</li>
+<li>An "Excel Power Hour" (Chat · Edit · Plan) and the Analyst Agent running three perspectives — GM, CFO, COO — on the same workbook</li>
+<li>A no-code <b>HR CV Screener</b> agent, published from Agent Builder in ten minutes, that reads 12 store manager CVs from a SharePoint folder, ranks them against your job spec, and drafts shortlist notes — the whole HR team can use it, no 5-file upload cap</li>
+<li>Optional Extras: Outlook catch-up &amp; reply, Word document interrogation, Cowork mail-merge cascade, and an industry-specific GM power move</li>
+</ul>
+<h4>What this workshop is not</h4>
+<ul>
+<li>It is <b>not</b> a feature walkthrough — every tool is demonstrated against Contoso Pizza Co's context</li>
+<li>It is <b>not</b> connected to live Contoso Pizza Co systems — every data point is fictional / Contoso</li>
+</ul>
+</div>
+</section><section id="story">
+<div class="modulehead" style="margin-top:8px">
+<div class="num" style="background:linear-gradient(135deg,var(--brand),var(--accent));font-size:14px">▶</div>
+<h2>The Story<small>One GM workday · six Copilot moments · ends with a live dashboard</small></h2>
+</div>
+<div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px;background:var(--panel)">
+<div style="background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));padding:22px 26px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center">
+<div>
+<p style="margin:0;font-size:10px;letter-spacing:2px;font-weight:700;color:var(--brand);text-transform:uppercase">Microsoft 365 Copilot</p>
+<h3 style="margin:4px 0 0;font-size:22px;font-weight:800;color:#fff;line-height:1.15">AI Assistant<br/>to AI Doer</h3>
+</div>
+<div>
+<p style="margin:0 0 4px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">Persona</p>
+<p style="margin:0;font-size:15px;font-weight:700;color:#fff">Bu Lisa Hartono</p>
+<p style="margin:3px 0 10px;font-size:12px;color:#94a3b8">General Manager · Operations &amp; Marketing · Contoso Pizza Co</p>
+<p style="margin:0 0 4px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">The Mission</p>
+<p style="margin:0;font-size:12px;color:#cbd5e1;line-height:1.55">Menu rationalisation for the operations board: prep waste is eating into margin because each prepped base only lasts 2 days. Cut the low-sellers, right-size prep for the shared bases, and quantify the weekly saving — decisions signed off by Friday.</p>
+</div>
+<div style="padding:14px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.1)">
+<p style="margin:0 0 5px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">The Punchline</p>
+<p style="margin:0;font-size:14px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One workday.<br/>Five Copilot moments.<br/>From morning briefing to a signed-off menu cut list.</p>
+</div>
+</div>
+<div style="padding:22px 22px 18px">
+<h3 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--ink)">Five Copilot moments across one workday <span style="font-size:12px;color:var(--muted);font-weight:500">+ 10 bonus moves in the Bonus tab</span></h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px"><div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#b91c1c;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">01</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Daily Briefing</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Structured Briefing</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Researcher</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Researcher reads your inbox, calendar, Teams chats, and recent files, then hands General Manager · Operations &amp; Marketing a single, structured briefing for the day. No more spending the first 30 minutes catching up.</p>
+</div>
+</div><div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#b91c1c;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">02</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Competitor Intelligence</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Stress-test the market view</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Researcher - Model Council</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Same competitor question - the other pizza and quick-service chains, food-delivery apps - two stress-tests: Researcher Critique and Model Council.</p>
+</div>
+</div><div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#b91c1c;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">03</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Menu Rationalisation</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">One source, three formats, or one Cowork run</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot in Excel · then PowerPoint · then Word · OR Cowork (all-in-one)</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Edit with Copilot builds the GM dashboard on new sheets (raw data untouched), then PowerPoint drafts a 5-slide board deck from the workbook, then Word drafts a 1-page ops memo from that deck. Or run it all in one Cowork prompt that also drafts the email to the Operations Manager and books the quarterly menu review meeting.</p>
+</div>
+</div><div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#b91c1c;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">04</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">New-Menu Poster</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Brand-aligned one-pager</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot Create (Designer)</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Copilot Create builds a new-menu or LTO launch infographic, ready for stores and marketing.</p>
+</div>
+</div><div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#b91c1c;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">05</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">HR CV Screener</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Shortlist 12 CVs in ten minutes</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Agent Builder · grounded on your CV folder</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">A shared HR agent that reads 12 store manager CVs from SharePoint, ranks them against the job spec, and drafts shortlist notes. No code, ready in ten minutes.</p>
+</div>
+</div><div style="min-height:230px;border:1px dashed var(--brand);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:rgba(15,118,110,.06)">
+<div style="background:#334155;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">+</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Bonus tab</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">10 more moves</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Bonus + prompt tips</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Teams recap to Word minutes, Excel Power Hour (Chat + Edit + Plan), Analyst Agent, Mail Merge, CV Screening, campaign posters, and prompt tips.</p>
+</div>
+</div></div></div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" disabled="">← Previous</button><button data-go="files">Next: Sample Files →</button></div></div><div class="view-ihh" id="view-files"><section id="files">
+<div class="modulehead"><div class="num">📁</div><h2>Sample files — start here<small>Download these first, then run the exercises</small></h2></div>
+<div class="card">
+<p class="lead">All data is fictional and labelled <b>Contoso</b>. Do not use for any operational decision. <b>Step 1:</b> download every file. <b>Step 2:</b> upload <b>01–05</b> to your OneDrive and the <b>CVs/</b> folder to any SharePoint document library. <b>Step 3:</b> wait ~2 minutes for Microsoft Graph to index. Then begin Exercise 1.</p>
+<div style="margin:14px 0 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+<a download="" href="samples.zip" id="dl-all-btn" style="display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--brand);color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s ease">
+  ⬇️ Download all sample files (ZIP)
+ </a>
+<span style="font-size:12.5px;color:var(--muted)">One click, all files in a single ZIP. Unzip, then upload the contents to OneDrive / SharePoint.</span>
+</div>
+<table>
+<tr><th>#</th><th>File</th><th>Type</th><th>Used in</th><th>What it contains</th></tr>
+<tr><td>01</td><td><a href="samples/01 Contoso_Market_Brief.xlsx">01 Contoso_Market_Brief.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 3, Extra F</td><td>Peer benchmark, market sizing 2024-28, SWOT</td></tr>
+<tr><td>02</td><td><a href="samples/02 Contoso_KPI_Dashboard.xlsx">02 Contoso_KPI_Dashboard.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 2, Ex 5, Ex 8, Ex 9</td><td>12 months of KPIs across PHD Kemang, PHD Kelapa Gading, PHR Tunjungan and more, targets vs actual, open issues</td></tr>
+<tr><td>03</td><td><a href="samples/03 Contoso_Mail_Merge_Recipients.xlsx">03 Contoso_Mail_Merge_Recipients.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 10</td><td>14 Area &amp; Outlet Managers for Cowork-driven personalised letters (name, location, role, email, performance band, key highlight)</td></tr>
+<tr><td>04</td><td><a href="samples/04 Contoso_Brand_Guidelines.docx">04 Contoso_Brand_Guidelines.docx</a></td><td><span class="badge yellow">Word</span></td><td>Ex 10, Extra B</td><td>Brand tone, GM communications template, press release structure</td></tr>
+<tr><td>05</td><td><a href="samples/05 Contoso_Strategic_Memo.docx">05 Contoso_Strategic_Memo.docx</a></td><td><span class="badge yellow">Word</span></td><td>Ex 5, Extra C, Extra D</td><td>Strategic memo used to ground the PowerPoint draft + Word doc Q&amp;A demo</td></tr>
+<tr><td>06</td><td><a href="samples/CVs/">samples/CVs/ (12 files)</a></td><td><span class="badge yellow">Word ×12</span></td><td>Ex 11</td><td>12 candidate CVs for the QSR Area Operations Manager (10+ outlets) role — upload as a SharePoint folder</td></tr>
+<tr><td>07</td><td><a href="samples/06 Contoso_Merger_Discussion_Transcript.docx">06 Contoso_Merger_Discussion_Transcript.docx</a></td><td><span class="badge yellow">Word</span></td><td>Ex 7</td><td>Sample Potential Merger meeting transcript — used by Teams Recap and Word minutes</td></tr>
+<tr><td>08</td><td><a href="samples/Data Contoh.xlsx">Data Contoh.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 4</td><td>Q1 product sales across Dine-in, Delivery, Aggregator channels · SRM ingredient recipes · sub-recipe usage · hot promo items (566 rows across 4 sheets)</td></tr>
+</table>
+<div class="callout warn" style="margin-top:14px"><b>Why OneDrive / SharePoint?</b> M365 Copilot can only analyse files stored in OneDrive or SharePoint. Files on your local Desktop are invisible to Copilot.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="intro">← Get Started</button><button data-go="ex1">Next: Daily Briefing →</button></div></div><div class="view-ihh" id="view-ex1"><section id="ex1">
+<div class="modulehead"><div class="num">1</div><h2>Exercise 1 · Daily Briefing<small>Researcher · Critique</small></h2></div>
+<div class="callout good"><b>How a GM starts the day in 2 minutes.</b> Open Microsoft 365 Copilot at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → click <b>Researcher</b>. Keep the model picker on <b>Auto</b> (this is Critique — dual-model with self-review). Paste the prompt below.</div>
+<div class="card">
+<p class="lead">Researcher reads your inbox, calendar, Teams chats, and recent files — then hands General Manager · Operations &amp; Marketing a single, structured briefing for the day. No more spending the first 30 minutes catching up.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 1.1</span><span class="file">🔍 Researcher · Auto (Critique)</span></div>
+<h4>Generate today's GM daily briefing</h4>
+<div class="prompt">Create a daily briefing from emails, messages, documents, and meetings to help me prepare for the current workday. Use your understanding of the projects I work on, workstreams I care about, and key people I work with to understand what is relevant and important.
+
+Sections:
+
+A short intro paragraph that provides an overview of my day, i.e. what a personal assistant would tell me to greet me in the morning.
+
+Key updates since yesterday – Include informational updates from the last workday that are likely to impact my work and collaborations.
+
+Suggested tasks for today – Tasks or questions assigned to me that I should handle today. Cross-check that suggested tasks haven't been completed already.
+
+List unread email threads from the past week that likely need my reply—prioritize those where I'm on To/CC, @mentioned, or involve requests, deadlines, leadership, or customers. Exclude automated messages. Show only urgent or important items in a concise table, and draft replies where needed. If none require action, say: 'I didn't find any unread threads that require a reply.'
+
+Meeting prep for today – Upcoming meetings only, shown in a table with: Meeting (time, title, organizer), Topic Overview, and Suggested Preparations. Note if inferred or not needed.
+
+Rules:
+Start with a header: Daily briefing – Day, Date. Follow with a sub-header stating the timestamp of generation. Start each section with a meaningful emoji. Use only explicitly stated facts; no speculation, interpretations or predictions. If a section has no data, state that.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>What success looks like:</b> within 90 seconds you have a one-screen brief: overview paragraph, key updates since yesterday, today's tasks, unread threads that need a reply (with drafts), and a meeting-prep table — all grounded on real signals from your tenant, with citations.</div>
+</div>
+<div class="activity bonus">
+<div class="head"><span class="num">Bonus</span><span class="file">🔍 Researcher · follow-up</span></div>
+<h4>Drill in on the single most important item</h4>
+<p>Pick one item from the briefing that needs deeper thinking. Ask Researcher:</p>
+<div class="prompt">Take the highest-priority item from the briefing above. Pull together everything I've received on it in the last 14 days — emails, chats, files, meeting notes. Summarise the current state in 5 bullets, list the open decisions, and draft one short message I should send today to move it forward.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← Sample Files</button><button data-go="ex3">Next: Market Intelligence →</button></div></div><div class="view-ihh" id="view-ex3"><section id="ex3">
+<div class="modulehead"><div class="num">2</div><h2>Exercise 2 - Market Intelligence</h2></div>
+<div class="callout good"><b>When to do this:</b> Right after the daily briefing, when the GM needs deep market intelligence. Open Microsoft 365 Copilot → <b>Researcher</b>.</div>
+<div class="card">
+<h3>3.1 · Critique (Auto) — the default for sector intelligence</h3>
+<p class="lead">Researcher on <b>Auto</b> runs <b>Critique</b> mode — a dual-model setup where one model drafts, a second self-reviews the sources, and only the verified report is returned.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 2.1</span><span class="file">🔍 Researcher · Auto (Critique)</span></div>
+<h4>Scan the Quick-Service Restaurant landscape in Indonesia</h4>
+<div class="prompt">Research the Quick-Service Restaurant sector in Indonesia. Benchmark these companies: Pizza Hut Indonesia, Domino's Pizza ID, Pizza Marzano, McDonald's ID, KFC Indonesia, Burger King ID. For each one, compare market share, FY25 revenue growth, EBITDA margin, strategic focus, digital maturity, and recent material moves (M&amp;A, capex, new contracts, regulation). Include 2024–2028 market sizing with the three main growth drivers. Cite every source. Flag any section where the evidence is thin.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout">Notice the <b>citations</b> and the <b>"reviewed by"</b> stamp — Critique enforces source grounding before the report is shown.</div>
+</div>
+</div>
+<div class="card">
+<h3>3.2 · Model Council — when the decision is too important for one model</h3>
+<p class="lead">Switch the Researcher model picker to <b>Model Council</b>. Multiple frontier models reason on the same question in parallel — Researcher then reconciles them and shows where they agree, where they diverge, and which sources each one anchored on.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 2.2</span><span class="file">🧑‍⚖️ Researcher · Model Council</span></div>
+<h4>Stress-test the strategic question</h4>
+<div class="prompt">Model Council — for General Manager · Operations &amp; Marketing at Contoso Pizza Co: what are the three highest-impact strategic moves we should make in the next 12 months in the Indonesian quick-service restaurant sector, given the peer benchmark above? For each move, give: the rationale, the evidence (cited), the main risk, and a 90-day starter action. Show me where the models agree, where they disagree, and which one I should trust on each move.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout good"><b>Why Model Council matters for GMs:</b> for any decision worth more than ~USD 1M, the cost of one model being wrong dwarfs the cost of asking three. Model Council surfaces the disagreement instead of hiding it.</div>
+</div>
+</div>
+<div class="card">
+<h3>3.3 · Turn the research into a 1-page GM brief</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 2.3</span><span class="file">📝 Word Copilot · 1-page brief</span></div>
+<h4>Export and refine in Word</h4>
+<p>In the Researcher report, click <b>Export</b> → <b>Convert to Word</b>. Open the file from OneDrive. In the Word Copilot pane, paste:</p>
+<div class="prompt">Based on the content of this document, draft a 1-page brief for General Manager · Operations &amp; Marketing at Contoso Pizza Co.
+
+Structure:
+- Market headline (2 sentences, 1 number)
+- 3 competitor moves we must track
+- 3 implications for Contoso Pizza Co in the next 90 days
+- 1 question to put to the Executive Committee
+
+Tone: direct, board-ready, no jargon. Max 350 words. Use [PLACEHOLDER] for anything not confirmed in the research. End with assumptions made and one open question.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Daily Briefing</button><button data-go="ex4">Next: Menu Rationalisation with Copilot… →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
+<div class="modulehead"><div class="num">3</div><h2>Exercise 3 - Menu Rationalisation with Copilot in Excel<small>Copilot in Excel · Plan + Edit · then Create presentation from file · then Draft memo from the deck in Word · OR one-prompt Cowork alternative (Task 3.4)</small></h2></div>
+<div class="callout good"><b>The operations story in one line.</b> "Today we throw away Rp X of ingredients every week because we prep more than we sell. If we (1) discontinue the products that waste the most and (2) buy only what we need for the next 2 days, we save Rp Y per week = Rp Z per year." Copilot answers this in three moves: <b>PROJECT</b> today's waste per product · <b>FORECAST</b> the right ingredient purchase for next week · <b>QUANTIFY</b> the money saved. All on new sheets, raw workbook untouched.<br><br><b>The four raw sheets</b> (all P098 - PHD Jatiwarna, 01/01/2026 to 31/03/2026):<br><b>Sales</b> - outlet KPIs (Bill, Cover, Food Gross Sales, Beverage Gross Sales) by channel Eat In / Dine In / Takeaway / Delivery / Aggregator. Header row 8, data row 9+. NOT per-product; used only for period label and channel totals.<br><b>Sales Mix</b> - the per-product sales sheet. Header row 8, sub-header row 9 (each channel = Quantity + Sales rupiah). <b>Exclude these bundle/promo rows from base sales:</b> rows 10-116 (Hot Promo bundles), row 117 (HOT PROMO subtotal), rows 456-481 (TikTok / QPON / Partnership promo bundles - none of these match SRM anyway because they are marketing campaigns, not menu items). Real per-product menu items are rows 118-455 and 482 onwards.<br><b>SRM</b> - the recipe Bill-of-Materials. Multi-row layout: each recipe has one header row (SKU, Product Name, Recipe Code, Recipe Price) followed by ingredient rows (Ingredient Code, Ingredient Name, Netweight, Usage qty, Unit, Price, Total Cost). Header row 9, data row 10+. Shared bases like <b>Dough Regular Alternative</b>, <b>Cornmeal Alternative</b>, <b>Mozzarella Cheese</b> and <b>Universal Sauce</b> appear across many product recipes.<br><b>Sub Recipe</b> - actual 3-month consumption per recipe base. Header row 8. Columns A-D: Recipe Code, Recipe Name, Usage (total qty Jan to Mar), Unit.<br><br>We answer all three questions end-to-end with <b>Edit with Copilot in Excel</b> - no Chat, no analyst agent - without touching a single cell of the raw data.</div>
+<div class="card">
+<h3>3.1 - Menu Rationalisation: Project Waste + Forecast Purchase + Quantify Saving - one prompt</h3>
+<p class="lead">Open <code>Data Contoh.xlsx</code> in <b>Excel</b> for the web. Open the Copilot pane, switch to <b>Edit</b> (and <b>Plan</b> if enabled - it lays out the steps before executing). Paste the single prompt below. Copilot builds <b>four new sheets</b>: a per-product waste analysis, an ingredient-forecast analysis, a plain-English glossary that explains every column, and a one-page GM dashboard. The raw workbook stays untouched.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 3.1</span><span class="file">Edit with Copilot in Excel · one paste · project-forecast-save</span></div>
+<h4>One prompt · four new sheets (per-product waste, ingredient forecast, glossary, dashboard)</h4>
+<div class="prompt">You are Copilot in Excel. This workbook is a Pizza Hut Indonesia outlet report (outlet P098 - PHD Jatiwarna, period 01/01/2026 to 31/03/2026, so 90 days = about 13 weeks = about 45 x 2-day prep cycles). The GM's job is to answer three linked operations questions in one dashboard:
+
+  STEP 1 - PROJECT: how much money do we throw away every week because we prep more ingredients than we sell (2-day shelf life on prepped bases)?
+  STEP 2 - FORECAST: given real sales, how much of each ingredient should we actually buy and prep per week going forward?
+  STEP 3 - QUANTIFY: how much rupiah do we save every week if we (a) discontinue the biggest wasters and (b) right-size the prep of every ingredient?
+
+The workbook has four sheets:
+- "Sales" - outlet KPIs (Bill, Cover, Food Gross Sales, Beverage Gross Sales) by channel. Header row 8, data row 9+. NOT per-product. Use only for reporting-period label and channel totals.
+- "Sales Mix" - the per-product sales sheet. Header row 8, sub-header row 9 (each channel column pair = Quantity, Sales rupiah). Data starts row 10. IMPORTANT: EXCLUDE rows 10-116 (Hot Promo bundles), row 117 (HOT PROMO subtotal), AND rows 456-481 (TikTok / QPON / Partnership promo bundles) from base per-product sales. Real regular-menu items are rows 118-455 and rows 482 to the bottom of the sheet.
+- "SRM" - recipe Bill-of-Materials. Multi-row layout: for each recipe, ONE product-row has columns A-F and N filled (SKU, Product Name, Recipe Code, Recipe Name, Recipe Usage, Recipe Unit, Recipe Price); the rows immediately BELOW (columns A-F blank) list that recipe's ingredients in columns G-M. Header row 9, data row 10+.
+- "Sub Recipe" - actual 3-month ingredient consumption per recipe base. Header row 8. Columns A-D: Recipe Code, Recipe Name, Usage total Jan-Mar, Unit.
+
+PRODUCT MATCHING - match Sales Mix to SRM by SKU only (Sales Mix column A = SRM column A). Names differ ("Original/Regular Beefy Mushroom" in Sales Mix vs "OR/R Beefy Mushroom" in SRM) but the SKU is unique. Use the name only for display. If a SKU does not resolve, mark UNMATCHED and flag on the dashboard - no fuzzy-name fallback.
+
+Business rule: once ingredients listed in SRM are prepped for a recipe, they last only 2 days. Anything not sold within 2 days is thrown out = waste. Assume 3.5 x 2-day prep cycles per week.
+
+IMPORTANT: Do NOT modify Sales, Sales Mix, SRM or Sub Recipe. All work lives on NEW sheets that reference the raw sheets by formula (SUMIFS, XLOOKUP, INDEX-MATCH). Treat the four raw sheets as read-only.
+
+Do not ask any clarifying questions - proceed. Show your plan first (if Plan is available), then execute all of the following in order:
+
+1. Create a new sheet named "GM Working - Waste + Forecast". Build a formula-driven analysis table with one row per REGULAR product (pulling Item Code and Description from Sales Mix rows 118 onwards - do NOT include rows 10 to 116 or the HOT PROMO row 117). For each product, add these calculated columns:
+
+   SALES BLOCK - real per-product sales, hot promos excluded
+   - "Total Units Q1 (base)" - sum of Quantity across all five channels on Sales Mix, EXCLUDING promo rows (rows 10-117 and rows 456-481). Use SUMIFS with two range fragments: rows 118-455 AND rows 482 to the bottom.
+   - "Total Rp Sales Q1 (base)" - sum of Sales rupiah across all five channels on Sales Mix, EXCLUDING promo rows (same exclusion as above).
+   - "Avg Units per Day" - Total Units Q1 divided by 90.
+   - "Avg Units per 2-Day Cycle" - Avg Units per Day x 2.
+   - "Weekly Units" - Total Units Q1 divided by about 13 weeks.
+   - "Rank" - RANK on Total Units Q1, largest first.
+   - "Bottom 20 percent?" - YES for products in the bottom quintile of Rank.
+   - "Channel Mix Sparkline" - inline sparkline showing the five channel Quantity values for that row (Eat In, Dine In, Takeaway, Delivery, Aggregator) so the GM can see at a glance whether the product is a delivery-heavy or dine-in-heavy item.
+
+   RECIPE COST BLOCK - one Prep Batch Cost per product from SRM (matched via SKU only)
+   - "SRM Product Name" - XLOOKUP the Sales Mix Item Code (column A) into SRM column A. Return the SRM Product Name for display, so the GM can eyeball what was matched (names differ between the two sheets, that is expected).
+   - "Recipe Code" - XLOOKUP the same SKU into SRM to return the recipe-header row's Recipe Code.
+   - "Prep Batch Cost (Rp per porsi)" - XLOOKUP the Recipe Code into SRM to return the Recipe Price cell (the total-cost figure on the recipe-header row). If Recipe Price is blank, sum the Total Ingredient Cost cells for that recipe block on SRM.
+   - "Match Status" - MATCHED if the SKU resolved to an SRM row, otherwise UNMATCHED. No fuzzy-name fallback.
+   - "Shared-Base Flag" - YES if any ingredient in this product's SRM block is one of: Dough Regular Alternative, Cornmeal Alternative, Mozzarella Cheese, Universal Sauce, Garlic Oil (that is, ingredients that also appear in other products' SRM blocks). Otherwise NO. Use COUNTIF across SRM column H (Ingredient Name) to detect ingredients that appear in more than one recipe block.
+
+   2-DAY WASTE BLOCK - the shelf-life logic
+   - "Prep Batch Size (units)" - default to Avg Units per 2-Day Cycle rounded UP to the nearest 5, floor of 5 (kitchens do not prep in fractions).
+   - "Units Wasted per 2-Day Cycle" - MAX(0, Prep Batch Size - Avg Units per 2-Day Cycle).
+   - "Weekly Waste Cost (Rp)" - Units Wasted per 2-Day Cycle x Prep Batch Cost per porsi x 3.5 cycles per week.
+   - "Waste-to-Sales Ratio" - Weekly Waste Cost divided by (Total Rp Sales Q1 divided by 13 weeks). Format as percent. HIGH if the ratio is above 15 percent, MEDIUM if 5 to 15 percent, LOW below 5 percent.
+
+   FORECAST BLOCK - how much to prep going forward
+   - "Recommended Prep per 2-Day Cycle (units)" - CEILING of Avg Units per 2-Day Cycle x 1.10 to the nearest 5 (10 percent safety buffer).
+   - "Projected Weekly Waste after Forecast (Rp)" - assume 5 percent over-prep tail on the recommended plan.
+   - "Weekly Saving vs Today (Rp)" - Weekly Waste Cost minus Projected Weekly Waste after Forecast.
+
+   DECISION BLOCK
+   - "Discontinue Recommendation" - DISCONTINUE if Bottom 20 percent? = YES AND Waste-to-Sales Ratio is HIGH; REVIEW if only one condition holds; KEEP otherwise.
+   - "Why (one line)" - a text formula that reads e.g. "Sells only X units/week, wastes Rp Y - discontinue" or "Top seller (rank #Z) - keep and prep W units per 2-day cycle".
+
+2. Create a THIRD new sheet named "GM Working - Ingredient Forecast" (do NOT put it below the per-product table on GM Working - it belongs on its own sheet so the GM can read it without scrolling). One row per Recipe Code in the Sub Recipe sheet. Columns:
+   - "Recipe Code", "Recipe Name", "Actual Usage Q1", "Unit" - direct references to Sub Recipe columns A-D.
+   - "Avg Weekly Usage" - Actual Usage Q1 divided by 13.
+   - "Recommended Prep per Week (with 10 percent buffer)" - Avg Weekly Usage x 1.10.
+   - "Products that use this base" - a TEXTJOIN of every Product Name on SRM whose recipe block contains this Recipe Code as an ingredient (so the GM sees, for example, that Dough Regular Alternative feeds 12 different products).
+   - "Product Count" - COUNTIF of how many products use this ingredient.
+   - "Pro-rated Weekly Waste Today (Rp)" - for shared bases, allocate the total weekly waste rupiah proportional to each parent product's sales volume, so no double-counting.
+   - "Weekly Cost at Recommended Prep (Rp)" - Recommended Prep x unit cost from SRM.
+   - "Shared Base?" - YES if Product Count is greater than 3.
+   Convert this to an Excel Table too, so the GM can filter by "Shared Base?" and sort by pro-rated waste.
+
+3. Create a THIRD new sheet named "GM Glossary - How to Read This" (put it right after the two working sheets and before the dashboard so anyone opening the workbook can find it). This sheet is the "read me first" for the GM and anyone new to the analysis. Structure:
+
+   TITLE ROW: "How to read the Menu Rationalisation dashboard - what every column means, in plain English"
+
+   TABLE 1 - "GM Working - Waste + Forecast columns" - four columns: Section · Column Name · What it calculates (plain English) · Why the GM cares. One row per column on the per-product working sheet. Populate as follows (write the "What it calculates" and "Why the GM cares" in short business English, no formulas):
+     SALES BLOCK
+       * Total Units Q1 (base) - "How many units of this product we sold in Jan-Mar, excluding hot promos and partnership bundles." / "The real base demand for the product."
+       * Total Rp Sales Q1 (base) - "Rupiah revenue this product brought in over Jan-Mar, excluding promos." / "How much this product actually contributed to the till."
+       * Avg Units per Day / Avg Units per 2-Day Cycle / Weekly Units - "How much of the product moves in different time windows." / "The 2-day cycle number is the one that matters for prep - it is what one prep batch has to cover before it goes off."
+       * Rank / Bottom 20 percent? - "Where this product sits vs the rest of the menu by units sold." / "Bottom-quintile products are our first candidates to cut - they take shelf space and ingredients but do not pull weight."
+       * Channel Mix Sparkline - "A tiny five-bar chart showing sales split across Eat In, Dine In, Takeaway, Delivery, Aggregator." / "Tells the GM at a glance whether the product is delivery-heavy or dine-in-heavy - a delivery-only slow seller is a much easier discontinue than a dine-in signature dish."
+     RECIPE COST BLOCK
+       * SRM Product Name / Recipe Code / Match Status - "Which SRM recipe this product maps to. Names differ between sheets (Sales Mix uses full names, SRM uses short codes like OR/R) - we match on SKU only." / "So the GM can verify we are costing the right recipe."
+       * Prep Batch Cost (Rp per porsi) - "The ingredient cost of ONE serving, taken from SRM Recipe Price. This is what one porsi costs us in raw materials." / "The lower the sales but the higher this cost, the more painful each thrown-out prep is."
+       * Shared-Base Flag - "YES if this product uses a shared ingredient like Dough or Mozzarella that other products also use." / "Shared bases can be re-used across the menu when demand shifts - do not fully attribute their waste to one product."
+     2-DAY WASTE BLOCK (this is the PROJECT step)
+       * Prep Batch Size (units) - "The smallest realistic prep quantity we would make for one 2-day cycle - rounded UP to the nearest 5 units because kitchens do not prep 3.2 pizzas." / "This is the number the kitchen actually orders per prep session."
+       * Units Wasted per 2-Day Cycle - "Prep Batch Size minus what we actually sold in 2 days. The gap that ends up in the bin." / "Per-cycle waste in raw units."
+       * Weekly Waste Cost (Rp) - "Units Wasted per 2-Day Cycle x Prep Batch Cost x 3.5 cycles per week. The rupiah we bin every week on this one product." / "THE KEY NUMBER for the discontinue conversation."
+       * Waste-to-Sales Ratio - "Weekly Waste Cost divided by weekly sales revenue for the product." / "A product with 25 percent waste-to-sales is a much stronger cut candidate than one with 4 percent."
+     FORECAST BLOCK (this is the FORECAST step)
+       * Recommended Prep per 2-Day Cycle (units) - "Avg 2-day demand + 10 percent buffer, rounded up to nearest 5. What the kitchen SHOULD prep going forward instead of the current over-prep." / "The new prep target."
+       * Projected Weekly Waste after Forecast (Rp) - "The small tail of waste (5 percent) we still expect even after right-sizing prep. Nothing is zero-waste." / "Realistic post-plan waste, not a fairytale zero."
+       * Weekly Saving vs Today (Rp) - "Weekly Waste Cost minus Projected Weekly Waste after Forecast. The money we free up per week if the GM adopts the forecast prep." / "THE KEY NUMBER for the savings conversation."
+     DECISION BLOCK (this is the QUANTIFY step)
+       * Discontinue Recommendation - "DISCONTINUE / REVIEW / KEEP based on Bottom 20% AND high waste-to-sales ratio." / "The final call, in one word."
+       * Why (one line) - "A plain-English one-liner explaining the recommendation." / "So the GM does not have to reverse-engineer the logic."
+
+   TABLE 2 - "GM Working - Ingredient Forecast columns" - same four-column layout. Populate:
+     * Recipe Code / Recipe Name / Actual Usage Q1 / Unit - "Direct references from the Sub Recipe sheet (actual 3-month ingredient consumption)." / "This is what we truly used - real, not estimated."
+     * Avg Weekly Usage - "Actual Q1 usage divided by 13." / "Our baseline weekly consumption per ingredient."
+     * Recommended Prep per Week (with 10 percent buffer) - "Avg Weekly Usage x 1.10." / "The purchase order size for next week - just enough plus a safety buffer."
+     * Products that use this base - "TEXTJOIN of every SRM recipe using this ingredient." / "So the GM sees, for example, Dough Regular Alternative feeds 12 products - cutting one product does not eliminate the base."
+     * Product Count / Shared Base? - "How many products use this ingredient. Shared Base = YES if more than 3 products use it." / "Shared bases are the highest-leverage items to right-size."
+     * Pro-rated Weekly Waste Today (Rp) - "Current weekly waste of this ingredient, allocated across the products using it in proportion to their sales share (no double-counting)." / "Because Dough waste should not be blamed 100 percent on every product that uses it."
+     * Weekly Cost at Recommended Prep (Rp) - "Recommended Prep x unit cost - what we would spend per week on this ingredient after right-sizing." / "The new purchase-order value going forward."
+
+4. Apply conditional formatting on the GM Working sheet only: red fill for DISCONTINUE, amber for REVIEW, green for KEEP; data bars on Weekly Waste Cost; traffic-light icons on Waste-to-Sales Ratio.
+
+5. Convert the GM Working table (per-product) to an Excel Table (Ctrl+T style) so the GM can filter by Discontinue Recommendation, Shared-Base Flag and Match Status in-place, and the sparklines and conditional formatting stay in sync.
+
+6. Create a FOURTH new sheet named "GM Dashboard - Waste + Forecast" and build a one-page management dashboard that references both GM Working tables by formula (so it updates when the GM filters):
+
+   HEADER
+   - Red header band with the title "Contoso Pizza Co · Menu Rationalisation - Waste + Forecast Dashboard"
+   - Outlet name (P098 - PHD Jatiwarna) and reporting period, both pulled by reference from the Sales sheet
+   - Small "Last refreshed" note in dark grey
+
+   KPI SCORECARDS (top row, 6 tiles across, each small)
+   - Total regular SKUs on menu (from Sales Mix, rows 118-455 and 482+, excluding all promo bundles)
+   - SKUs recommended DISCONTINUE (count)
+   - Weekly Waste Cost today (Rp) - with RAG traffic light
+   - Projected Weekly Waste after Forecast (Rp)
+   - Weekly Saving if the GM adopts the plan (Rp) - highlighted in green
+   - Match Coverage % - amber below 90%, red below 75% (data-quality signal)
+
+   CHARTS - keep each chart telling ONE story, no huge unreadable bars
+   - Chart A (top-left, half-width) - Bar chart of the TOP 10 DISCONTINUE candidates by Weekly Waste Cost. Y-axis product name, X-axis Weekly Waste Cost in rupiah, data labels on. Red bars. This is the "cut list" the GM signs off on.
+   - Chart B (top-right, half-width) - Bar chart of the TOP 10 KEEP-AND-DOUBLE-DOWN products by weekly rupiah revenue. Y-axis product name, X-axis Weekly Revenue, data labels on. Green bars. This is the "protect list".
+   - Chart C (middle, full-width) - Waterfall: Weekly waste cost today -> minus savings from DISCONTINUE list -> minus savings from forecast right-sizing on shared bases -> Projected waste after forecast. Red bars for negative steps (waste), green bars for positive (savings), blue for start/end. This is the executive summary chart.
+   - Chart D (bottom, full-width) - Bar chart of the TOP 10 SHARED BASES by Pro-rated Weekly Waste (from the Ingredient Forecast sheet). Y-axis ingredient name, X-axis rupiah, data labels on. Amber bars. Shows the GM which shared bases (Dough, Mozzarella, Universal Sauce) drive the most cross-product waste.
+   Do NOT create a chart of "all products sorted worst-to-best" - too many bars to read on one page. Do NOT create a Pareto (column + cumulative line) and do NOT create a donut of "top 10 vs rest" - the Top 10 DISCONTINUE bar plus the Waterfall already tell the concentration and money story more clearly.
+
+   The GM Working sheet is already an Excel Table with column filter dropdowns - that is the interactivity the GM uses to slice by Discontinue Recommendation, Shared-Base Flag or Match Status. Do NOT add a Scenario dropdown panel, do NOT add a PivotTable with slicers, and do NOT wire slicers across charts on this dashboard - Copilot Edit produces those unreliably and they add complexity without adding decisions the GM cannot already make from the filtered table + the four charts.
+
+   CALLOUTS (bottom)
+   - "Top 5 to DISCONTINUE" - red box, five bullets from the DISCONTINUE list, each with product name, weekly waste in rupiah and the "Why" one-liner
+   - "Top 5 to KEEP + right-size prep" - green box, five bullets with product name, current prep, recommended prep per 2-day cycle and weekly saving
+   - One-line "So what:" summary above the callouts, naming the single biggest waste driver, the total weekly saving if the GM adopts the plan, and the owner (GM Operations)
+
+7. Freeze the header row of the dashboard so it stays visible when the GM scrolls.
+
+8. On the dashboard sheet, add four small navigation links in the bottom right: "How to read this dashboard (open glossary)" (jumps to the GM Glossary sheet), "Open per-product working analysis" (jumps to GM Working - Waste + Forecast), "Open ingredient forecast" (jumps to GM Working - Ingredient Forecast), "Open raw sales mix - regulars start at row 118" (jumps to Sales Mix row 118).
+
+Reminders: Sales, Sales Mix, SRM and Sub Recipe must remain untouched. Hot-promo rows 10 to 117 AND partnership / TikTok / QPON promo rows 456 to 481 in Sales Mix are excluded from base per-product sales. Match products across Sales Mix and SRM by SKU only (Sales Mix Item Code = SRM SKU) - names differ between sheets and do not matter for matching. Shared ingredients like Dough Regular Alternative appear in multiple SRM recipe blocks and their waste is pro-rated on the Ingredient Forecast block, never double-counted in per-product Weekly Waste Cost. Every column you create on the working sheets must appear in the GM Glossary sheet with a plain-English "What it calculates" and "Why the GM cares" - if a column is not in the glossary the GM cannot use it.
+
+When done, list every change you made as a numbered summary at the end of the chat so the GM can review before saving.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Closing line for the audience:</b> "One prompt. Copilot answered both operations questions in one dashboard - which products to discontinue because they waste too much once ingredients are prepped, and how much of each ingredient to prep per week going forward. Hot promos AND partnership bundles excluded from the base sales, shared bases like dough and mozzarella pro-rated across parent products, no double-counting. Every column has a plain-English glossary entry so the GM can read the dashboard without a phone-a-friend. Raw workbook untouched."</div>
+<div class="callout warn"><b>Reality check on Copilot in Excel:</b> SUMIFS with row-range exclusion (rows 118-455 AND 482+), XLOOKUP on SKU into SRM's multi-row recipe blocks, COUNTIF for shared-ingredient detection, conditional formatting, sparklines, Excel Tables with column filter dropdowns, and chart types (column, line, waterfall) are the reliable parts. What is NOT reliable via Copilot Edit today: data-validation dropdowns wired to recalculate whole dashboards, PivotTables with cross-chart slicers, and any multi-chart interactivity - these look great in a mock but drift or break when Copilot generates them. The right level of interactivity here is the Table column filters (Discontinue Recommendation, Shared-Base Flag, Match Status) - the GM slices the table live and the charts stay static references. Product matching is SKU-only - Sales Mix Item Code equals SRM SKU. Names differ between sheets ("Original/Regular Beefy Mushroom" vs "OR/R Beefy Mushroom") but do not matter because SKU is unique. If Match coverage on the dashboard tile comes back below 90 percent, the waste and forecast numbers are unreliable - fix the SKU alignment at source, do not fuzzy-match on name. If Copilot picks up promo rows or double-counts shared ingredients, follow up with: <i>"Rebuild the Total Units Q1 (base) column using SUMIFS on Sales Mix limited to rows 118-455 AND rows 482 to the last data row - exclude hot-promo rows 10-117 AND partnership/TikTok/QPON promo rows 456-481. Re-run the XLOOKUP on SKU only (Sales Mix column A into SRM column A). For any ingredient in SRM appearing in more than one recipe block (e.g. Dough Regular Alternative, Mozzarella Cheese, Universal Sauce), do not add the full ingredient cost to every parent product - pro-rate on the Ingredient Forecast block only."</i></div>
+</div>
+<div class="card">
+<h3>3.2 - Excel to PowerPoint: turn the workbook into a 5-slide ops deck</h3>
+<p class="lead">Save and close the workbook you built in 3.1. Open a blank <b>PowerPoint</b> deck (or your corporate template so brand fonts and colours are inherited). Click <b>Copilot -&gt; Create presentation from file</b> and pick the workbook. When Copilot proposes an outline, click <b>Generate</b>, then open the Copilot pane and paste the prompt below to tighten the deck.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 3.2</span><span class="file">Copilot in PowerPoint · Create from file + Edit</span></div>
+<h4>One prompt · a board-ready 5-slide menu rationalisation deck built from the Excel workbook</h4>
+<div class="prompt">You are Copilot in PowerPoint. This deck was generated from the menu rationalisation workbook I built in 3.1 (sheets: GM Working - Waste + Forecast, GM Working - Ingredient Forecast, GM Glossary, GM Dashboard). Ground every number on that workbook. Use our Contoso Pizza Co brand feel (red + charcoal, warm and appetite-forward). Show your plan first, then execute all of the following in order:
+
+1. RESTRUCTURE the deck into exactly 5 slides for the operations board, each with an ACTION-TITLE headline (states the conclusion, not the topic):
+
+   Slide 1 - Cover: "Contoso Pizza Co · Menu Rationalisation - What we recommend the ops board approves"
+   Slide 2 - Executive summary: three headline numbers pulled from the GM Dashboard KPI scorecards - "[n] SKUs to cut", "Rp [X] weekly waste today", "Rp [Y] weekly saving if we adopt the plan". One-line "So what" underneath.
+   Slide 3 - The cut list: top 10 DISCONTINUE candidates from the GM Working sheet as a horizontal bar chart (product name on Y-axis, Weekly Waste Cost on X-axis, red bars, data labels on). Paste the chart image directly from the GM Dashboard sheet. Include the one-line "Why" from the workbook next to each bar.
+   Slide 4 - The right-size plan: top 10 shared bases from the GM Working - Ingredient Forecast sheet with columns Product Count · Avg Weekly Usage · Recommended Prep per Week (with 10% buffer). Paste the "Top 10 Shared Bases" chart image from the GM Dashboard. Highlight Dough Regular Alternative, Mozzarella Cheese, Universal Sauce if they are in the top 10.
+   Slide 5 - The ask: three explicit board decisions - (1) approve the DISCONTINUE list from slide 3, (2) adopt the forecast prep quantities from slide 4, (3) review results in 90 days. Add owner (GM Operations · Head Chef · Head of Purchasing) and by-when for each.
+
+2. Add SPEAKER NOTES on every slide - 30 to 45 seconds of natural spoken script per slide the GM can read verbatim, referencing the exact numbers from the workbook (not paraphrases).
+
+3. Add a slim "So what:" strip in red at the bottom of slides 2, 3, 4 with the single most important takeaway from that slide (e.g. slide 3: "Cutting these 10 SKUs saves Rp [X] per week - almost all of it from products already in the bottom quintile of sales").
+
+4. Apply brand palette throughout: red for emphasis, charcoal for headings, warm grey for body. Body font 18pt minimum. No more than 25 words per slide body.
+
+5. Insert a final APPENDIX slide with a hyperlink back to /Data Contoh.xlsx and specifically the GM Dashboard sheet, plus one line naming the assumptions (2-day shelf life · 3.5 prep cycles/week · 10 percent safety buffer · 5 percent residual waste · DISCONTINUE = Bottom 20 percent AND Waste-to-Sales HIGH).
+
+When done, list every slide with its action-title headline and the workbook cell/chart it sources from in the chat so the GM can verify traceability before saving.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Closing line for the audience:</b> "The workbook was the source of truth. One click - Create presentation from file - and the deck exists. One prompt - and it is now a 5-slide board-ready menu rationalisation pack with action titles, brand palette, speaker notes and a linked appendix. Same story as the Excel: project the waste, forecast the prep, quantify the saving."</div>
+<div class="callout warn"><b>Reality check on Create-from-file:</b> Copilot may need a moment on large workbooks and can produce more slides than requested - if so, follow up with: <i>"Consolidate the deck into exactly 5 slides using the structure above, keep every action-title headline, move any extra content to the appendix."</i> Copilot in PowerPoint is best at pasting chart IMAGES from the workbook rather than rebuilding charts natively - if a slide shows a rebuilt chart that looks off, follow up with: <i>"Replace the chart on slide 3 with the actual "Top 10 DISCONTINUE" chart image from the GM Dashboard sheet - do not rebuild it."</i></div>
+</div>
+</div>
+<div class="card">
+<h3>3.3 - PowerPoint to Word: draft a 1-page ops memo from the deck you just built</h3>
+<p class="lead">Save and close the 5-slide deck from 3.2 so Copilot can index it. Open a blank <b>Word</b> document (or your corporate memo template). Click <b>Copilot -&gt; Draft with Copilot</b>, click the paperclip / <b>Reference a file</b>, and pick the 5-slide deck from 3.2. Because 3.2 built the deck directly from the workbook with chart images and KPI values, every number in the deck already matches the Excel exactly - the memo will inherit those figures. Paste the prompt below.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 3.3</span><span class="file">Copilot in Word · Draft from the 3.2 deck</span></div>
+<h4>One prompt · a 1-page ops memo grounded on the deck (numbers already match the Excel workbook via 3.2)</h4>
+<div class="prompt">You are Copilot in Word. Ground everything on the 5-slide ops deck I have referenced (built in 3.2 from the menu rationalisation workbook - Cover, Executive summary, The cut list, The right-size plan, The ask). Every number in that deck was pasted directly from the workbook, so treat the deck as authoritative. Use our Contoso Pizza Co brand feel (red + charcoal). Show your plan first, then draft a 1-page ops memo in this exact order:
+
+MEMO TITLE: "Contoso Pizza Co · Menu Rationalisation - What we recommend the ops board approves"
+FROM: General Manager · Operations
+TO: Director of Operations · Ops Board
+DATE: [today]
+
+1. HEADLINE - one sentence naming the single biggest weekly waste driver (from The cut list slide) and the total weekly saving if the plan is adopted (from the Executive summary slide).
+
+2. SUMMARY TABLE (3 columns: Metric · Value · So what) placed right under the headline. Rows, all values pulled from the Executive summary slide's three headline numbers:
+   - "SKUs to DISCONTINUE" · [n] · "Cuts Rp [X] per week of waste"
+   - "Weekly waste today" · Rp [X] · "The baseline the operations team is trying to reduce"
+   - "Weekly saving after right-sizing prep" · Rp [Y] · "Free cash for reinvestment or margin recovery"
+
+3. "TOP 5 TO DISCONTINUE" - five one-line bullets pulled from The cut list slide (Slide 3), each: product name · weekly waste in rupiah · the one-line "Why" text next to the bar.
+
+4. "TOP 5 TO KEEP AND RIGHT-SIZE PREP" - five one-line bullets pulled from The right-size plan slide (Slide 4), each: ingredient / product · current usage · recommended weekly prep · saving.
+
+5. "90-DAY ACTION PLAN" - lift the three actions from The ask slide (Slide 5) verbatim, with the owner and by-when for each:
+   - Remove DISCONTINUE SKUs from menu boards, POS and delivery apps · Head Chef + Operations Manager · Week 2
+   - Right-size prep batches for the top 10 shared bases to the recommended weekly quantities · Head Chef + Head of Purchasing · Week 1
+   - Track actual weekly waste vs projected for 90 days and report back · GM Operations · Week 13
+
+6. "THE ASK" - one sentence: "Approve the DISCONTINUE list, adopt the forecast prep quantities, and hold the 90-day review meeting."
+
+7. INSERT a pull-quote callout in red under the summary table with a one-sentence "So what" line stating total annualised saving (Weekly Saving x 52).
+
+8. FOOTER: red 3-pt accent stripe, "Contoso Pizza Co · GM Office" on the left, "Page 1 of 1" on the right.
+
+9. Add a hyperlink block at the bottom labelled "Open the 5-slide deck" pointing to the presentation from 3.2, and a second link "Open source workbook" pointing to Data Contoh.xlsx.
+
+Keep it to ONE page. Plain business English, no jargon. Every number must come from the deck - if a slide is missing a value, use [PLACEHOLDER] rather than inventing. Do not re-derive DISCONTINUE / REVIEW / KEEP - use whatever the deck already shows (which came from the workbook rule: Bottom 20 percent AND Waste-to-Sales HIGH). When done, list every bullet with the slide it sources from in the chat so the GM can verify traceability before sending.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Closing line for the audience:</b> "Same source, three formats. Excel built the dashboard. PowerPoint turned it into 5 board slides. Word landed a 1-page memo off that deck - because the deck was built from the workbook, the memo numbers match the Excel exactly."</div>
+<div class="callout warn"><b>Why the deck (not the workbook):</b> the deck from 3.2 is our source here because it was built directly from the workbook with chart images and KPI values pasted in - so every number in the deck already matches the Excel. Word grounding on the deck therefore lands identical figures without any extra reconciliation step. If a memo bullet drifts, follow up with: <i>"Re-check the TOP 5 TO DISCONTINUE bullets against the bars shown on Slide 3 - The cut list. Match product names and rupiah figures exactly."</i></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Task 3.4</span><span class="file">👥 Cowork · alternative one-prompt path · Excel + Word + PowerPoint + HTML + email + meeting</span></div>
+<h4>Menu Rationalisation in a single Cowork run - all four artefacts, plus the email out and the meeting booked</h4>
+<div class="callout" style="background:#fef3c7;border-color:#f59e0b"><b>Use this when you do not have time to run 3.1, 3.2 and 3.3 end-to-end in three separate apps.</b> Tasks 3.1-3.3 walk the GM through Excel then PowerPoint then Word in-app so the audience sees Copilot behave differently in each surface. Task 3.4 produces the same four artefacts in one Cowork run - and also drafts the email to the Operations Manager and schedules the quarterly menu review meeting - faster, less teaching value, more useful when the GM just needs the outputs on the table before a real meeting.</div>
+<div class="prompt">Cowork - run the full menu rationalisation for General Manager · Operations at Contoso Pizza Co in ONE go. Ground everything on /04 Data Contoh.xls. Show your plan first, let me edit any step, and pause before sending the email or scheduling the meeting.
+
+Story you are telling in all four artefacts: today we throw away ingredients every week because we prep more than we sell (each prepped base only lasts 2 days). We will (1) PROJECT how much we waste per product per week, (2) FORECAST the right ingredient prep for next week, and (3) QUANTIFY the money saved if the GM acts. Products to analyse = Sales Mix rows 118 to 455 AND rows 482 onwards. EXCLUDE hot-promo rows 10-117 AND partnership / TikTok / QPON promo rows 456-481. Match products across Sales Mix and SRM by SKU only (Sales Mix column A = SRM column A). Shared ingredients (Dough Regular Alternative, Mozzarella Cheese, Universal Sauce) are pro-rated on the Ingredient Forecast block, never double-counted per product.
+
+Do all of the following, in order:
+
+1. EXCEL - open /04 Data Contoh.xls (leave Sales, Sales Mix, SRM and Sub Recipe untouched) and add four new sheets. Use EXACTLY the same thresholds and formulas as Task 3.1 so this Cowork run and a Task 3.1 run produce identical numbers:
+   - Assumptions: 2-day ingredient shelf life · 3.5 prep cycles per week · 10 percent safety buffer on forecast prep · 5 percent residual waste after right-sizing · Prep Batch Size = Avg Units per 2-Day Cycle rounded UP to nearest 5 · Recommended Prep per 2-Day Cycle = (Avg Units per 2-Day Cycle x 1.10) rounded UP to nearest 5.
+   - Waste-to-Sales Ratio bands: HIGH if above 15 percent, MEDIUM if 5 to 15 percent, LOW if below 5 percent.
+   - Discontinue Recommendation rule (use EXACTLY this - do not invent your own): DISCONTINUE if Bottom 20 percent flag = YES AND Waste-to-Sales Ratio is HIGH; REVIEW if only one of those two conditions holds; KEEP otherwise.
+   - "GM Working - Waste + Forecast" - per product: Total Units Q1 (base), Total Rp Sales Q1, Avg Units per 2-Day Cycle, Weekly Units, Rank, Bottom 20 percent flag, Channel Mix Sparkline (5-bar inline: Eat In, Dine In, Takeaway, Delivery, Aggregator), SRM Match Status, Prep Batch Cost Rp per porsi, Shared-Base Flag, Prep Batch Size (per assumption above), Units Wasted per 2-Day Cycle, Weekly Waste Cost Rp (units wasted x cost x 3.5 cycles/week), Waste-to-Sales Ratio (with band per assumption above), Recommended Prep per 2-Day Cycle (per assumption above), Projected Weekly Waste after Forecast Rp (5 percent residual x Weekly Waste Cost), Weekly Saving vs Today Rp (Weekly Waste Cost minus Projected Weekly Waste after Forecast), Discontinue Recommendation (per rule above), Why (one line).
+   - "GM Working - Ingredient Forecast" - per ingredient from Sub Recipe: Recipe Code, Recipe Name, Actual Usage Q1, Unit, Avg Weekly Usage, Recommended Prep per Week (Avg x 1.10), Products that use this base (TEXTJOIN), Product Count, Shared Base flag (YES if used by more than 3 products), Pro-rated Weekly Waste Today Rp, Weekly Cost at Recommended Prep Rp.
+   - "GM Glossary - How to Read This" - two tables (GM Working columns, Ingredient Forecast columns) with Section, Column Name, What it calculates (plain English), Why the GM cares. Every column above must appear here.
+   - "GM Dashboard - Waste + Forecast" - six KPI scorecards (Total SKUs, DISCONTINUE count, Weekly Waste today, Projected Waste after Forecast, Weekly Saving, Match Coverage percent with RAG), plus Top 10 DISCONTINUE bars (red), Top 10 KEEP bars (green), Waterfall (waste today - savings from cuts - savings from right-sizing = projected waste), Top 10 Shared Bases pro-rated waste (amber). Add navigation links bottom-right: to the Glossary sheet, working sheet, ingredient forecast, and raw Sales Mix row 118.
+   Save as /Contoso_Pizza_Menu_Rationalisation.xlsx.
+
+2. WORD - draft a 1-page GM memo "Contoso Pizza Co · Menu Rationalisation - What we recommend the ops board approves". Structure: headline (biggest waste driver in one line), Top 5 to DISCONTINUE (product + weekly waste Rp + one-line why), Top 5 to KEEP and right-size prep (product + current prep vs recommended prep + weekly saving), total weekly saving if adopted, 90-day action plan with owners (GM Operations, Head Chef, Purchasing), one clear ask of the board. Ground every number on the Excel file you just created. Save as /Contoso_Pizza_Menu_Rationalisation_Memo.docx.
+
+3. POWERPOINT - draft a 5-slide BCG / McKinsey-style deck grounded on the memo AND the workbook. Action-title headlines, one message per slide, max 25 words body:
+   Slide 1 - Cover
+   Slide 2 - Executive summary (three headline numbers: SKUs to cut, weekly waste today, weekly saving if we act)
+   Slide 3 - The cut list (top 10 DISCONTINUE as a horizontal bar chart pasted from the workbook)
+   Slide 4 - The right-size plan (top 10 shared bases with recommended weekly prep)
+   Slide 5 - The ask (approve the cut list, adopt the forecast, review in 90 days)
+   Brand: red + charcoal, warm and appetite-forward. Save as /Contoso_Pizza_Menu_Rationalisation_Deck.pptx.
+
+4. HTML DASHBOARD - generate a self-contained /Contoso_Pizza_Menu_Rationalisation_Dashboard.html file that mirrors the Excel dashboard but adds a TOGGLE at the top: "View by Product" vs "View by Ingredient". When the toggle is on Product, show the Top 10 DISCONTINUE bars, Top 10 KEEP bars, Waterfall, and a filterable table of all products with search + column sort. When the toggle is on Ingredient, show the Top 10 Shared Bases waste bars, a filterable table of all ingredients with Recommended Prep per Week and Weekly Cost at Recommended Prep, and the same Waterfall. Six KPI scorecards stay visible on both views. Brand-coloured header band (red + charcoal), all CSS inline, minimal vanilla JavaScript for the toggle / search / sort only (no external libraries, no CDN, no network calls - must open offline from OneDrive). Include a "How to read this dashboard" accordion at the bottom that mirrors the Excel Glossary sheet.
+
+5. EMAIL - draft an email in Outlook from Bu Lisa Hartono (GM Operations) to the Operations Manager, cc Head Chef and Head of Purchasing. Subject: "Quarterly menu rationalisation - decisions needed by Friday". Body: two-line headline (total weekly waste today, weekly saving if adopted), a "Top 5 to discontinue" bullet list, a "Top 5 to right-size" bullet list, an "Ask" line ("approve the cut list, adopt the forecast prep, sign off in the review meeting"), and attach all four files. STOP - show me the draft to review before sending.
+
+6. MEETING - draft a 30-minute Outlook meeting invite: title "Quarterly Menu Rationalisation Review · Contoso Pizza Co". Time: Wednesday next week 10:00-10:30. Attendees: Operations Manager, Head Chef, Head of Purchasing, GM Operations (organiser). Body: three-line agenda ("1. Approve the cut list", "2. Confirm the forecast prep for shared bases", "3. Assign 90-day owners"), attach the memo and the deck. STOP - show me the invite to review before scheduling.
+
+Reminders: raw workbook sheets untouched · SKU-only matching · exclusions rows 10-117 and 456-481 · shared bases pro-rated only · every column defined in the Glossary sheet · HTML dashboard must be one file, no dependencies · pause before sending email or scheduling meeting so the GM can review both.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Closing line for the audience:</b> "One Cowork prompt. Six things done: Excel dashboard, one-page memo, five-slide deck, offline HTML dashboard, executive email drafted, and the review meeting booked. Cowork paused at both the send and the schedule step so the GM stayed in control. Same story across every artefact - project the waste, forecast the prep, quantify the saving. Raw workbook untouched."</div>
+<div class="callout warn"><b>Reality check on Cowork multi-artefact runs:</b> Cowork can plan, hand off between apps, produce Excel + Word + PowerPoint + HTML, draft the email and draft the meeting in one session. It WILL pause before sending or scheduling - that pause is a feature, not a bug. What varies is quality per surface: expect to review the Excel formulas (the reliability bar for SUMIFS with dual row-range exclusion and XLOOKUP on multi-row SRM blocks is the same as Task 3.1 - if it drifts, follow up with the same corrective prompt from 3.1). PowerPoint chart fidelity is best when Copilot pastes chart images from the workbook rather than rebuilding charts natively. HTML dashboard with vanilla JS toggle + client-side filter is well within reach - do NOT ask Cowork to add Chart.js or a CDN because the file must open offline.</div>
+</div>
+</div></section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Market Intelligence</button><button data-go="ex5">Next: Create a Visual Infographic →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
+<div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Create a Visual Infographic<small>Microsoft 365 Copilot Chat · Create (Designer)</small></h2></div>
+<div class="callout good"><b>The play:</b> use <b>Copilot Create</b> (the Designer feature inside Microsoft 365 Copilot Chat) to generate a polished, brand-aligned one-page infographic in 60 seconds. The prompts below are written in plain language — the way a normal business user would describe what they want.</div>
+<div class="card">
+<p class="lead">Open <b>Microsoft 365 Copilot Chat</b>. In the message box, click the <b>+</b> icon, then hover <b>Add capabilities</b> and pick the visual / design capability from the submenu. A "<b>What do you want to design?</b>" panel opens with a <b>Create a visual</b> prompt box. Set <b>Type: Infographic</b> (default). Optionally set <b>Size</b>, <b>Style</b>, <b>Brand</b> and <b>Color</b> tabs. Paste the prompt below into the Create a visual box and send. You will get design variants — pick one and use <b>Edit</b> to adjust any section.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 4</span><span class="file">🎨 Copilot Create · image output</span></div>
+<h4>Generate the one-page infographic</h4>
+<div class="prompt">Make a warm, energetic one-page infographic poster called "Lebaran 2026 Campaign Brief — Family Feast". Use our brand colours red and coral with warm cream tones, and a small festive feel (a simple ketupat outline is fine, no heavy decoration). Make it look like a clean campaign brief you'd hand to all stores. Vertical, fits one A4 page, fill the entire page — no empty gap at the bottom.
+
+At the top, a big bold title: "FAMILY FEAST · LEBARAN 2026"
+Underneath: "Warmer gatherings, more pizza · Campaign window 10 March – 20 April 2026 · All stores"
+
+Then a row of 4 big-number boxes:
+- "+18%" — Same-Store Sales target vs Lebaran 2025
+- "650K" — Family Feast bundles to sell
+- "Rp 285K" — Average bundle basket
+- "92%" — On-time delivery under 30 minutes
+
+Then a section called "THE THREE CAMPAIGN PILLARS" with 3 numbered cards side by side. Card 1 — PRODUCT with bullets: Family Feast 4-pax bundle at Rp 285K; limited Rendang Pizza; free dessert for dine-in families of 6+; special Lebaran packaging. Card 2 — CHANNELS with bullets: dine-in family zones; delivery via app + WhatsApp order; drive-thru express bundle; corporate hamper B2B. Card 3 — COMMUNICATIONS with bullets: 30-second TVC + 15-second cut-down; TikTok creator program with 25 influencers; segmented push notifications; out-of-home in 8 key travel-route cities.
+
+Then a small "Execution Schedule" table with 5 rows for Weeks 1–5: Teaser, Launch, Peak D-7, Sustain D+3, Wrap — columns: Focus and Weekly KPI.
+
+Then a row of 3 simple icons with labels for "Operational Risks": mozzarella stockouts, rider supply at peak times, kitchen congestion at travel-route stores.
+
+At the bottom, a coloured ribbon footer that says "OWNER: GM Operations &amp; Marketing · REVIEW every Monday · GO-LIVE 10 March 2026" with today's date on the right.
+
+Style: bold sans-serif, friendly flat illustrations (pizza box, ketupat outline, family icon), warm but professional. No realistic stock photos. Important: fill the full A4 page — extend sections so there is no empty bottom band.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Tip if the result has a gap at the bottom:</b> click <b>Create more</b> to re-roll, or click <b>Edit</b> and ask "Please fill the empty space at the bottom of the page — extend the sections or add a small footer with the date and a one-line recommendation."</div>
+<div class="callout good"><b>How to share:</b> click <b>Download</b> (PNG or PDF) → drop into Outlook, Teams, or PowerPoint. No HTML, no code, no design tool.</div>
+</div>
+<h3 style="margin:24px 0 6px;font-size:16px;font-weight:700">More poster ideas for Contoso Pizza</h3>
+<p class="lead">Three alternate angles, same plain-language style. Pick whichever resonates with the room — or run two side-by-side and let the GM choose.</p>
+<div class="activity">
+<div class="head"><span class="num">Alt 5.1</span><span class="file">🎨 Copilot Create · image output</span></div>
+<h4>Alternate 1 · Store Heatmap Poster</h4>
+<div class="prompt">Make a one-page infographic poster called "Store Heatmap — Where We Win, Where We Fight". Use our brand red and coral with warm cream tones, plus a red-amber-green performance scale. Vertical A4, fill the whole page.
+
+At the top, a big bold title: "STORE HEATMAP · Q3 FY26"
+Underneath: "Where we win, where we fight, where we exit · For the Ops Review"
+
+Then a row of 4 big-number boxes: "398" total outlets; "68%" stores at or above plan; "22%" stores in the watch zone; "10%" stores under turnaround.
+
+Then a section called "FOUR ZONES, FOUR PLAYBOOKS" with 4 cards side by side. Card 1 — Star Stores: defend, lift premium mix, replicate the model. Card 2 — Steady: light touch, monthly review, share best practice. Card 3 — Watch: 60-day turnaround, menu pruning, rider supply fix. Card 4 — Exit Review: lease renegotiation or planned closure within 9 months.
+
+Then a small table called "Region snapshot" with 5 rows (Greater Jakarta, West Java, Central &amp; East Java, Bali &amp; East, Sumatra) and 3 columns (Stores, Same-Store Sales YoY, Action).
+
+Then a row of 3 simple icons with labels for "The three turnaround levers": rider supply at peak times, kitchen throughput, value-bundle anchor.
+
+At the bottom, a coloured ribbon footer saying "OWNER: COO Operations · REVIEW: weekly Ops stand-up" with today's date on the right.
+
+Style: bold sans-serif, friendly flat illustrations (pizza box, scooter, store), warm but professional. Fill the entire A4 page.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Alt 5.2</span><span class="file">🎨 Copilot Create · image output</span></div>
+<h4>Alternate 2 · Menu Innovation Pipeline</h4>
+<div class="prompt">Make a one-page infographic poster called "Menu Innovation Pipeline — Next 12 Months". Use our brand red and coral with warm cream tones. Vertical A4, fill the whole page.
+
+At the top, a big bold title: "MENU INNOVATION PIPELINE"
+Underneath: "What's cooking next · 12-month view · For the Marketing &amp; R&amp;D leadership"
+
+Then a horizontal timeline running across 4 quarters with one or two icons + name per quarter: Q1 — Rendang Pizza (Lebaran limited); Q2 — Family Feast 2.0, Breakfast pilot in 12 stores; Q3 — Local Heritage range, Spicy Sambal Wings; Q4 — Sweet Dessert Pizza, Veggie Range relaunch.
+
+Then a section called "HOW WE PICK WHAT WINS" with 3 cards side by side. Card 1 — "Consumer signal": social listening, focus groups, store-staff feedback. Card 2 — "Operational fit": kitchen complexity score, supply-chain readiness, equipment needs. Card 3 — "Financial test": target margin %, pilot ticket lift, payback under 6 months.
+
+Then a small table called "Pilot vs Rollout" with 4 rows (Rendang Pizza, Family Feast 2.0, Breakfast, Dessert Pizza) and 3 columns (Pilot result, Decision, National rollout date).
+
+Then a row of 3 simple icons with labels for "Risks to watch": mozzarella supply, kitchen complexity creep, aggregator commission squeeze.
+
+At the bottom, a coloured ribbon footer saying "NEXT GATE: Q1 menu lock by end of November · OWNER: GM Marketing" with today's date on the right.
+
+Style: bold friendly sans-serif, flat food illustrations (pizza, chicken wing, croissant, cupcake), warm. Fill the entire A4 page.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Alt 5.3</span><span class="file">🎨 Copilot Create · image output</span></div>
+<h4>Alternate 3 · All-Hands Town Hall Poster</h4>
+<div class="prompt">Make a warm, energetic one-page infographic poster called "Town Hall 2026 — Pizza, Pride and Performance". Use brand red and coral with cream, plus a small gold accent for "wins". Vertical A4, fill the whole page.
+
+At the top, a big bold title: "TOWN HALL 2026"
+Underneath: "Pizza, pride and performance · A thank-you from the GM to every Contoso Pizza Co colleague"
+
+Then a row of 4 big-number boxes: "398" stores; "12,500" colleagues; "48 million" pizzas served this year; "4.7 / 5" customer satisfaction.
+
+Then a section called "THREE THINGS TO CELEBRATE" with 3 cards side by side. Card 1 — "Family Feast Lebaran 2025": 720K bundles sold, highest single-month sales ever. Card 2 — "Faster on the Road": 92% of deliveries on time, average 27 minutes. Card 3 — "Safer Kitchens": zero serious food-safety incidents this year.
+
+Then a small list called "What our customers said" with 3 short anonymised quotes (one line each), italics with quote marks.
+
+Then a row of 3 simple icons with labels for "What's next in 2026": Family Feast 2.0 for Lebaran, breakfast pilot, deeper loyalty rewards for our regulars.
+
+At the bottom, a coloured gold ribbon footer saying "THANK YOU · ONE TEAM · ONE PIZZA NATION" with company name on the left and today's date on the right.
+
+Style: warm flat illustrations (pizza box, scooter, smiley, slice), bold friendly sans-serif. No stock photos of real people. Fill the entire A4 page.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity bonus">
+<div class="head"><span class="num">Bonus</span><span class="file">🖼️ Copilot Create · refine</span></div>
+<h4>Refine without starting over</h4>
+<p>In the Create canvas, click <b>Edit</b> and try one of these plain-English follow-ups:</p>
+<div class="prompt">Make the title at the top bigger and bolder. Add today's date in small text in the top right corner.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt">Replace all the icons with simple, thin outline icons in our brand colour. No emojis, no stock photos.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt">There is some empty space at the bottom of the page. Please fill it by extending the sections, or add a footer ribbon in our brand colour with a one-sentence recommendation for the GM and the company name "Contoso Pizza Co" on the left.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="callout warn"><b>Why this matters:</b> Copilot Create runs inside Microsoft 365 with Enterprise Data Protection — your prompt and the resulting design stay in your tenant. The output is a polished, brand-aligned image you can drop straight into Outlook, Teams, or PowerPoint.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Menu Rationalisation with Copilot…</button><button data-go="ex6">Next: Build Your Own Agent →</button></div></div><div class="view-ihh" id="view-ex6"><section id="ex6">
+<div class="modulehead"><div class="num">5</div><h2>Exercise 5 - Build Your Own Agent<small>Microsoft 365 Copilot - Agent Builder (no code) · grounded on the 12 CVs you already have</small></h2></div>
+<div class="callout good"><b>Ten minutes, one agent, whole HR team benefits.</b> One prompt sets up the agent and its rules · you paste the link to your CVs folder at the end · then three quick test prompts before you publish and share.</div>
+
+<div class="card">
+<h3>6.1 - One prompt to describe the agent and point it at the CVs folder</h3>
+<p class="lead">Open <b>Microsoft 365 Copilot Chat</b> (m365.cloud.microsoft). Click <b>Create agent</b> in the right pane. Paste the prompt below. At the bottom of the prompt, replace the placeholder with the actual SharePoint or OneDrive link to your CVs folder before pressing send.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 5.1</span><span class="file">Agent Builder - Describe + Knowledge in one prompt</span></div>
+<h4>Describe the agent, its rules, its tone, and where its knowledge lives - all in one</h4>
+<div class="prompt">Create a "Contoso Pizza Co - Talent Screening Agent" for the HR and Restaurant Operations hiring team.
+
+Purpose: help any recruiter or hiring manager screen candidates in seconds. Answer questions like "who has 5+ years of relevant experience", "shortlist the top 3 for a Restaurant Manager role", or "compare candidates A and B side by side" - grounded only on the CVs in the knowledge source below.
+
+Tone: friendly, direct, structured. When you shortlist candidates, use a small table with columns: Name · Years experience · Key strengths · Fit score (1-5) · Source file.
+
+Rules:
+- Only answer from the CVs in the knowledge source. Never invent qualifications or years of experience.
+- If a candidate is not in the CVs, say so and suggest the recruiter add the CV.
+- Always cite the source file name for every claim (e.g. "CV_04_Hesti_Wibowo.docx").
+- If a candidate detail is not in the CV, say "not stated in CV" - do not infer from the name.
+- If the question is vague (no role, no seniority), ask one clarifying question first.
+- If a role brief is uploaded during a chat, treat it as the target profile and score every candidate against it.
+- Never rank candidates by name, gender, age or nationality unless the recruiter explicitly asks for a diversity slice.
+
+Knowledge source: the SharePoint (or OneDrive) folder that holds all 12 candidate CVs (CV_01_Dewi_Saputra.docx through CV_12_Galih_Setiawan.docx).
+Folder link: [PASTE YOUR CVs FOLDER LINK HERE]
+
+Once created, share the agent with the "HR Recruiters" and "Restaurant Operations Hiring Managers" security groups.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Why one prompt beats the 5-file upload limit:</b> in a chat, the recruiter can only attach 5 CVs at a time. When the agent is grounded on the folder, it reads all 12 (or 50, or 500) at once - and every colleague you share it with gets the same behaviour, no re-uploading.</div>
+</div>
+</div>
+
+<div class="card">
+<h3>6.2 - Test with three separate questions, then publish</h3>
+<p class="lead">Copy each test into the agent's test pane one at a time. If any answer is wrong, missing a citation, or invents facts, edit the agent's instructions and try again. Once all three pass, click Publish.</p>
+<div class="activity">
+<div class="head"><span class="num">Test 1</span><span class="file">Shortlist by strength</span></div>
+<h4>Broad screen - who stands out</h4>
+<div class="prompt">Who in this pool has the strongest multi-outlet restaurant management experience? Give me the top 3 with a one-line reason each.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Test 2</span><span class="file">Role-specific scored shortlist</span></div>
+<h4>Score against a real role brief</h4>
+<div class="prompt">I need to hire a Restaurant Manager for a flagship dine-in + delivery outlet doing 4,000+ orders a week. Shortlist the 3 best candidates and score each 1-5 on: multi-shift ops experience, delivery-channel management, food-safety track record, people leadership, English proficiency. Return a table with sources.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Test 3</span><span class="file">Head-to-head compare</span></div>
+<h4>Decide who to interview first</h4>
+<div class="prompt">Compare CV_02_Mega_Mahendra and CV_07_Budi_Anggara side by side for a Delivery Operations Lead role. Which one would you interview first and why?<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn"><b>Reality check on Agent Builder:</b> the agent reads the folder on demand and may take a few extra seconds on the first question of the day. If a citation link does not resolve, check that the CV file has been synced to the SharePoint library the agent is pointed at, not only to a local OneDrive folder.</div>
+</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Create a Visual Infographic</button><button data-go="extras">Next: Bonus →</button></div></div><div class="view-ihh" id="view-extras"><section id="extras">
+<div class="modulehead"><div class="num">B</div><h2>Bonus - Extra Exercises &amp; Prompt Tips<small>Everything else from the playbook, plus GM prompt tips - click any card</small></h2></div>
+<div class="callout good"><b>Use these when there is extra time</b>, or to tailor the session to a specific GM concern. Click a card to open the full walkthrough.</div>
+<div class="bonus-grid"><button class="bcard" onclick="openModal('bx-4321b14a')"><span class="ico">💡</span><h4>Exercise 5 · PowerPoint — Corporate Template, BCG/McKinsey Style</h4><p>Exercise 5 · PowerPoint — Corporate Template, BCG/McKinsey Style PowerPoint Copilot When to do this: Open a blank PowerPoint (powerpoint.com...</p></button><button class="bcard" onclick="openModal('bx-ee770ada')"><span class="ico">🧩</span><h4>Exercise 7 · Teams Meeting Recap → Word Meeting Minutes</h4><p>Exercise 7 · Teams Meeting Recap → Word Meeting Minutes Teams Copilot · Word Copilot The scenario: the GM just stepped out of a 60-minute &amp;q...</p></button><button class="bcard" onclick="openModal('bx-687f3b38')"><span class="ico">📊</span><h4>Exercise 8 · Excel Power Hour</h4><p>Exercise 8 · Excel Power Hour Copilot in Excel · Chat · Edit · Plan The most-asked GM question: "Show me what's actually happening ...</p></button><button class="bcard" onclick="openModal('bx-2a96c85f')"><span class="ico">📧</span><h4>Exercise 9 · Analyst Agent — Multiple Perspectives on the Same Data</h4><p>Exercise 9 · Analyst Agent — Multiple Perspectives on the Same Data Microsoft 365 Copilot · built-in Analyst agent Treat the workbook like a...</p></button><button class="bcard" onclick="openModal('bx-7e97271b')"><span class="ico">📄</span><h4>Exercise 10 · Personalised Mail Merge (Cowork)</h4><p>Exercise 10 · Personalised Mail Merge (Cowork) Microsoft 365 Copilot · Cowork · Outlook drafts The play: forget Word's Mailings ribbon. ...</p></button><button class="bcard" onclick="openModal('bx-65026605')"><span class="ico">🎨</span><h4>Exercise 11 · CV Screening from a SharePoint Folder</h4><p>Exercise 11 · CV Screening from a SharePoint Folder Microsoft 365 Copilot · Cowork · SharePoint grounding The scenario: the HR team is cappe...</p></button><button class="bcard" onclick="openModal('bx-1257371f')"><span class="ico">🧪</span><h4>Extra A · Outlook — catch up on a long thread (use your real inbox)</h4><p>Extra A · Outlook — catch up on a long thread (use your real inbox) Extra A 📧 Outlook Copilot "I just got back from a flight — what did...</p></button><button class="bcard" onclick="openModal('bx-59d804f3')"><span class="ico">📅</span><h4>Extra B · Outlook — draft an executive reply with the right tone</h4><p>Extra B · Outlook — draft an executive reply with the right tone Extra B 📧 Outlook Copilot Draft an executive reply — short, on-brand, signe...</p></button><button class="bcard" onclick="openModal('bx-22a873d3')"><span class="ico">🤝</span><h4>Extra C · Word — interrogate a long document</h4><p>Extra C · Word — interrogate a long document Extra C 📝 Word Copilot "Find me the risk in this 80-page board pack" Open 05 Contoso_...</p></button><button class="bcard" onclick="openModal('bx-9ea8fd40')"><span class="ico">📈</span><h4>Extra D · Lebaran 2026 Promo Launch Pack in 30 Minutes — the industry power move</h4><p>Extra D · Lebaran 2026 Promo Launch Pack in 30 Minutes — the industry power move Scenario: Marketing has 4 weeks until Lebaran. The GM wants...</p></button><button class="bcard" onclick="openModal('bx-6c105361')"><span class="ico">🗂️</span><h4>Prompt tips for every Copilot surface</h4><p>Prompt Tips — for every Copilot surface The GCSE prompt framework G oal — what I want at the end (brief, deck, dashboard) C ontext — for who...</p></button></div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex6">← Build Your Own Agent</button><button data-go="intro">Back to start ↺</button></div></div></div><div class="modal-overlay" id="modal-bx-4321b14a"><div class="modal"><button class="modal-close" onclick="closeModal('bx-4321b14a')">×</button><h3>Exercise 5 · PowerPoint — Corporate Template, BCG/McKinsey Style</h3>
+<div class="callout good"><b>When to do this:</b> Open a blank <b>PowerPoint</b> (powerpoint.com or desktop). If you have a corporate template (.potx), open it first so Copilot inherits your brand. Make sure <code>05 Contoso_Strategic_Memo.docx</code> and <code>02 Contoso_KPI_Dashboard.xlsx</code> are in your OneDrive.</div>
+<div class="card">
+<h3>4.1 · Draft a BCG/McKinsey-style strategy deck</h3>
+<p class="lead">Copilot in PowerPoint drafts a deck in the "one message per slide" style consulting firms use — grounded on your memo and KPI workbook, and laid out on your corporate template.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 2.1a</span><span class="file">🎨 PowerPoint Copilot</span></div>
+<h4>Draft an 8-slide GM strategy deck</h4>
+<p>Open the Copilot pane in PowerPoint. Type <code>/</code> to reference your two source files (<code>05 Contoso_Strategic_Memo.docx</code> and <code>02 Contoso_KPI_Dashboard.xlsx</code>), then paste:</p>
+<div class="prompt">Create an 8-slide FY26 Outlet Performance &amp; Lebaran Campaign Strategy deck for Contoso Pizza Co. Audience: General Manager · Operations &amp; Marketing and the Operating Committee. Ground every slide on /05 Contoso_Strategic_Memo.docx and the KPI tables in /02 Contoso_KPI_Dashboard.xlsx. Use the corporate template that is currently applied to this file — do not change fonts, colours, or master layouts.
+
+Apply the strict "one message per slide" consulting style (BCG / McKinsey best practice):
+(a) Every slide title is an ACTION TITLE — a full sentence that IS the conclusion (e.g. "Same-store sales drag is concentrated in mid-tier department stores"), not a topic ("Same-store sales").
+(b) The body proves the title with exactly 3 supporting bullets OR one small evidence table — nothing else.
+(c) Every slide has a source caption in 8pt grey at the bottom referencing the file and tab/page used.
+(d) No more than 30 words of body text per slide. No decorative imagery.
+
+Slide structure:
+1. Title slide — Contoso Pizza Co · FY26 Outlet Performance &amp; Lebaran Campaign Strategy · date
+2. Executive snapshot — single headline + 3-number callout + RAG status
+3. "Where we stand today" — KPI scoreboard (Same-Store Sales Growth %, Avg Ticket (IDR k), Delivery Mix %, Food Cost %)
+4. "What is changing" — top 3 market forces
+5. "Our three FY26 H2 priorities" — one priority per bullet, with named owner
+6. "Where we invest first" — 90-day moves with cost &amp; expected benefit
+7. "Risks &amp; mitigations" — table: risk, owner, status
+8. "The ask" — 1-page decision summary for the Operating Committee
+
+Tone: direct, evidence-based, no adjectives, no "leverage / synergy / unlock" language. Use [PLACEHOLDER] for any number not in the source files.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Task 2.1b</span><span class="file">🎨 Self-critique pass</span></div>
+<h4>Tighten the deck — McKinsey-style review</h4>
+<div class="prompt">Act as a McKinsey engagement manager reviewing this deck against consulting best practice. For each slide:
+1. Score the action title 1–5. If it's less than 5, rewrite it so it IS the conclusion (full sentence).
+2. Check that the body proves the title — flag any slide where title and body don't match.
+3. Check the "so-what": if the slide doesn't change a decision, mark it for deletion.
+
+Return a 1-page review note: slide-by-slide table, plus the single slide to cut, plus the single missing slide we should add. Then apply all the edits.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>The BCG/McKinsey check:</b> read only the action titles top-to-bottom. If they tell the complete story without opening any body, the deck is consulting-grade.</div>
+</div>
+</div>
+<div class="card">
+<h3>4.2 · Digest a deck someone just sent the GM</h3>
+<p class="lead">A 60-slide deck lands in your inbox 20 minutes before the meeting. Copilot reads it for you.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 2.2</span><span class="file">🎨 PowerPoint Copilot</span></div>
+<h4>Summarise and interrogate an incoming deck</h4>
+<p>Open any deck you've received recently (or use the deck you just drafted). In the Copilot pane:</p>
+<div class="prompt">Summarise this presentation in 5 bullets. What is the single decision being asked of the audience? What are the 3 numbers I must remember? List the action items with owners and dates. Then list the top 3 questions General Manager · Operations &amp; Marketing should ask in the room.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</div><!--IHH-INJECT-END-->
+</main></div>
+</div>
+<div class="modal-overlay" id="modal-bx-ee770ada"><div class="modal"><button class="modal-close" onclick="closeModal('bx-ee770ada')">×</button><h3>Exercise 7 · Teams Meeting Recap → Word Meeting Minutes</h3>
+<div class="callout good"><b>The scenario:</b> the GM just stepped out of a 60-minute "Potential Merger" discussion. They need a clean recap, a structured meeting-minutes template the company can reuse, and the minutes filled in — all in 5 minutes.</div>
+<div class="card">
+<h3>6.1 · Teams — audio recap of the Potential Merger meeting</h3>
+<p class="lead">Open <b>Teams → Calendar</b> → click any past meeting that was recorded or transcribed. (For this demo, use the sample <code>06 Contoso_Merger_Discussion_Transcript.docx</code> in OneDrive if you don't have a real Teams recording handy.) Click the <b>Recap</b> tab. In the Copilot box at the top of the recap, paste:</p>
+<div class="activity">
+<div class="head"><span class="num">Task 7.1</span><span class="file">💬 Teams Copilot · Intelligent Recap</span></div>
+<h4>Recap the Potential Merger discussion</h4>
+<div class="prompt">Recap this Potential Merger meeting for General Manager · Operations &amp; Marketing who could not stay for the whole session.
+
+Produce:
+1. A 5-bullet executive summary of what was discussed
+2. The 3 decisions taken and who took them
+3. The 5 open action items with owner and due date
+4. The 3 topics that took the most time and why
+5. Anyone who pushed back strongly and on what
+6. Anything that was committed directly to me
+7. The 3 key unanswered questions we still need to resolve before the next meeting
+
+Tone: factual, neutral, no speculation.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Why GMs love this:</b> the recap is grounded on the actual transcript — you get the decisions, the politics, the asks of you, and the unresolved questions in under 60 seconds.</div>
+</div>
+</div>
+<div class="card">
+<h3>6.2 · Word — create a reusable meeting-minutes template</h3>
+<p class="lead">Open a blank Word document. Click the <b>Copilot</b> icon → <b>Draft with Copilot</b>. Paste:</p>
+<div class="activity">
+<div class="head"><span class="num">Task 7.2</span><span class="file">📝 Word Copilot · template draft</span></div>
+<h4>Create a corporate meeting-minutes template</h4>
+<div class="prompt">Create a professional, reusable meeting-minutes template for Contoso Pizza Co. The template should be clean, executive-ready, and easy to fill in after any internal meeting.
+
+Include the following sections, each with placeholder text in square brackets so users know what to fill in:
+
+1. Header block: Meeting title, Date &amp; time, Location / Teams link, Meeting owner, Minute-taker
+2. Attendees (table: Name, Role, Present / Apologies)
+3. Agenda items discussed (numbered list)
+4. Key decisions taken (table: Decision, Decision owner, Effective date)
+5. Action items (table: Action, Owner, Due date, Status)
+6. Open questions / parked items (bullet list)
+7. Risks &amp; escalations raised (bullet list)
+8. Next meeting (date, focus topics)
+9. Distribution list
+
+Use the Contoso Pizza Co brand tone: direct, professional, no jargon. Add a 1-line footer: "Confidential — internal use only." Format it so it looks like a proper corporate template, not a chat reply.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Save it as a template:</b> after Copilot drafts the template, save the file as <code>Contoso_Meeting_Minutes_Template.docx</code> in your OneDrive — the whole team can reuse it.</div>
+</div>
+</div>
+<div class="card">
+<h3>6.3 · Word — fill the template with the Potential Merger meeting</h3>
+<p class="lead">Stay in the same Word document. In the Copilot pane, reference the merger transcript with <code>/</code> and paste:</p>
+<div class="activity">
+<div class="head"><span class="num">Task 7.3</span><span class="file">📝 Word Copilot · fill the template</span></div>
+<h4>Auto-fill the minutes from the merger transcript</h4>
+<div class="prompt">Using the meeting-minutes template above, fill it in completely using the content of /06 Contoso_Merger_Discussion_Transcript.docx (or the Teams recap I just generated for the Potential Merger meeting).
+
+Rules:
+- Use only facts explicitly stated in the source — no speculation, no invented attendees, no invented decisions.
+- For every action item, name the owner and the due date exactly as agreed in the meeting; if not stated, write [VERIFY] in that field.
+- Keep the executive tone — short, factual, neutral.
+- At the very top, add a 3-line executive summary above the template (so a busy reader can skim).
+- Flag any sensitive merger-related items as "CONFIDENTIAL — restricted distribution" in red at the section header.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout good"><b>The win:</b> what used to take a minute-taker 90 minutes after a strategic meeting now takes Copilot 30 seconds — and the minutes are grounded on the actual transcript, not the minute-taker's memory.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-bx-687f3b38"><div class="modal"><button class="modal-close" onclick="closeModal('bx-687f3b38')">×</button><h3>Exercise 8 · Excel Power Hour</h3>
+<div class="callout good"><b>The most-asked GM question:</b> "Show me what's actually happening in the data — without me writing a formula." Excel Copilot now does this in three modes. We will run all three on <code>02 Contoso_KPI_Dashboard.xlsx</code>.</div>
+<div class="card">
+<h3>7.1 · Get the insights — one prompt</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 8.1</span><span class="file">📊 Excel Copilot · Chat</span></div>
+<h4>Ask Copilot to find what matters in 12 months of KPIs</h4>
+<p>Open <code>02 Contoso_KPI_Dashboard.xlsx</code> from OneDrive. Open the <b>Copilot pane</b> (Home → Copilot). On the <code>Monthly_KPIs</code> tab, paste:</p>
+<div class="prompt">Analyse the Monthly_KPIs tab. For each KPI (Same-Store Sales Growth %, Avg Ticket (IDR k), Delivery Mix %, Food Cost %):
+- Identify the best and worst locations
+- Detect any sustained declining trend (2+ months)
+- Flag the one-month outliers that are worth a phone call
+
+Then compare against Targets_vs_Actual. Which KPI has the biggest gap to FY26 target, and which location is dragging it down the most?
+
+Show the result as a 2-line executive summary, then a RAG status table by location.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+<div class="card">
+<h3>7.2 · "Edit" — surgical, formula-safe changes</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 8.2</span><span class="file">✏️ Excel Copilot · Edit (NEW)</span></div>
+<h4>Make a precise change without rewriting the workbook</h4>
+<p>In the Copilot pane, switch to <b>Edit</b> mode. Highlight the <code>Status</code> column on the <code>Targets_vs_Actual</code> tab and ask:</p>
+<div class="prompt">In this column, replace the emoji status with a one-word plain-text status (Green / Amber / Red) and apply conditional formatting with the matching colour. Do not change any other cells. Show me the diff first, before applying.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Why GMs love Edit:</b> they trust it. Edit shows a per-cell diff before applying — no surprise rewrites of working formulas.</div>
+</div>
+</div>
+<div class="card">
+<h3>7.3 · "Plan" — multi-step transformations with preview</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 8.3</span><span class="file">📋 Excel Copilot · Plan (NEW)</span></div>
+<h4>Build an executive view in three steps Copilot proposes first</h4>
+<p>Switch the Copilot pane to <b>Plan</b>. Paste:</p>
+<div class="prompt">Plan: in a new sheet called "Exec_View", build a pivot summary — one row per location, one column per KPI — showing the FY26 H2 average. Add a "Trend" column showing ▲ / ▬ / ▼ vs FY26 H1 average. Highlight the worst quartile per KPI in red. Add a 2-sentence executive read-out at the very top.
+
+Show me the plan first. I will approve. Then execute.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout good"><b>The "Plan" win:</b> Copilot writes its own work order, you tick / untick steps, and only then does it touch the workbook.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-bx-2a96c85f"><div class="modal"><button class="modal-close" onclick="closeModal('bx-2a96c85f')">×</button><h3>Exercise 9 · Analyst Agent — Multiple Perspectives on the Same Data</h3>
+<div class="callout good"><b>Treat the workbook like a junior analyst on call 24/7.</b> The Analyst Agent runs Python-grade analysis in natural language — regression, forecasting, scenario simulation — without anyone touching code. Run the same raw data through three different perspectives.</div>
+<div class="card">
+<p class="lead">Open <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> → <b>Agents</b> → built-in <b>Analyst</b>. Upload <code>02 Contoso_KPI_Dashboard.xlsx</code>. Then run the three perspectives below — same raw data, three completely different lenses.</p>
+<div class="activity">
+<div class="head"><span class="num">Task 9.1</span><span class="file">🤖 Analyst · GM perspective</span></div>
+<h4>Perspective 1 — the GM scenario lens</h4>
+<div class="prompt">You are a data analyst for General Manager · Operations &amp; Marketing. Based on the Monthly_KPIs sheet, model this scenario: what would full-year performance look like if the bottom-quartile locations on each KPI rose to the median in Q4? Show the end-of-year position vs FY26 target for each KPI, before and after the uplift. Then identify the 3 highest-impact actions — where the smallest move lifts the group most.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Task 9.2</span><span class="file">🤖 Analyst · CFO perspective</span></div>
+<h4>Perspective 2 — the CFO financial-risk lens</h4>
+<div class="prompt">Same workbook. Now act as a CFO analyst. Run a correlation analysis across all KPIs over the 12 months. Which KPIs move together? Which KPIs lead vs lag? Identify the single early-warning KPI we should be tracking weekly. Then build a simple 3-month forecast for the top 2 financial KPIs, with a confidence band, and highlight the months where we are likely to breach the FY26 budget envelope.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="activity">
+<div class="head"><span class="num">Task 9.3</span><span class="file">🤖 Analyst · COO operations lens</span></div>
+<h4>Perspective 3 — the COO operational lens</h4>
+<div class="prompt">Same workbook. Now act as a COO analyst. For each location, compute a simple operational health score combining the KPIs into one number (0–100). Cluster locations into three groups: thriving, stable, at-risk. For each at-risk location, identify the two KPIs dragging the score down most. Recommend the single operational intervention with the highest expected score uplift, and the cost band (low / medium / high) to implement it.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Why three perspectives matter:</b> the same workbook hides three completely different stories — strategic (GM), financial (CFO), operational (COO). Analyst Agent lets one person hold all three at once, in 5 minutes, without a single line of Python.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-bx-7e97271b"><div class="modal"><button class="modal-close" onclick="closeModal('bx-7e97271b')">×</button><h3>Exercise 10 · Personalised Mail Merge (Cowork)</h3>
+<div class="callout good"><b>The play:</b> forget Word's <i>Mailings</i> ribbon. Let <b>Cowork</b> do the merge — drafting each campaign cascade letter, tuned to each outlet's delivery-mix and CSAT <b>uniquely tuned</b> to that recipient, and queueing them as Outlook drafts for the GM to review and send.</div>
+<div class="card">
+<h3>9.1 · One prompt → 14 individually-tuned letters → 14 Outlook drafts</h3>
+<p class="lead">Open <b>Microsoft 365 Copilot Chat → Cowork</b>. Reference the recipient list and brand guidelines with <code>/</code>. Paste:</p>
+<div class="activity">
+<div class="head"><span class="num">Task 10.1</span><span class="file">👥 Cowork · multi-step</span></div>
+<h4>Personalised cascade — 14 unique letters in one prompt</h4>
+<div class="prompt">Cowork — run personalised pre-Lebaran cascade to 14 area &amp; outlet managers for General Manager · Operations &amp; Marketing at Contoso Pizza Co.
+
+Sources:
+- Recipient list: /03 Contoso_Mail_Merge_Recipients.xlsx (14 rows: First Name, Full Name, Location, Role, Email, Performance Band, Key Highlight)
+- Brand &amp; tone: /04 Contoso_Brand_Guidelines.docx (use the "Approved GM Communications Template" exactly)
+
+For each row in the recipient list:
+1. Write a personal 180-word letter using the approved template — a campaign cascade letter, tuned to each outlet's delivery-mix and CSAT. Tailor the body to the recipient's Performance Band:
+ - "Top Quartile" → appreciative, ask them to mentor a neighbouring site.
+ - "On Track" → acknowledge progress + push one specific stretch goal relevant to General Manager · Operations &amp; Marketing.
+ - "Watch" → direct, supportive, name one specific 30-day improvement.
+2. Quote the recipient's Key Highlight verbatim in the second paragraph.
+3. Sign off as Bu Lisa Hartono, General Manager · Operations &amp; Marketing, Contoso Pizza Co.
+4. Create an Outlook DRAFT (do not send) to the address in the recipient's Email column. Subject: "[First Name], a quick note on this quarter at [Location]".
+
+When all 14 drafts are ready, give me a summary table: Recipient · Location · Band · Subject preview · Draft link. Stop and confirm before sending anything.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Why Cowork beats classic Mail Merge:</b> classic merge inserts the same body with field substitutions. Cowork writes <i>a different body for each recipient</i> — and stops at "Drafts" so the GM signs off before anything is sent.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-bx-65026605"><div class="modal"><button class="modal-close" onclick="closeModal('bx-65026605')">×</button><h3>Exercise 11 · CV Screening from a SharePoint Folder</h3>
+<div class="callout good"><b>The scenario:</b> the HR team is capped at attaching only a handful of CVs into most chatbots. Point Cowork at a <b>SharePoint folder</b> and there is no file cap — scale from 12 to 1,200 CVs with the same prompt, fully grounded.</div>
+<div class="card">
+<h3>10.1 · Prep — drop the CVs into SharePoint</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 11.1</span><span class="file">📁 SharePoint setup</span></div>
+<h4>Upload the sample CVs to a SharePoint library</h4>
+<ol>
+<li>Open <code>samples/CVs/</code> (12 CV_*.docx files).</li>
+<li>Upload them to a SharePoint document library — e.g. <i>HR / Recruitment / Contoso Pizza Co QSR Area Operations Manager (10+ outlets) – Apr 2026</i>.</li>
+<li>Wait ~2 minutes for Microsoft Graph to index them.</li>
+</ol>
+</div>
+</div>
+<div class="card">
+<h3>10.2 · Cowork — shortlist + interview pack + offer-letter draft for #1</h3>
+<div class="activity">
+<div class="head"><span class="num">Task 11.2</span><span class="file">👥 Cowork · folder grounding</span></div>
+<h4>One prompt → ranked shortlist → personalised interview briefs → drafted candidate email</h4>
+<div class="prompt">Cowork — handle CV screening for the QSR Area Operations Manager (10+ outlets) role at Contoso Pizza Co.
+
+Source: SharePoint folder /HR/Recruitment/Contoso Pizza Co QSR Area Operations Manager (10+ outlets) (12 CVs).
+
+Do all of the following:
+1. Review every CV in the folder. Score each candidate 1–5 against: multi-outlet P&amp;L, food-cost control, labour scheduling.
+2. Build a ranked shortlist (top 5) with: name · current company · 3 quoted evidence bullets · risks/gaps to test in interview.
+3. Build a "second look" list (next 3) and a rejected list (one line of reasoning each).
+4. For each top-5 candidate, draft a personalised interview-prep brief for the hiring manager — 3 questions to ask, and what kind of answer opens a "yes".
+5. Draft (DO NOT send) an introductory email to candidate #1 inviting them to a screening call. Save as an Outlook draft.
+
+Flag anything unclear with [VERIFY]. Do not fabricate qualifications. Stop and confirm before sending any email.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout good"><b>The win:</b> Cowork grounds on an entire SharePoint folder — the same prompt scales from 12 to 1,200 CVs, with full traceability back to each source CV.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="modal-bx-1257371f"><div class="modal"><button class="modal-close" onclick="closeModal('bx-1257371f')">×</button><h3>Extra A · Outlook — catch up on a long thread (use your real inbox)</h3>
+<div class="activity">
+<div class="head"><span class="num">Extra A</span><span class="file">📧 Outlook Copilot</span></div>
+<h4>"I just got back from a flight — what did I miss on this thread?"</h4>
+<p>Open Outlook on the web or desktop. Find the longest email thread in your inbox from this week. Click <b>Summary by Copilot</b> at the top of the thread. Then in the Copilot pane, paste:</p>
+<div class="prompt">Summarise this email thread in 5 bullets. Who is asking what of whom? What decision is being narrowed in this thread? List the open action items with owner and due date. Flag the parts where I am specifically mentioned and what is being asked of me.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div></div>
+<div class="modal-overlay" id="modal-bx-59d804f3"><div class="modal"><button class="modal-close" onclick="closeModal('bx-59d804f3')">×</button><h3>Extra B · Outlook — draft an executive reply with the right tone</h3>
+<div class="activity">
+<div class="head"><span class="num">Extra B</span><span class="file">📧 Outlook Copilot</span></div>
+<h4>Draft an executive reply — short, on-brand, signed off</h4>
+<p>In the same thread, click <b>Reply</b> → click the <b>Copilot</b> icon → <b>Draft with Copilot</b>. Paste:</p>
+<div class="prompt">Draft a reply to this thread on behalf of General Manager · Operations &amp; Marketing at Contoso Pizza Co. Confirm we are on track on the main request, politely push back on the unrealistic deadline, and propose a 30-minute call this week. Tone: warm, direct, respectful. Maximum 4 short paragraphs, no jargon. Sign off as Bu Lisa Hartono.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div></div>
+<div class="modal-overlay" id="modal-bx-22a873d3"><div class="modal"><button class="modal-close" onclick="closeModal('bx-22a873d3')">×</button><h3>Extra C · Word — interrogate a long document</h3>
+<div class="activity">
+<div class="head"><span class="num">Extra C</span><span class="file">📝 Word Copilot</span></div>
+<h4>"Find me the risk in this 80-page board pack"</h4>
+<p>Open <code>05 Contoso_Strategic_Memo.docx</code> from your OneDrive. Click the <b>Copilot</b> icon → in the Copilot pane, paste:</p>
+<div class="prompt">Read this document end to end. Identify: (1) the 3 critical risks, (2) anything inconsistent or contradictory between sections, (3) anything that should be in a memo for General Manager · Operations &amp; Marketing but is missing, (4) 3 questions I should put back to the author. Quote the exact sentence anchoring each finding.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div></div>
+<div class="modal-overlay" id="modal-bx-9ea8fd40"><div class="modal"><button class="modal-close" onclick="closeModal('bx-9ea8fd40')">×</button><h3>Extra D · Lebaran 2026 Promo Launch Pack in 30 Minutes — the industry power move</h3>
+<div class="callout"><b>Scenario:</b> Marketing has 4 weeks until Lebaran. The GM wants a launch-ready promo design — menu, price ladder, aggregator copy, outlet briefing pack — by tomorrow morning.</div>
+<div class="activity">
+<div class="head"><span class="num">Extra D</span><span class="file">🚀 Copilot Chat + PowerPoint Copilot</span></div>
+<h4>One prompt, one decision pack, fully grounded</h4>
+<p>Open Microsoft 365 Copilot Chat (or Researcher for the deeper option). Reference the relevant sample files with <code>/</code>. Paste:</p>
+<div class="prompt">Act as a Marketing &amp; Ops planner for General Manager · Operations &amp; Marketing at Contoso Pizza Co.
+
+Lebaran 2026 is 4 weeks away. Use /02 Contoso_KPI_Dashboard.xlsx and /05 Contoso_Strategic_Memo.docx.
+
+Generate a launch-ready promo pack: promo design (3 bundles), channel copy (GoFood, GrabFood, Instagram, push), outlet briefing pack, cannibalisation forecast, and a 7-day launch scorecard. Flag every assumption [ASSUMPTION:...]. Tone: confident, food-first, respectful of an Indonesian Muslim audience.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn"><b>For the GM in the room:</b> this is the use case worth piloting first. It maps 1:1 to the most expensive analyst hours your team spends every month — and Copilot does it in minutes, grounded on your own files.</div>
+</div>
+</div></div>
+<div class="modal-overlay" id="modal-bx-6c105361"><div class="modal"><button class="modal-close" onclick="closeModal('bx-6c105361')">×</button><h3>Prompt tips for every Copilot surface</h3>
+<div class="card">
+<h4>The GCSE prompt framework</h4>
+<div class="prompt"><b>G</b>oal — what I want at the end (brief, deck, dashboard)
+<b>C</b>ontext — for whom, the situation, the constraints
+<b>S</b>ource — the files or data I'm grounding on (use <code>/</code> to reference)
+<b>E</b>xpectations — format, length, what to include, what NOT to include
+
+Two sentences to add to every prompt:
+"Do not invent anything. Use [PLACEHOLDER] for anything not in the source."
+"End with the assumptions made and one open question."<button class="copy" onclick="cp(this)">Copy</button></div>
+<h4>Ready-to-use prompts for Contoso Pizza</h4>
+<div class="task-step">
+<div class="step-label">Researcher · Sector scan</div>
+<div class="prompt">Research [topic] in the quick-service restaurant sector in Indonesia. Compare [3–4 peers]. Cite every source. Flag any section where the evidence is thin.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="task-step">
+<div class="step-label">Excel · KPI table</div>
+<div class="prompt">Analyse [tab name] in this workbook. For each location, calculate [metric]. Highlight the bottom quartile in red. Add a 2-sentence executive read-out at the very top.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="task-step">
+<div class="step-label">Word · GM brief</div>
+<div class="prompt">Draft a 1-page brief for General Manager · Operations &amp; Marketing. Cover: headline, 3 findings, 3 actions, one ask of the committee. Maximum 350 words. Do not invent any data.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="task-step">
+<div class="step-label">PowerPoint · BCG style</div>
+<div class="prompt">Draft an 8-slide strategy deck on [topic]. One message per slide. Action title (full sentence). Body proves the title in 3 bullets. Source caption at the foot of every slide.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+<div class="task-step">
+<div class="step-label">Cowork · delegation</div>
+<div class="prompt">Cowork — analyse [source file], draft [Word output], draft [email], schedule [meeting], generate [HTML deliverable]. Stop and confirm before sending anything externally.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center">
+ Contoso Pizza Co · M365 Copilot GM Immersion · Session ID 112e253a-7fd6-48b4-80b3-e89c7d7914fd
+</div>
+
+
+<script>
+try{localStorage.removeItem('unlk');}catch(e){}
+const HASH='557a4bb1a6b488f3484b5e7a7bc9542054af037f5b2d8d2e5c5cc564f61aa5d2';
+async function sha256(s){const b=new TextEncoder().encode(s);const d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function unlock(){
+ const v=document.getElementById('pw').value;
+ const h=await sha256(v);
+ if(h===HASH){
+ document.getElementById('lock').style.display='none';
+ document.getElementById('main').style.display='grid';
+ sessionStorage.setItem('unlk','1');
+ }else{
+ const e=document.getElementById('err');e.textContent='Incorrect password. Please try again.';
+ setTimeout(()=>e.textContent='',3000);document.getElementById('pw').value='';
+ }
+}
+if(sessionStorage.getItem('unlk')==='1'){
+ document.getElementById('lock').style.display='none';
+ document.getElementById('main').style.display='grid';
+}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+const EYE_OPEN='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256A144 144 0 1 1 144 256a144 144 0 1 1 288 0zM288 192c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>';
+const EYE_OFF='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg>';
+function togglePw(){
+ const i=document.getElementById('pw'),b=document.getElementById('pwToggle');
+ if(i.type==='password'){i.type='text';b.innerHTML=EYE_OPEN;b.setAttribute('aria-label','Hide password');b.setAttribute('title','Hide password');}
+ else{i.type='password';b.innerHTML=EYE_OFF;b.setAttribute('aria-label','Show password');b.setAttribute('title','Show password');}
+ i.focus();
+}
+function cp(btn){
+ try {
+  const parent = btn.parentElement;
+  const clone = parent.cloneNode(true);
+  const b = clone.querySelector('button.copy'); if (b) b.remove();
+  const txt = clone.textContent.trim();
+  const done = () => { btn.textContent='Copied!'; btn.classList.add('copied'); setTimeout(()=>{btn.textContent='Copy'; btn.classList.remove('copied');}, 2000); };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(txt).then(done, () => fallback(txt, done));
+  } else { fallback(txt, done); }
+ } catch(e) { btn.textContent='Copy failed'; setTimeout(()=>btn.textContent='Copy', 2000); }
+}
+function fallback(txt, done){
+ const ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+ try { document.execCommand('copy'); done(); } catch(e){} finally { document.body.removeChild(ta); }
+}
+</script>
+<script id="bcard-js">
+function openModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.add('open');document.body.style.overflow='hidden';}}
+function closeModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.remove('open');document.body.style.overflow='';}}
+document.addEventListener('click',function(e){if(e.target.classList&&e.target.classList.contains('modal-overlay'))e.target.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+</script>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('nav.tabs-ihh .tab');
+  var views = document.querySelectorAll('.view-ihh');
+  function switchView(target){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.view === target); });
+    views.forEach(function(v){ v.classList.toggle('active', v.id === 'view-' + target); });
+    window.scrollTo({top:0, behavior:'smooth'});
+    try { history.replaceState(null,'','#tab-'+target); } catch(e){}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ switchView(t.dataset.view); }); });
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchView(b.dataset.go); }); });
+  // Restore from hash
+  var h = (location.hash||'').replace('#tab-','');
+  if (h && document.getElementById('view-'+h)) switchView(h);
+})();
+</script>
+</body></html>
