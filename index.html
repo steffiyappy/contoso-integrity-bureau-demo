@@ -306,17 +306,12 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <a href="#story">The Story</a>
 <h3>Exercises</h3>
 <a href="#ex1">1 · Daily Briefing</a>
-<a href="#ex2">2 · Quarter Closing (Cowork)</a>
-<a href="#ex3">3 · Researcher · Critique + Model Council</a>
-<a href="#ex4">4 · PowerPoint · BCG/McKinsey</a>
-<a href="#ex5">5 · Create a Visual Infographic</a>
-<a href="#ex6">6 · Teams Recap → Word Minutes</a>
-<a href="#ex7">7 · Excel Power Hour</a>
-<a href="#ex8">8 · Analyst Agent (multi-perspective)</a>
-<a href="#ex9">9 · Personalised Mail Merge (Cowork)</a>
-<a href="#ex10">10 · CV Screening from SharePoint</a>
+<a href="#ex2">2 · OSINT News Extraction</a>
+<a href="#ex3">3 · Procurement Anomalies</a>
+<a href="#ex4">4 · Meeting Minutes</a>
+<a href="#ex5">5 · Report to Deck</a>
 <h3>Extras</h3>
-<a href="#extras">＋ Extras (Outlook · Word interrogate · Power move)</a>
+<a href="#extras">＋ Bonus tab (12 more Copilot moves)</a>
 <h3>Resources</h3>
 <a href="#tips">Prompt tips</a>
 </nav>
@@ -336,23 +331,34 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <div class="hero-meta-ihh">
 <div>Workshop Edition · 2026</div>
 <div style="margin-top:6px">
-<span class="pill">6 Exercises</span>
+<span class="pill">5 Exercises + Bonus</span>
 </div>
 </div>
 </div>
 <div class="hero-title-ihh">
-<h3>One workday, one GM, six Copilot moments</h3>
-<p>A hands-on immersion for Contoso Integrity Bureau executives. Work through each tab at your own pace. Every prompt is copy-and-paste ready.</p>
+<h3>One workday, one GM, five Copilot moments</h3>
+<p>A hands-on immersion for Contoso Integrity Bureau executives, tailored to the Coordination and Supervision Task Force. Every prompt is copy-and-paste ready. Every exercise is grounded on the sample files.</p>
+<div style="margin-top:14px;background:rgba(200,155,60,.10);border-left:4px solid #C89B3C;padding:14px 16px;border-radius:8px">
+<div style="font-size:13px;font-weight:700;color:#C89B3C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Your requirements, mapped</div>
+<table style="width:100%;font-size:13px;color:var(--ink);border-collapse:collapse">
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>OSINT news, structured extraction</b></td><td style="padding:4px 0">Exercise 2 (flagship, uses the Jember bansos article)</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>Procurement anomaly detection</b></td><td style="padding:4px 0">Exercise 3 (flagship, six anomaly patterns seeded)</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>Teams recap saved as Word</b></td><td style="padding:4px 0">Exercise 4 + Bonus B3 (Power Automate flow)</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>Word polish and PowerPoint auto-gen</b></td><td style="padding:4px 0">Exercise 5</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>Excel PivotTables, charts, analysis</b></td><td style="padding:4px 0">Exercise 3 + Bonus B2 (Excel Power Hour)</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>Governance infographic and posters</b></td><td style="padding:4px 0">Bonus (four Copilot Create prompts)</td></tr>
+<tr><td style="padding:4px 8px 4px 0;vertical-align:top;white-space:nowrap"><b>RSS to SPDP register pipeline</b></td><td style="padding:4px 0">Bonus B1 (Cowork prompt, upgradeable to Power Automate)</td></tr>
+</table>
+</div>
 </div>
 </header>
 <nav class="tabs-ihh"><div class="tabs-inner"><button class="tab active" data-view="intro"><span class="tab-num">0</span> Get Started</button>
 <button class="tab" data-view="files"><span class="tab-num">📁</span> Sample Files</button>
 <button class="tab" data-view="ex1"><span class="tab-num">1</span> Daily Briefing</button>
-<button class="tab" data-view="ex2"><span class="tab-num">2</span> Prepare for Quarter Closing</button>
-<button class="tab" data-view="ex3"><span class="tab-num">3</span> Market Intelligence</button>
-<button class="tab" data-view="ex4"><span class="tab-num">4</span> Edit with Copilot in…</button>
-<button class="tab" data-view="ex5"><span class="tab-num">5</span> Create a Visual Infographic</button>
-<button class="tab" data-view="ex6"><span class="tab-num">6</span> Build Your Own Agent</button>
+<button class="tab" data-view="ex2"><span class="tab-num">2</span> OSINT News Extraction</button>
+<button class="tab" data-view="ex3"><span class="tab-num">3</span> Procurement Anomalies</button>
+<button class="tab" data-view="ex4"><span class="tab-num">4</span> Meeting Minutes</button>
+<button class="tab" data-view="ex5"><span class="tab-num">5</span> Report to Deck</button>
 <button class="tab" data-view="extras"><span class="tab-num">＋</span> Bonus</button>
 </div></nav><div class="ihh-main"><div class="view-ihh active" id="view-intro"><section id="overview">
 <div class="hero">
@@ -368,7 +374,7 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <section id="story">
 <div class="modulehead" style="margin-top:8px">
 <div class="num" style="background:linear-gradient(135deg,var(--brand),var(--accent));font-size:14px">▶</div>
-<h2>The Story<small>One Task Force workday, six Copilot moments, ends with a governance poster</small></h2>
+<h2>The Story<small>One Task Force workday, five Copilot moments, plus a Bonus tab of 12 more</small></h2>
 </div>
 <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px;background:var(--panel)">
 <div style="background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));padding:22px 26px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center">
@@ -385,11 +391,11 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </div>
 <div style="padding:14px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.1)">
 <p style="margin:0 0 5px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">The Punchline</p>
-<p style="margin:0;font-size:14px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One Task Force workday.<br/>Six Copilot moments.<br/>From OSINT sweep to governance poster.</p>
+<p style="margin:0;font-size:14px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One Task Force workday.<br/>Five Copilot moments.<br/>From OSINT sweep to board-ready deck.</p>
 </div>
 </div>
 <div style="padding:22px 22px 18px">
-<h3 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--ink)">Six Copilot moments for the Task Force <span style="font-size:12px;color:var(--muted);font-weight:500">+ 12 more moves in the Bonus tab</span></h3>
+<h3 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--ink)">Five Copilot moments for the Task Force <span style="font-size:12px;color:var(--muted);font-weight:500">+ 12 more moves in the Bonus tab</span></h3>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
 <div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
 <div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
@@ -447,17 +453,6 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </div>
 </div>
 <div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
-<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
-<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">06</span>
-<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Governance Poster</span>
-</div>
-<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
-<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">One-page anti-corruption infographic</p>
-<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot Create</p>
-<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">A shareable poster for the Task Force wall: quarterly priorities, case-journey strip, regional heatmap, and a year-in-review celebration piece. Navy and gold brand.</p>
-</div>
-</div>
-<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
 <div style="background:#C89B3C;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
 <span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">+</span>
 <span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Bonus Tab</span>
@@ -473,15 +468,26 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </div>
 </section>
 <div class="lab-nav-ihh"><button class="secondary" disabled="">← Previous</button><button data-go="files">Next: Sample Files →</button></div></div><div class="view-ihh" id="view-files"><section id="files">
-<div class="modulehead"><div class="num">📁</div><h2>Sample Files<small>Everything you need for the six exercises and the Bonus tab</small></h2></div>
-<div class="cards">
-<div class="card"><h3>01 · Task Force Overview</h3><p class="lead">One-page context brief on Contoso Integrity Bureau, the Coordination and Supervision Task Force, and the two mission functions. Includes the persona bio for Pak Bambang Kusumo.</p><p><b>File</b> <code>01 Contoso_Task_Force_Overview.docx</code></p></div>
-<div class="card"><h3>02 · Direct Procurement Q3</h3><p class="lead">180 rows of provincial and regency direct-procurement disclosures. Six anomaly patterns seeded intentionally: split contracts under the 200M IDR threshold, vendor concentration, price outliers, new-vendor high-value awards, shared vendor addresses, weekend awards.</p><p><b>File</b> <code>02 Contoso_Direct_Procurement_Q3.xlsx</code></p></div>
-<div class="card"><h3>03 · SPDP Case Register</h3><p class="lead">Existing case tracker used by the Task Force. Roughly 40 rows, one row per case, with SPDP number, suspects, estimated state loss, current stage, and source. This is the append target for the RSS pipeline in the Bonus tab.</p><p><b>File</b> <code>03 Contoso_SPDP_Case_Register.xlsx</code></p></div>
-<div class="card"><h3>04 · Sample News URLs</h3><p class="lead">Five stable Indonesian corruption news URLs, including the Jember bansos article from Antara News. Used for the OSINT extraction exercise and the Researcher Critique task.</p><p><b>File</b> <code>04 Contoso_Sample_News_URLs.md</code></p></div>
-<div class="card"><h3>05 · Governance Report Draft</h3><p class="lead">Four-page Q3 procurement supervision draft, deliberately wordy, with weak topic-only headings and no executive summary. This is the Word input for the polish exercise and the PowerPoint auto-generation.</p><p><b>File</b> <code>05 Contoso_Governance_Report_Draft.docx</code></p></div>
-<div class="card"><h3>06 · Task Force Meeting Transcript</h3><p class="lead">Realistic 40-turn transcript from a 30-minute weekly coordination meeting with Pak Bambang and five direct reports. Covers SPDP backlog, red-flag agencies, and one urgent OSINT case from Jember.</p><p><b>File</b> <code>06 Contoso_Task_Force_Meeting_Transcript.docx</code></p></div>
-<div class="card"><h3>Applicants folder</h3><p class="lead">Twelve short candidate integrity profiles (Applicant_01 through Applicant_12) used by the Bureau HR agent in the Bonus tab. Four strong, four mid, four weak-integrity profiles.</p><p><b>Folder</b> <code>samples/Applicants/</code></p></div>
+<div class="modulehead"><div class="num">📁</div><h2>Sample files - start here<small>Download these first, then run the exercises</small></h2></div>
+<div class="card">
+<p class="lead">All data is fictional and labelled <b>Contoso</b>. Do not use for any operational decision. <b>Step 1:</b> download every file. <b>Step 2:</b> upload the six files to your OneDrive and the <b>Applicants/</b> folder to any SharePoint document library. <b>Step 3:</b> wait about 2 minutes for Microsoft Graph to index. Then begin Exercise 1.</p>
+<div style="margin:14px 0 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+<a download="" href="samples.zip" id="dl-all-btn" style="display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:#0B2A4A;color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s ease">
+  ⬇️ Download all sample files (ZIP)
+ </a>
+<span style="font-size:12.5px;color:var(--muted)">One click, all files in a single ZIP. Unzip, then upload the contents to OneDrive and SharePoint.</span>
+</div>
+<table>
+<tr><th>#</th><th>File</th><th>Type</th><th>Used in</th><th>What it contains</th></tr>
+<tr><td>01</td><td><a href="samples/01 Contoso_Task_Force_Overview.docx">01 Contoso_Task_Force_Overview.docx</a></td><td><span class="badge yellow">Word</span></td><td>All exercises (context)</td><td>One-page context brief on Contoso Integrity Bureau, the Coordination and Supervision Task Force, and the two mission functions. Includes the persona bio for Pak Bambang Kusumo.</td></tr>
+<tr><td>02</td><td><a href="samples/02 Contoso_Direct_Procurement_Q3.xlsx">02 Contoso_Direct_Procurement_Q3.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 3, Bonus B2, B4</td><td>180 rows of provincial and regency direct-procurement disclosures. Six anomaly patterns seeded intentionally: split contracts under the 200M IDR threshold, vendor concentration, price outliers, new-vendor high-value awards, shared vendor addresses, weekend awards.</td></tr>
+<tr><td>03</td><td><a href="samples/03 Contoso_SPDP_Case_Register.xlsx">03 Contoso_SPDP_Case_Register.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Ex 2, Bonus B1</td><td>Existing SPDP case tracker used by the Task Force, roughly 40 rows. This is the append target for the RSS pipeline in the Bonus tab.</td></tr>
+<tr><td>04</td><td><a href="samples/04 Contoso_Sample_News_URLs.md">04 Contoso_Sample_News_URLs.md</a></td><td><span class="badge yellow">Markdown</span></td><td>Ex 2</td><td>Five Indonesian corruption news URLs, including the Jember bansos article from Antara News. Used for the OSINT extraction exercise and the Researcher Critique task.</td></tr>
+<tr><td>05</td><td><a href="samples/05 Contoso_Governance_Report_Draft.docx">05 Contoso_Governance_Report_Draft.docx</a></td><td><span class="badge yellow">Word</span></td><td>Ex 5</td><td>Four-page Q3 procurement supervision draft, deliberately wordy, with weak topic-only headings and no executive summary. Input for the polish exercise and the PowerPoint auto-generation.</td></tr>
+<tr><td>06</td><td><a href="samples/06 Contoso_Task_Force_Meeting_Transcript.docx">06 Contoso_Task_Force_Meeting_Transcript.docx</a></td><td><span class="badge yellow">Word</span></td><td>Ex 4</td><td>Realistic 40-turn transcript from a 30-minute weekly coordination meeting with Pak Bambang and five direct reports. Covers SPDP backlog, red-flag agencies, and one urgent OSINT case from Jember.</td></tr>
+<tr><td>07</td><td><a href="samples/Applicants/">samples/Applicants/ (12 files)</a></td><td><span class="badge yellow">Word ×12</span></td><td>Bonus B5</td><td>Twelve candidate integrity profiles (Applicant_01 through Applicant_12), four strong, four mid, four weak-integrity, for the Bureau HR agent screening exercise.</td></tr>
+</table>
+<div class="callout warn" style="margin-top:14px"><b>Why OneDrive and SharePoint?</b> Microsoft 365 Copilot can only analyse files stored in OneDrive or SharePoint. Files on your local Desktop are invisible to Copilot.</div>
 </div>
 </section><div class="lab-nav-ihh"><button class="secondary" data-go="intro">← Get Started</button><button data-go="ex1">Next: Daily Briefing →</button></div></div><div class="view-ihh" id="view-ex1"><section id="ex1">
 <div class="modulehead"><div class="num">1</div><h2>Exercise 1 · Daily Briefing<small>Researcher · Critique</small></h2></div>
@@ -516,7 +522,7 @@ Start with a header: Daily briefing - Day, Date. Follow with a sub-header statin
 <div class="prompt">Take the highest-priority item from the briefing above. Pull together everything I've received on it in the last 14 days - emails, chats, files, meeting notes. Summarise the current state in 5 bullets, list the open decisions, and draft one short message I should send today to move it forward.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← Sample Files</button><button data-go="ex2">Next: Prepare for Quarter Closing →</button></div></div><div class="view-ihh" id="view-ex2"><section id="ex2">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← Sample Files</button><button data-go="ex2">Next: OSINT News Extraction →</button></div></div><div class="view-ihh" id="view-ex2"><section id="ex2">
 <div class="modulehead"><div class="num">2</div><h2>Exercise 2 · OSINT News Extraction<small>Researcher · Copilot Chat with URL grounding · Flagship for Enforcement</small></h2></div>
 <div class="callout good"><b>Why this matters.</b> Many corruption cases are not reported through the official SPDP Online system. The Task Force must sweep open-source news, extract the facts, and add rows to the case register. Copilot Chat, grounded on a URL, does the extraction in seconds; Researcher Critique does the audit pass.</div>
 
@@ -596,7 +602,7 @@ Rules: if the article does not clearly support a field, say so. Do not fill in g
 <div class="callout warn"><b>Reality check:</b> extraction quality depends on article completeness. Some outlets bury the state-loss figure or attribute it to a witness rather than a court finding. Always cross-check the state-loss number against the actual source paragraph before entering the row into the SPDP register. Treat any row with Medium or Low confidence as "pending manual review".</div>
 </div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Daily Briefing</button><button data-go="ex3">Next: Market Intelligence →</button></div></div><div class="view-ihh" id="view-ex3"><section id="ex3">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Daily Briefing</button><button data-go="ex3">Next: Procurement Anomalies →</button></div></div><div class="view-ihh" id="view-ex3"><section id="ex3">
 <div class="modulehead"><div class="num">3</div><h2>Exercise 3 · Procurement Anomaly Detection<small>Copilot in Excel · Edit · Flagship for Prevention</small></h2></div>
 <div class="callout good"><b>Why this matters.</b> Provincial and regency governments submit Excel procurement disclosures every quarter. Buried in 180 rows of a Q3 file are the exact patterns the Task Force cares about: contracts split to stay under the direct-procurement threshold, one vendor dominating an agency, price outliers, brand-new vendors winning large awards, shared vendor addresses, and awards signed on Sundays. This is where Copilot earns its keep.</div>
 
@@ -651,7 +657,7 @@ Rules: use only the data in the workbook. If any observation depends on external
 
 <div class="callout warn"><b>Reality check:</b> interactive slicers and pivot filters sometimes need to be reapplied after a Copilot Edit run. Before you rely on the Risk_Score for a supervision decision, verify that the six flag formulas match the Bureau's official Q3 scoring rubric, and spot-check three Critical-tier rows against the raw disclosure. Copilot builds the exhibit fast; the auditor still signs it.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← Prepare for Quarter Closing</button><button data-go="ex4">Next: Edit with Copilot in… →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← OSINT News Extraction</button><button data-go="ex4">Next: Meeting Minutes →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
 <div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Meeting Minutes<small>Teams Copilot recap · Word Copilot polish · not Cowork</small></h2></div>
 <div class="callout good"><b>The scenario.</b> Pak Bambang just stepped out of the weekly Task Force coordination meeting. Six people, 30 minutes, covering SPDP backlog, three red-flag agencies from this week's procurement sweep, and one urgent OSINT case from Jember. The meeting was recorded with transcript on. This is the fastest path from meeting to house-style minutes.</div>
 
@@ -714,7 +720,7 @@ Rules: do not add facts not in the draft. Do not change any owner name or due da
 <div class="callout warn"><b>Reality check:</b> Teams Copilot recap requires a Copilot licence on the meeting organiser, and the transcript must be enabled during the recording. If the recap panel is empty, verify that Transcription was on before you left the meeting. For Word Copilot, the polish quality is only as good as the transcript quality; scrub any obvious speech-to-text errors in the transcript before running Task 4.2.</div>
 </div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Market Intelligence</button><button data-go="ex5">Next: Create a Visual Infographic →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Procurement Anomalies</button><button data-go="ex5">Next: Report to Deck →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
 <div class="modulehead"><div class="num">5</div><h2>Exercise 5 · Report to Deck<small>Word Copilot polish · PowerPoint auto-generate from file</small></h2></div>
 <div class="callout good"><b>The pipeline.</b> A rough Q3 governance report becomes a polished Word document, then a brand-styled PowerPoint deck, then a set of speaker notes. Two Copilot moments, one clean handoff.</div>
 
@@ -761,11 +767,16 @@ Rules: do not invent numbers not in the Word document. Do not change any agency 
 <div class="callout warn"><b>Reality check:</b> PowerPoint Copilot's "Create presentation from file" feature respects the Word document's heading structure. If the source doc has weak or topic-only headings, the deck inherits them. Always run the Word polish in Task 5.1 first, save, then feed the polished file to PowerPoint. Also: Copilot in Word cannot reference Excel; the numbers must be in the Word document body already, not in a linked spreadsheet.</div>
 </div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Edit with Copilot in…</button><button data-go="ex6">Next: Build Your Own Agent →</button></div></div><div class="view-ihh" id="view-ex6"><section id="ex6">
-<div class="modulehead"><div class="num">6</div><h2>Exercise 6 · Governance Poster<small>Copilot Create · Designer · one-page infographic</small></h2></div>
-<div class="callout good"><b>The moment.</b> Open Copilot Create (formerly Designer). Pick "Design an image" or the poster template. Paste any of the four prompts below. Copilot Create generates variations; iterate until you have a poster fit to hang on the Task Force wall or drop into a Bureau leadership deck.</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Meeting Minutes</button><button data-go="extras">Next: Bonus →</button></div></div><div class="view-ihh" id="view-extras"><section id="extras">
+<div class="modulehead"><div class="num">+</div><h2>Bonus Tab<small>Governance posters + eleven more Copilot moves for the Task Force</small></h2></div>
+<div class="callout good"><b>What lives here.</b> Four Copilot Create governance poster prompts, plus everything else that did not fit in the five flagship exercises: the KPK-specific RSS to SPDP pipeline, an Analyst Agent on the procurement dataset, an Applicant Integrity Screening flow, and a Regional Preventive Audit Decision Pack.</div>
+
+<div class="cards">
 
 <div class="card">
+<h3>B0 · Governance Poster (Copilot Create · four prompts)</h3>
+<p class="lead">Open Copilot Create (formerly Designer). Pick "Design an image" or the poster template. Paste any of the four prompts below. Copilot Create generates variations; iterate until you have a poster fit to hang on the Task Force wall or drop into a Bureau leadership deck.</p>
+
 <div class="activity">
 <div class="head"><span class="num">Poster 1</span><span class="file">🎨 Copilot Create · Q3 priorities</span></div>
 <h4>Q3 Anti-Corruption Priorities for the Task Force Head</h4>
@@ -826,11 +837,6 @@ Layout:
 Typography: elegant sans-serif, generous white space, gold used sparingly to celebrate the big numbers and the quotes. No emojis. No fireworks or party imagery.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Create a Visual Infographic</button><button data-go="extras">Next: Bonus →</button></div></div><div class="view-ihh" id="view-extras"><section id="extras">
-<div class="modulehead"><div class="num">+</div><h2>Bonus Tab<small>Twelve more Copilot moves for the Task Force</small></h2></div>
-<div class="callout good"><b>What lives here.</b> Everything that did not fit in the six flagship exercises. Includes the KPK-specific request for an RSS to SPDP pipeline, an Analyst Agent on the procurement dataset, an Applicant Integrity Screening flow, and a Regional Preventive Audit Decision Pack.</div>
-
-<div class="cards">
 
 <div class="card">
 <h3>B1 · Cowork · RSS to SPDP pipeline (manual run)</h3>
@@ -1038,7 +1044,7 @@ Rules: only use the listed sources. Do not use general knowledge.<button class="
 </div>
 
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex6">← Build Your Own Agent</button><button data-go="intro">Back to start ↺</button></div></div></div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Report to Deck</button><button data-go="intro">Back to start ↺</button></div></div></div>
 </div>
 
 
