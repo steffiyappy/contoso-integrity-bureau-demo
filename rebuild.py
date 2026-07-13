@@ -1,302 +1,86 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+Rebuild index.html for Contoso Integrity Bureau KPK demo
+6 exercises + cleaned bonus tab
+"""
+import subprocess, re
 
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
-<meta content="no-cache" http-equiv="Pragma"/>
-<meta content="0" http-equiv="Expires"/>
-<title>Contoso Integrity Bureau · M365 Copilot Task Force Immersion</title>
-<style>
-:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A}
-@media(prefers-color-scheme:dark){:root{--bg:#0B2A4A;--panel:#0F3358;--panel2:#0A2340;--ink:#e2e8f0;--muted:#94a3b8;--border:#1E4472;--sidebar-a:#0B2A4A;--sidebar-b:#082041;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#123458;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
-@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#0B2A4A;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-text-size-adjust:100%}
-a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
-code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
-.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
-aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;color:#e2e8f0}
-.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.brand .logo{width:36px;height:36px;border-radius:9px;background:var(--brand);display:grid;place-items:center;font-weight:900;color:#fff;font-size:12px;letter-spacing:-.5px}
-.brand h1{font-size:15px;margin:0;letter-spacing:.2px;color:#fff}
-.tag{font-size:11px;color:#94a3b8;margin-bottom:18px}
-nav h3{font-size:10px;letter-spacing:1.2px;color:#94a3b8;text-transform:uppercase;margin:18px 0 8px}
-nav a{display:block;color:#e2e8f0;padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
-nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;border-color:rgba(255,255,255,.2);color:#fff}
-main{padding:28px 48px 80px;max-width:1400px}
-.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(0,48,135,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(0,100,200,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
-.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
-.hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
-.hero p{color:var(--muted);margin:0;max-width:780px}
-.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
-.meta-row span b{color:var(--ink)}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
-.card h3{margin:0 0 6px;font-size:18px}.card .lead{color:var(--muted);margin:0 0 14px}
-.card h4{margin:18px 0 6px;font-size:15px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
-ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
-.modulehead{display:flex;align-items:center;gap:14px;margin:32px 0 12px}
-.modulehead .num{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
-.modulehead h2{margin:0;font-size:22px}.modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
-.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--panel)}
-.activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
-.activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
-.activity .time{color:var(--muted);font-size:12px}
-.activity .file{font-size:12px;color:var(--accent2);background:var(--badge-bg);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
-.activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
-.activity p{margin:6px 0;color:var(--muted);font-size:14px}
-.activity.bonus{border-left:4px solid var(--brand)}
-.task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
-.task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
-.prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
-.prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
-.prompt .copy:hover{background:var(--brand);color:#fff}.prompt .copy.copied{background:var(--good);color:#0a0f24}
-.callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
-.callout.warn{border-color:var(--warn);background:var(--callout-warn)}
-.callout.good{border-color:var(--good);background:var(--callout-good)}.callout b{color:var(--ink)}
-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
-th{color:var(--accent2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
-td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
-.agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
-.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:var(--panel)}
-.agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
-.agenda>div:nth-last-child(-n+3){border-bottom:0}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
-.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
-.tool-card .icon{font-size:22px;margin-bottom:6px}
-.tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
-.tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
-.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
-.badge.blue{background:rgba(0,100,200,.2);color:var(--accent2);border:1px solid var(--accent)}
-.badge.green{background:rgba(34,197,94,.15);color:var(--good);border:1px solid var(--good)}
-.badge.yellow{background:rgba(245,158,11,.15);color:var(--warn);border:1px solid var(--warn)}
-#lock{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(0,48,135,.5),transparent 60%),#0b1020;z-index:9999;display:flex;align-items:center;justify-content:center}
-.lock-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
-.lock-box .blogo{width:56px;height:56px;border-radius:14px;background:var(--brand);display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;margin:0 auto 18px}
-.lock-box h2{margin:0 0 6px;font-size:22px}.lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
-.pw-wrap{position:relative;margin-bottom:12px}
-.lock-box input{width:100%;background:var(--badge-bg);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 44px 12px 16px;outline:none;font-family:inherit;transition:border-color .2s}
-.lock-box input:focus{border-color:var(--brand)}
-.pw-toggle{position:absolute!important;right:12px;top:50%;transform:translateY(-50%);background:none!important;border:none!important;width:auto!important;padding:0!important;cursor:pointer;opacity:.7;color:var(--muted)}
-.pw-toggle:hover{background:none!important;opacity:1}
-.pw-toggle svg{width:18px;height:18px;fill:currentColor;display:block}
-.lock-box button{width:100%;background:var(--brand);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer}
-.lock-box .err{color:var(--danger);font-size:13px;margin-top:8px;min-height:18px}
-.lock-box .conf{font-size:11px;color:var(--muted);margin-top:14px}
-@media(max-width:900px){
- .layout{grid-template-columns:1fr}
- aside{display:none}
- main{padding:16px 14px 60px;max-width:100%;min-width:0}
- .hero{padding:20px 16px;border-radius:14px;background:var(--panel)}
- .hero h2{font-size:20px;line-height:1.25}
- .hero p{font-size:13.5px}
- .hero .pill{font-size:10px}
- .meta-row{gap:10px;font-size:12px}
- .modulehead{gap:10px;margin:24px 0 10px}
- .modulehead .num{width:38px;height:38px;font-size:15px;flex:0 0 auto}
- .modulehead h2{font-size:17px}
- .activity{padding:14px}
- .activity .head{gap:8px}
- .card{padding:16px;border-radius:12px}
- .card h3{font-size:16px}
- .card h4{font-size:13px}
- .agenda{grid-template-columns:1fr}.agenda>div:nth-child(3n+3){text-align:left}
- .tools-grid{grid-template-columns:1fr}
- .prompt{font-size:12px;padding:42px 12px 12px;border-left-width:3px;overflow-wrap:anywhere;word-break:break-word}
- .prompt .copy{top:6px;right:6px}
- pre,code{overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap}
- table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
- .lock-box{padding:28px 22px;border-radius:16px;max-width:92%}
- .lock-box h2{font-size:19px}
- img,svg{max-width:100%;height:auto}
- h1,h2,h3,h4{overflow-wrap:anywhere}
-}
-@media(max-width:480px){
- main{padding:12px 10px 50px}
- .hero{padding:16px 14px}
- .hero h2{font-size:18px}
- body{font-size:13.5px}
- .modulehead h2{font-size:16px}
-}
-</style><style id="bcard-css">
-.bonus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
-.bcard{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .18s;box-shadow:0 1px 3px rgba(0,0,0,.04);text-align:left;font-family:inherit;color:#111827;width:100%}
-.bcard:hover{transform:translateY(-2px);border-color:#0f766e;box-shadow:0 6px 18px rgba(15,118,110,.15)}
-.bcard .ico{font-size:22px;margin-bottom:6px;display:block}
-.bcard h4{margin:0 0 4px;font-size:15px;color:#111827;line-height:1.3}
-.bcard p{margin:0;font-size:12.5px;color:#4b5563;line-height:1.4}
-.modal-overlay{position:fixed;inset:0;background:rgba(8,12,28,.78);z-index:8000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 20px}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:14px;max-width:1100px;width:100%;padding:28px 32px;margin:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.modal-close{position:absolute;top:12px;right:16px;font-size:28px;background:transparent;border:none;cursor:pointer;color:#6b7280;line-height:1}
-.modal-close:hover{color:#111827}
-.modal h3{margin:0 0 12px;font-size:22px;color:#0f172a}
-</style><style id="ihh-override">
-/* ========== IHH-STYLE OVERRIDES ========== */
-.layout { grid-template-columns: 1fr !important; }
-aside { display:none !important; }
-main { max-width:100% !important; margin:0 !important; padding:0 !important; }
+# Read from git HEAD for static/structural sections (CSS, password gate, Ex4, footer)
+result = subprocess.run(['git', 'show', 'HEAD:index.html'], capture_output=True)
+src = result.stdout.decode('utf-8', errors='replace')
 
-/* Kill original hero + files inline (they now live inside tabs) */
-main > .modulehead,
-main > #files,
-main > #overview,
-main > #story { /* handled via wrapping */ }
+# Read from current index.html for bonus modal content (stable after first rebuild)
+try:
+    with open('index.html', 'r', encoding='utf-8') as _f:
+        cur = _f.read()
+    # Verify this is the rebuilt version with modal-overlay divs
+    if 'modal-kx-b56798a9' not in cur:
+        cur = src  # fall back to git HEAD if not yet rebuilt
+except FileNotFoundError:
+    cur = src
 
-body.ihh-active { background:#f7fafa; }
-body.ihh-active .hero-ihh {
-  background:linear-gradient(135deg, #111827 0%, #374151 100%);
-  color:#fff; padding:36px 32px 60px; position:relative; overflow:hidden;
-  margin:0 0 0; border-radius:0;
-}
-body.ihh-active .hero-ihh::before {
-  content:''; position:absolute; right:-100px; top:-50px;
-  width:400px; height:400px; background:rgba(255,255,255,0.06); border-radius:50%;
-}
-body.ihh-active .hero-ihh::after {
-  content:''; position:absolute; right:80px; bottom:-80px;
-  width:200px; height:200px; background:rgba(255,255,255,0.04); border-radius:50%;
-}
-body.ihh-active .hero-ihh-inner {
-  max-width:1600px; margin:0 auto; position:relative; z-index:2;
-  padding:0 40px;
-  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
-}
-body.ihh-active .hero-brand-ihh { display:flex; align-items:center; gap:18px; }
-body.ihh-active .hero-logo-ihh {
-  width:72px; height:72px; background:#fff; border-radius:14px;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 6px 24px rgba(0,0,0,0.18); flex-shrink:0;
-  color:#111827; font-weight:900; font-size:26px; letter-spacing:-1px;
-}
-body.ihh-active .hero-brand-ihh h1 {
-  margin:0; font-size:13px; font-weight:600; letter-spacing:2px;
-  text-transform:uppercase; opacity:0.85; color:#fff;
-}
-body.ihh-active .hero-brand-ihh h2 {
-  margin:0; font-size:26px; font-weight:700; color:#fff;
-}
-body.ihh-active .brand-rule-ihh {
-  width:1px; height:46px; background:rgba(255,255,255,0.25); margin:0 2px;
-}
-body.ihh-active .hero-meta-ihh { font-size:13px; opacity:0.9; text-align:right; }
-body.ihh-active .hero-meta-ihh .pill {
-  display:inline-block; padding:4px 12px; background:rgba(255,255,255,0.15);
-  border-radius:12px; margin-left:8px; font-weight:600;
-}
-body.ihh-active .hero-title-ihh {
-  max-width:1600px; margin:32px auto 0; position:relative; z-index:2;
-  padding:0 40px;
-}
-body.ihh-active .hero-title-ihh h3 { margin:0 0 10px; font-size:38px; font-weight:700; line-height:1.2; color:#fff; }
-body.ihh-active .hero-title-ihh p { margin:0; font-size:17px; opacity:0.92; max-width:800px; color:#fff; }
+# ── Extract verbatim sections ──────────────────────────────────────────────────
 
-/* Sticky tab bar */
-body.ihh-active nav.tabs-ihh {
-  background:#fff; border-bottom:1px solid #e5e7eb;
-  padding:0; position:sticky; top:0; z-index:50;
-  box-shadow:0 2px 8px rgba(0,0,0,0.04);
-}
-body.ihh-active nav.tabs-ihh::-webkit-scrollbar { display:none; }
-body.ihh-active nav.tabs-ihh .tabs-inner {
-  max-width:1600px; margin:0 auto; padding:0 40px;
-  display:flex; flex-wrap:wrap; gap:4px; border-bottom:2px solid #e5e7eb;
-}
-body.ihh-active nav.tabs-ihh .tab {
-  padding:14px 14px; background:transparent; border:none;
-  color:#5e7480; cursor:pointer; font-size:13px; font-weight:600;
-  border-bottom:3px solid transparent; margin-bottom:-2px;
-  display:flex; align-items:center; gap:8px; white-space:nowrap;
-  transition:all 0.2s; font-family:inherit;
-}
-body.ihh-active nav.tabs-ihh .tab:hover { color:#111827; background:#f9fafb; }
-body.ihh-active nav.tabs-ihh .tab.active {
-  color:#111827; border-bottom-color:#0B2A4A; background:#fff;
-}
-body.ihh-active nav.tabs-ihh .tab .tab-num {
-  min-width:24px; height:24px; padding:0 6px;
-  background:#e5e7eb; color:#111827;
-  border-radius:12px;
-  display:inline-flex; align-items:center; justify-content:center;
-  font-size:11px; font-weight:700;
-}
-body.ihh-active nav.tabs-ihh .tab.active .tab-num { background:#0B2A4A; color:#fff; }
+# Keep everything up to and including </style></head>
+css_end = src.index('</style></head>') + len('</style></head>')
+head = src[:css_end]
 
-/* Main container after tabs */
-body.ihh-active .ihh-main { max-width:1600px; margin:0 auto; padding:32px 40px; }
+# Keep password gate (from <body ...> to start of layout div)
+body_tag = src.index('<body class="ihh-active">')
+layout_start = src.index('<div class="layout"')
+lock_section = src[body_tag:layout_start]
 
-/* Widen modal popouts (was 780px in original) */
-body.ihh-active .modal { max-width:1200px !important; }
-body.ihh-active .modal-overlay { padding:40px 30px !important; }
-body.ihh-active .hero p { max-width:none !important; }
+# Keep Ex 4 verbatim but update the Next button label
+ex4_start = src.index('<div class="view-ihh" id="view-ex4">')
+ex5_marker = '<div class="view-ihh" id="view-ex5">'
+ex4_raw = src[ex4_start:src.index(ex5_marker)]
+# Update the nav button that said "Report to Deck" to "Analysis to Deliverable"
+ex4_raw = ex4_raw.replace(
+    'Next: Report to Deck', 'Next: Analysis to Deliverable'
+)
 
-/* Whitespace + typography polish */
-body.ihh-active .card { padding:22px 24px !important; margin:14px 0 !important; }
-body.ihh-active .card p, body.ihh-active .card li { font-size:15.5px !important; line-height:1.55 !important; }
-body.ihh-active .card h3 { font-size:20px !important; margin:2px 0 12px !important; }
-body.ihh-active .card h4 { font-size:16px !important; margin:8px 0 6px !important; }
-body.ihh-active .prompt { font-size:14.5px !important; line-height:1.5 !important; padding:16px 56px 16px 18px !important; }
-body.ihh-active .prompt .copy { top:8px !important; right:8px !important; z-index:2 !important; background:#374151 !important; color:#fff !important; border-color:transparent !important; padding:5px 12px !important; font-size:12px !important; font-weight:600 !important; }
-body.ihh-active .prompt .copy:hover { background:#111827 !important; }
-body.ihh-active .callout { padding:14px 18px !important; margin:8px 0 16px !important; font-size:15px !important; }
-body.ihh-active .activity { padding:14px 16px !important; margin:10px 0 !important; }
-body.ihh-active .activity .head { margin-bottom:6px !important; font-size:13px !important; }
-body.ihh-active .modulehead { padding:14px 18px !important; margin:0 0 12px !important; }
-body.ihh-active .modulehead h2 { font-size:22px !important; }
-body.ihh-active .modulehead h2 small { font-size:13px !important; }
-body.ihh-active .modulehead .num { width:44px !important; height:44px !important; font-size:20px !important; }
+# Keep B0 modal content (governance posters) - extracted from current index.html
+# which has stable ID modal-kx-b56798a9 from the first rebuild
+b0_start = cur.index('<div class="modal-overlay" id="modal-kx-b56798a9">')
+# Find end by balanced-bracket counting
+def extract_modal_balanced(html, start_id):
+    start = html.index(f'<div class="modal-overlay" id="{start_id}">')
+    depth = 0
+    pos = start
+    while pos < len(html):
+        next_open = html.find('<div', pos)
+        next_close = html.find('</div>', pos)
+        if next_open != -1 and (next_close == -1 or next_open < next_close):
+            depth += 1
+            pos = next_open + 4
+        elif next_close != -1:
+            depth -= 1
+            pos = next_close + 6
+            if depth == 0:
+                return html[start:pos]
+        else:
+            break
+    return html[start:]
 
-/* Views */
-body.ihh-active .view-ihh { display:none; animation:fadeInIhh 0.4s ease; }
-body.ihh-active .view-ihh.active { display:block; }
-@keyframes fadeInIhh {
-  from { opacity:0; transform:translateY(8px); }
-  to   { opacity:1; transform:translateY(0); }
-}
+modal_b0 = extract_modal_balanced(cur, 'modal-kx-b56798a9')
+modal_b1 = extract_modal_balanced(cur, 'modal-kx-new-b1')   # prompt tips
+modal_b2 = extract_modal_balanced(cur, 'modal-kx-new-b2')   # outlook catch-up
+modal_b3 = extract_modal_balanced(cur, 'modal-kx-new-b3')   # outlook reply
+modal_b4 = extract_modal_balanced(cur, 'modal-kx-new-b4')   # word interrogate
+modal_b5 = extract_modal_balanced(cur, 'modal-kx-new-b5')   # quick fact check
 
-/* Prev/Next nav */
-body.ihh-active .lab-nav-ihh {
-  display:flex; justify-content:space-between; align-items:center;
-  margin-top:32px; gap:16px;
-}
-body.ihh-active .lab-nav-ihh button {
-  background:#374151; color:#fff; border:none; padding:12px 20px;
-  border-radius:8px; cursor:pointer; font-size:14px; font-weight:600;
-  font-family:inherit; transition:background 0.2s;
-}
-body.ihh-active .lab-nav-ihh button:hover { background:#111827; }
-body.ihh-active .lab-nav-ihh button.secondary {
-  background:transparent; color:#5e7480; border:1px solid #e5e7eb;
-}
-body.ihh-active .lab-nav-ihh button.secondary:hover { background:#f9fafb; color:#111827; }
-body.ihh-active .lab-nav-ihh button:disabled { opacity:0.4; cursor:not-allowed; }
+# Keep footer scripts verbatim
+footer_scripts_start = src.index('\n<script>\ntry{localStorage')
+footer_scripts = src[footer_scripts_start:]
 
-/* Force original exercise sections to look right inside tab views */
-body.ihh-active .view-ihh > section { display:block !important; margin:0 !important; }
-body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
+# Keep session-ID footer div
+session_div_start = src.index('<div style="margin-top:48px')
+session_div_end = src.index('</div>', session_div_start) + len('</div>')
+session_footer = src[session_div_start:session_div_end]
 
-/* Force main to show even before auth (auth JS toggles display) - keep original behaviour */
-</style></head>
-<body class="ihh-active">
-<div id="lock">
-<div class="lock-box">
-<div class="blogo">CC</div>
-<h2>Contoso Integrity Bureau · Copilot Immersion</h2>
-<p>M365 Copilot Executive Workshop<br/>Enter the session password to continue.</p>
-<div class="pw-wrap">
-<input autocomplete="off" id="pw" placeholder="Session password" type="password"/>
-<button aria-label="Show password" class="pw-toggle" id="pwToggle" onclick="togglePw()" title="Show password" type="button"><svg id="eye-svg" viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"></path></svg></button>
-</div>
-<button onclick="unlock()">Enter Workshop →</button>
-<div class="err" id="err"></div>
-<div class="conf">Confidential · For executive workshop use only</div>
-</div>
-</div>
-<div class="layout" id="main" style="display:none">
-<aside>
+# ── Build new sections ─────────────────────────────────────────────────────────
+
+SIDEBAR = '''<aside>
 <div class="brand"><div class="logo">CC</div><h1>M365 Copilot<br/>GM Immersion</h1></div>
 <div class="tag">Executive Immersion</div>
 <nav>
@@ -316,10 +100,20 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <h3>Resources</h3>
 <a href="#tips">Prompt tips</a>
 </nav>
-</aside>
-<main>
-<!--IHH-INJECT-START-->
-<header class="hero-ihh">
+</aside>'''
+
+TABS = '''<nav class="tabs-ihh"><div class="tabs-inner"><button class="tab active" data-view="intro"><span class="tab-num">0</span> Get Started</button>
+<button class="tab" data-view="files"><span class="tab-num">&#128193;</span> Sample Files</button>
+<button class="tab" data-view="ex1"><span class="tab-num">1</span> Daily Briefing</button>
+<button class="tab" data-view="ex2"><span class="tab-num">2</span> OSINT Scraping + Sweep</button>
+<button class="tab" data-view="ex3"><span class="tab-num">3</span> Procurement Anomalies</button>
+<button class="tab" data-view="ex4"><span class="tab-num">4</span> Meeting Minutes</button>
+<button class="tab" data-view="ex5"><span class="tab-num">5</span> Analysis to Deliverable</button>
+<button class="tab" data-view="ex6"><span class="tab-num">6</span> Build Your Own Agent</button>
+<button class="tab" data-view="extras"><span class="tab-num">&#65291;</span> Bonus</button>
+</div></nav>'''
+
+HERO = '''<header class="hero-ihh">
 <div class="hero-ihh-inner">
 <div class="hero-brand-ihh">
 <div class="hero-logo-ihh">CR</div>
@@ -340,17 +134,9 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <h3>One workday, one Task Force Head, six Copilot moments</h3>
 <p>A hands-on immersion for Contoso Integrity Bureau executives, tailored to the Coordination and Supervision Task Force. Every prompt is copy-and-paste ready. Every exercise is grounded on the sample files.</p>
 </div>
-</header>
-<nav class="tabs-ihh"><div class="tabs-inner"><button class="tab active" data-view="intro"><span class="tab-num">0</span> Get Started</button>
-<button class="tab" data-view="files"><span class="tab-num">&#128193;</span> Sample Files</button>
-<button class="tab" data-view="ex1"><span class="tab-num">1</span> Daily Briefing</button>
-<button class="tab" data-view="ex2"><span class="tab-num">2</span> OSINT Scraping + Sweep</button>
-<button class="tab" data-view="ex3"><span class="tab-num">3</span> Procurement Anomalies</button>
-<button class="tab" data-view="ex4"><span class="tab-num">4</span> Meeting Minutes</button>
-<button class="tab" data-view="ex5"><span class="tab-num">5</span> Analysis to Deliverable</button>
-<button class="tab" data-view="ex6"><span class="tab-num">6</span> Build Your Own Agent</button>
-<button class="tab" data-view="extras"><span class="tab-num">&#65291;</span> Bonus</button>
-</div></nav><div class="ihh-main"><div class="view-ihh active" id="view-intro"><section id="overview">
+</header>'''
+
+VIEW_INTRO = '''<div class="view-ihh active" id="view-intro"><section id="overview">
 <div class="hero">
 <h2>Contoso Integrity Bureau &#183; Task Force Copilot Immersion</h2>
 <p>A national anti-corruption agency, modelled on the Directorate of Coordination and Supervision. A hands-on, Task-Force-level immersion covering both mission functions: Enforcement (turning open-source news into structured SPDP cases) and Prevention (turning provincial procurement disclosures into anomaly red flags), ending with a declarative Copilot agent the team can use daily.</p>
@@ -481,7 +267,9 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </div>
 </div>
 </section>
-<div class="lab-nav-ihh"><button class="secondary" disabled="">← Previous</button><button data-go="files">Next: Sample Files →</button></div></div><div class="view-ihh" id="view-files"><section id="files">
+<div class="lab-nav-ihh"><button class="secondary" disabled="">← Previous</button><button data-go="files">Next: Sample Files →</button></div></div>'''
+
+VIEW_FILES = '''<div class="view-ihh" id="view-files"><section id="files">
 <div class="modulehead"><div class="num">&#128193;</div><h2>Sample files - start here<small>Download these first, then run the exercises</small></h2></div>
 <div class="card">
 <p class="lead">All data is fictional and labelled <b>Contoso</b>. Do not use for any operational decision. <b>Step 1:</b> download every file. <b>Step 2:</b> upload the six files to your OneDrive and the <b>Applicants/</b> folder to any SharePoint document library. <b>Step 3:</b> wait about 2 minutes for Microsoft Graph to index. Then begin Exercise 1.</p>
@@ -503,7 +291,9 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </table>
 <div class="callout warn" style="margin-top:14px"><b>Why OneDrive and SharePoint?</b> Microsoft 365 Copilot can only analyse files stored in OneDrive or SharePoint. Files on your local Desktop are invisible to Copilot.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="intro">← Get Started</button><button data-go="ex1">Next: Daily Briefing →</button></div></div><div class="view-ihh" id="view-ex1"><section id="ex1">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="intro">← Get Started</button><button data-go="ex1">Next: Daily Briefing →</button></div></div>'''
+
+VIEW_EX1 = '''<div class="view-ihh" id="view-ex1"><section id="ex1">
 <div class="modulehead"><div class="num">1</div><h2>Exercise 1 &#183; Daily Briefing<small>Two variants &#183; Petrosea pattern &#183; Copilot Chat (5 min) + Researcher (15 min)</small></h2></div>
 <div class="callout good"><b>How Pak Bambang starts the day.</b> Two tools, same question, different depth. Task 1.1 is a fast five-minute Copilot Chat scan - no citations, no waiting. Task 1.2 is a structured fifteen-minute Researcher brief with sources, SPDP new filings, calendar prep, and pending decisions filed as a working paper. Pick the one that fits the morning.</div>
 <div class="card">
@@ -564,7 +354,9 @@ Rules: cite source for every item (email subject line, Teams thread name, or doc
 <br/>Researcher (Task 1.2): web freshness varies. Items grounded on your tenant data (inbox, calendar, Teams) are reliable. Any claim that references external web results should be treated as a starting point and verified. Researcher does not have real-time access to SPDP Online - new filings in this brief come from email notifications in your inbox, not from a live database connection.
 <br/>Neither variant is a replacement for the official SPDP Online system. Use as a morning orientation, then verify critical items from the primary source.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← Sample Files</button><button data-go="ex2">Next: OSINT Scraping + Sweep →</button></div></div><div class="view-ihh" id="view-ex2"><section id="ex2">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← Sample Files</button><button data-go="ex2">Next: OSINT Scraping + Sweep →</button></div></div>'''
+
+VIEW_EX2 = '''<div class="view-ihh" id="view-ex2"><section id="ex2">
 <div class="modulehead"><div class="num">2</div><h2>Exercise 2 &#183; OSINT Scraping + Sweep<small>Task 2.1: Researcher &#183; Task 2.2: Cowork &#183; Flagship for Enforcement</small></h2></div>
 <div class="callout good"><b>Why this matters.</b> Many corruption cases are not reported through the official SPDP Online system in time for the morning review. The Task Force must sweep open-source news, extract the facts, and update the case register. Task 2.1 uses Researcher to extract audit-grade data from a single article. Task 2.2 uses Cowork to sweep the full Google News RSS feed, deduplicate against the existing register, and draft the morning communications.</div>
 
@@ -661,7 +453,9 @@ Closing line: once I approve, this run replaces roughly 45 minutes of my morning
 <br/><b>Deduplication:</b> the deduplicate-by-suspect-plus-period rule works well for clear cases. For cases with multiple suspects listed differently across articles, manual review is still needed before the row is added to the register. Tingkat Keyakinan Rendah rows should always be reviewed by a human before filing.
 <br/><b>Cowork is the customer's own term</b> from the Bahasa requirements document. That is exactly the capability we are demoing here.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Daily Briefing</button><button data-go="ex3">Next: Procurement Anomalies →</button></div></div><div class="view-ihh" id="view-ex3"><section id="ex3">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Daily Briefing</button><button data-go="ex3">Next: Procurement Anomalies →</button></div></div>'''
+
+VIEW_EX3 = '''<div class="view-ihh" id="view-ex3"><section id="ex3">
 <div class="modulehead"><div class="num">3</div><h2>Exercise 3 &#183; Procurement Anomalies<small>Copilot in Excel &#183; Chat mode (Task 3.1) + Edit mode (Task 3.2) &#183; Flagship for Prevention</small></h2></div>
 <div class="callout good"><b>Why this matters.</b> Provincial and regency governments submit Excel procurement disclosures every quarter. Buried in 180 rows of the Q3 file are the exact patterns the Task Force cares about: contracts split to stay under the direct-procurement threshold, one vendor dominating an agency, price outliers, brand-new vendors winning large awards, shared vendor addresses, and awards signed on Sundays. <b>Important:</b> the data and dashboard you build here are the direct input to Exercise 5 - that is where you turn this analysis into the Deputy briefing pack.</div>
 
@@ -730,71 +524,9 @@ Rules: add columns to the right of the existing table. Do not delete any rows. K
 <br/><b>Verify the formulas:</b> before you rely on Risk_Score for a supervision decision, spot-check three Critical-tier rows against the raw disclosure to confirm the flag formulas match the Bureau's official Q3 scoring rubric. Copilot builds the exhibit fast; the auditor still signs it.
 <br/><b>Slicers:</b> interactive slicers sometimes need to be reapplied after a Copilot Edit run. If the slicer does not filter the chart, click the slicer connection icon on the chart and reconnect it manually.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← OSINT Scraping + Sweep</button><button data-go="ex4">Next: Meeting Minutes →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
-<div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Meeting Minutes<small>Teams Copilot recap · Word Copilot polish · not Cowork · works with ANY meeting</small></h2></div>
-<div class="callout good"><b>The scenario.</b> You just stepped out of a meeting, or you are watching a recorded one back. The prompts below are deliberately generic: paste them into any Teams meeting chat or any Word document with a transcript attached, and they will produce a structured recap, formal minutes, and a polished two-page version. Nothing is Task Force-specific; use them for procurement supervision, budget planning, licensing reviews, HR panels, board updates, or any recurring meeting.</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← OSINT Scraping + Sweep</button><button data-go="ex4">Next: Meeting Minutes →</button></div></div>'''
 
-<div class="card">
-<div class="activity">
-<div class="head"><span class="num">Task 4.1</span><span class="file">👥 Teams Copilot · post-meeting recap · generic</span></div>
-<h4>Ask Teams Copilot for a structured recap of any meeting</h4>
-<p class="lead">Open the Teams meeting chat (or Chat with Copilot from the meeting recap panel). Paste the prompt below. Works for any meeting where transcription was on.</p>
-<div class="prompt">Goal: give me a structured recap of the meeting that just ended.
-
-Context: I need clear action items, decisions, risks, and per-attendee commitments so nothing slips through the week. Format the recap so it can be pasted into an email or a Word document without further editing.
-
-Expectation:
-1. One-paragraph overall summary in three sentences or fewer.
-2. Decisions table with columns: Decision, Who owns follow-through, Confirmed by (person or group).
-3. Action items table with columns: Action, Owner, Due date, Priority (High, Medium, Low), Status (default to Open).
-4. Risks and blockers: bullet list, each with a one-line mitigation suggestion.
-5. Per-attendee commitments: one bullet per named attendee summarising what they personally committed to. Skip attendees who did not commit to anything.
-6. Open questions and next steps: three to five bullets naming what still needs to be answered and by when.
-
-Rules: cite only things actually said in the meeting. If an owner or due date was not stated, mark it "to be confirmed". Do not invent risks that were not raised. Neutral tone. Past tense.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
-
-<div class="activity">
-<div class="head"><span class="num">Task 4.2</span><span class="file">📝 Word Copilot · formal minutes from transcript · generic</span></div>
-<h4>Draft formal minutes from any meeting transcript</h4>
-<p class="lead">Open a blank Word document. Click the Copilot icon, then Draft with Copilot. Reference the transcript file with <code>/</code> (paste the transcript, or link the recording's transcript file from OneDrive). Paste the prompt below.</p>
-<div class="prompt">Goal: draft formal meeting minutes from the attached transcript, in a clean corporate house style suitable for wide distribution.
-
-Context: the minutes will go to the meeting chair, all attendees, and any named recipient on the distribution list. Readers will not have attended the meeting, so the minutes must stand on their own.
-
-Source: use the attached transcript as the sole factual basis. Do not add outside information.
-
-Expectation: produce a Word document with these numbered sections in order:
-1. Header block: meeting title, date, time (start and end), location or platform, chair, minute taker, attendees (name and role if stated), apologies.
-2. Agenda summary: three to seven bullets, phrased as topics or noun phrases, not verbs.
-3. Discussion notes: one subsection per agenda item, three to six sentences each, past tense, neutral third-person voice. No verbatim quotes unless the speaker asked for their exact words to be recorded.
-4. Decisions box: a bordered call-out listing every decision on its own numbered line. Format: "Decision N: [what was decided]. Owner: [name]. Effective: [date or 'immediately']."
-5. Action register: a table with columns Action, Owner, Due Date, Priority (High, Medium, Low), Status (default Open).
-6. Risks and escalations: bullet list. Include only risks explicitly raised in the meeting.
-7. Distribution list: chair, minute taker, all attendees, and any recipient the chair named during the meeting.
-
-Rules: use only content from the transcript. Neutral tone. No opinions. Do not attribute a decision to a person who did not verbally agree to it. If a decision was deferred, record it under Discussion notes not Decisions box. Use consistent title case for headings.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
-
-<div class="activity">
-<div class="head"><span class="num">Task 4.3</span><span class="file">📝 Word Copilot · polish · two-page ceiling · generic</span></div>
-<h4>Tighten any draft minutes to two pages with an executive summary</h4>
-<div class="prompt">Goal: polish this draft of the meeting minutes for clarity and length, then add an executive summary paragraph at the top.
-
-Context: busy readers scan only the first page of any minutes. If the essentials are not on page one, the follow-up is missed.
-
-Expectation:
-- Improve sentence clarity, reduce jargon, and shorten wordy phrases without changing meaning.
-- Enforce a two-page ceiling. If the draft is longer, trim the discussion notes first (never the decisions box or the action register).
-- Add a three-sentence Executive Summary at the top, immediately after the header block, that names the single most important decision, the single most urgent action, and the single biggest risk raised.
-- Preserve the numbered section structure, the decisions box, and the action register verbatim from the source draft.
-- Convert any passive-voice sentences into active voice where the actor is clear from the transcript.
-
-Rules: do not add facts not in the draft. Do not change any owner name or due date. Do not remove any row from the action register or the decisions box.<button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="callout warn"><b>Reality check:</b> Teams Copilot recap requires a Copilot licence on the meeting organiser, and transcription must have been enabled during the recording. If the recap panel is empty, verify that Transcription was on before you left the meeting. For Word Copilot, the polish quality is only as good as the transcript quality; scrub any obvious speech-to-text errors in the transcript before running Task 4.2. If you want the recap saved to a specific OneDrive or SharePoint folder automatically, wire the same three prompts into a Power Automate flow triggered by "meeting ended" (see Bonus B3).</div>
-</div>
-</div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Procurement Anomalies</button><button data-go="ex5">Next: Analysis to Deliverable →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
+VIEW_EX5 = '''<div class="view-ihh" id="view-ex5"><section id="ex5">
 <div class="modulehead"><div class="num">5</div><h2>Exercise 5 &#183; Analysis to Deliverable<small>Word + PowerPoint + Excel + Cowork &#183; Four tasks, one briefing pack</small></h2></div>
 <div class="callout good"><b>The frame.</b> Take what you produced in Exercise 3 - the risk-flagged workbook and Governance Dashboard - and turn it into the Deputy for Enforcement briefing pack: a polished Word report, an executive deck, and a sharpened dashboard. Tasks 5.1 to 5.3 show the manual path, one artefact at a time. Task 5.4 shows the same three artefacts produced in one Cowork prompt so you can see the tradeoff between speed and per-artefact iteration control. Neither approach is "right" - the choice depends on how much manual polish the pack needs.</div>
 
@@ -890,7 +622,9 @@ STOP after completing all three artefacts. Show me a one-paragraph summary of wh
 <br/><b>Copilot Create outputs are flat images.</b> If you use Copilot Create (Bonus B0) to generate a governance poster for the leadership wall, that output is a printable image, not an editable PowerPoint slide. Do not expect to edit it in PowerPoint.
 <br/><b>Cowork is on-demand only.</b> Task 5.4 is a single on-demand Cowork run. There is no "generate the briefing pack automatically every week" setting in Cowork. Pak Bambang runs it each time he needs the pack.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Meeting Minutes</button><button data-go="ex6">Next: Build Your Own Agent →</button></div></div><div class="view-ihh" id="view-ex6"><section id="ex6">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Meeting Minutes</button><button data-go="ex6">Next: Build Your Own Agent →</button></div></div>'''
+
+VIEW_EX6 = '''<div class="view-ihh" id="view-ex6"><section id="ex6">
 <div class="modulehead"><div class="num">6</div><h2>Exercise 6 &#183; Build Your Own Agent<small>Copilot Chat agent builder &#183; Declarative &#183; No Copilot Studio licence needed</small></h2></div>
 <div class="callout good"><b>The finale.</b> Build a declarative Copilot Chat agent grounded on the two key Task Force data files. Any member of the Task Force can then ask natural-language questions against the procurement register and the SPDP case register without opening Excel. No code, no tool calls, no Copilot Studio licence.</div>
 
@@ -965,182 +699,84 @@ Rules: cite specific rows and cells for every factual claim. Do not guess. Do no
 <br/><b>Grounding freshness:</b> the agent reads the files as they exist in SharePoint at the time of each conversation. If you update the Excel files with new data, the agent picks up the new data automatically on the next conversation - no rebuild needed.
 <br/><b>Scope of answers:</b> the agent can only answer questions about data explicitly present in the grounded files. It cannot query SPDP Online directly, browse the web for news, or access files not in the grounding sources list.</div>
 </div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Analysis to Deliverable</button><button data-go="extras">Next: Bonus →</button></div></div><div class="view-ihh" id="view-extras"><section id="extras">
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Analysis to Deliverable</button><button data-go="extras">Next: Bonus →</button></div></div>'''
+
+VIEW_EXTRAS = '''<div class="view-ihh" id="view-extras"><section id="extras">
 <div class="modulehead"><div class="num">+</div><h2>Bonus Tab<small>Governance posters + five more Copilot moves for the Task Force</small></h2></div>
 <div class="callout good"><b>What lives here.</b> Four Copilot Create governance poster prompts (B0), the G-C-S-E prompt framework card (B1), two Outlook Copilot moves (B2, B3), a Word interrogation prompt (B4), and a pre-send fact-check prompt (B5).</div>
 
 <div class="bonus-grid"><button class="bcard" onclick="openModal('kx-b56798a9')"><span class="ico">&#127912;</span><h4>B0 &#183; Governance Poster (Copilot Create &#183; four prompts)</h4><p>Open Copilot Create. Paste any of the four prompts to generate a bureau-branded infographic: Q3 priorities, case journey strip, regional heatmap, or year-in-review poster. Outputs are flat images, not editable slides.</p></button><button class="bcard" onclick="openModal('kx-new-b1')"><span class="ico">&#128196;</span><h4>B1 &#183; Prompt tips card (G-C-S-E framework)</h4><p>The Goal, Context, Source, Expectation framework used across all major prompts in this immersion. Copy it into any prompt you write.</p></button><button class="bcard" onclick="openModal('kx-new-b2')"><span class="ico">&#128236;</span><h4>B2 &#183; Outlook Copilot &#183; catch up on a long thread</h4><p>In Outlook, open the longest unread email thread. Copilot summarises it and drafts a reply in Bureau tone.</p></button><button class="bcard" onclick="openModal('kx-new-b3')"><span class="ico">&#8617;&#65039;</span><h4>B3 &#183; Outlook Copilot &#183; draft an executive reply</h4><p>Draft a reply from the Task Force Head to the Deputy for Prevention. Formal, four sentences, specific date commitment.</p></button><button class="bcard" onclick="openModal('kx-new-b4')"><span class="ico">&#128214;</span><h4>B4 &#183; Word &#183; interrogate a long governance report</h4><p>Five questions to ask Copilot about any Word document before you present it. Finds weak claims, number conflicts, and missing sections.</p></button><button class="bcard" onclick="openModal('kx-new-b5')"><span class="ico">&#9989;</span><h4>B5 &#183; Copilot Chat &#183; quick fact check before you send</h4><p>Paste any paragraph or table into Copilot Chat before sending. Returns a "cleared" or "revise" verdict with source citations.</p></button></div>
-</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex6">&#8592; Build Your Own Agent</button><button data-go="intro">Back to start &#8634;</button></div></div></div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex6">&#8592; Build Your Own Agent</button><button data-go="intro">Back to start &#8634;</button></div></div>'''
 
-<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center">
- Contoso Integrity Bureau · M365 Copilot GM Immersion · Session ID 112e253a-7fd6-48b4-80b3-e89c7d7914fd
-</div>
-</main>
-</div>
+# Bonus modals B1-B5 are already extracted with correct IDs from current index.html
+NEW_MODAL_B1 = modal_b1
+NEW_MODAL_B2 = modal_b2
+NEW_MODAL_B3 = modal_b3
+NEW_MODAL_B4 = modal_b4
+NEW_MODAL_B5 = modal_b5
 
-<div class="modal-overlay" id="modal-kx-b56798a9"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b56798a9')">&times;</button><h3>B0 · Governance Poster (Copilot Create · four prompts)</h3>
-<p class="lead">Open Copilot Create (formerly Designer). Pick "Design an image" or the poster template. Paste any of the four prompts below. Copilot Create generates variations; iterate until you have a poster fit to hang on the Task Force wall or drop into a Bureau leadership deck.</p>
+# ── Assemble the new HTML ──────────────────────────────────────────────────────
 
-<div class="activity">
-<div class="head"><span class="num">Poster 1</span><span class="file">🎨 Copilot Create · Q3 priorities</span></div>
-<h4>Q3 Anti-Corruption Priorities for the Task Force Head</h4>
-<div class="prompt">Design a one-page portrait infographic poster titled "Q3 Anti-Corruption Priorities" for the Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. Use a deep navy blue as the primary colour, institutional gold as the accent, and white as the background. Muted grey for supporting text. Serious, government-grade, institutional feel; not flashy.
+LAYOUT = (
+    '<div class="layout" id="main" style="display:none">\n'
+    + SIDEBAR + '\n'
+    + '<main>\n'
+    + '<!--IHH-INJECT-START-->\n'
+    + HERO + '\n'
+    + TABS + '<div class="ihh-main">'
+    + VIEW_INTRO
+    + VIEW_FILES
+    + VIEW_EX1
+    + VIEW_EX2
+    + VIEW_EX3
+    + ex4_raw
+    + VIEW_EX5
+    + VIEW_EX6
+    + VIEW_EXTRAS
+    + '</div>\n'  # closes ihh-main
+    + '\n'
+    + session_footer + '\n'
+    + '</main>\n</div>\n'  # closes main + layout
+    + '\n'
+    + modal_b0
+    + NEW_MODAL_B1
+    + NEW_MODAL_B2
+    + NEW_MODAL_B3
+    + NEW_MODAL_B4
+    + NEW_MODAL_B5
+    + '\n'
+)
 
-Layout, top to bottom:
-- A slim navy header bar with the Bureau name on the left and "Q3 Priorities" on the right in gold.
-- A "big numbers" strip with four numbers side by side, each with a gold underline: Open Cases, Cases Handed to Court, State Loss Recovered in IDR, Red-Flag Agencies. Leave the numbers as placeholders like "XX" for now.
-- Three priority cards in a row, each with a gold icon-style circle at the top and a short caption underneath: (1) OSINT Sweep, (2) Procurement Anomaly Review, (3) Provincial Supervision Letters.
-- A small agency comparison table with three rows and three columns: Agency, Risk Tier, Next Step. Leave the cell values as placeholders.
-- A footer strip in navy with the Bureau name and a small gold seal-style circle on the right.
+new_html = (
+    head
+    + '\n'
+    + lock_section
+    + LAYOUT
+    + footer_scripts
+)
 
-Typography: sans-serif, generous line height, all-caps for section labels. No photographs, no logos other than the Bureau seal placeholder. No decorative emojis.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(new_html)
 
-<div class="activity">
-<div class="head"><span class="num">Poster 2</span><span class="file">🎨 Copilot Create · case journey</span></div>
-<h4>From Report to Verdict - the six-stage journey of a corruption case</h4>
-<div class="prompt">Design a one-page landscape infographic poster titled "From Report to Verdict: the six-stage journey of a corruption case at Contoso Integrity Bureau". Deep navy blue primary, institutional gold accent, white background, muted grey supporting text. Institutional, quietly authoritative, not flashy.
+print('Done. index.html written.')
 
-Layout:
-- Navy title bar at the top with the poster title in white and the Bureau name in gold on the right.
-- A horizontal six-stage journey strip across the middle: (1) Report received, (2) Preliminary assessment, (3) Investigation opened, (4) Suspect named, (5) Handed to court, (6) Verdict. Each stage is a rounded rectangle in navy with a gold number circle on top and a short caption below. Connect the six stages with a thin gold arrow line.
-- Below the strip, a small "Where cases stall" bar chart showing which of the six stages holds the most cases. Bars in gold, axis labels in muted grey.
-- To the right of the bar chart, a compact "Average time per stage" table with the six stage names and placeholder day counts.
-- Footer strip in navy with the Bureau name.
+# Quick validation
+txt = new_html
+em_count = txt.count('\u2014') + txt.count('\u2013')
+print(f'Em/en dash count: {em_count}')
 
-Typography: sans-serif, tight spacing on the journey strip, generous around the chart. No photographs, no decorative emojis.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
+open_divs = txt.count('<div')
+close_divs = txt.count('</div>')
+print(f'<div count: {open_divs}, </div> count: {close_divs}, diff: {open_divs - close_divs}')
 
-<div class="activity">
-<div class="head"><span class="num">Poster 3</span><span class="file">🎨 Copilot Create · regional heatmap</span></div>
-<h4>Regional Governance Heatmap - 34 provinces at a glance</h4>
-<div class="prompt">Design a one-page portrait infographic poster titled "Regional Governance Heatmap: 34 provinces at a glance" for the Contoso Integrity Bureau Task Force. Deep navy blue as the primary colour, institutional gold as the accent, white background, muted grey supporting text. Institutional, government-grade look.
-
-Layout, top to bottom:
-- Navy title bar with the poster title in white and a small gold seal-style circle on the right.
-- Four zone cards in a row, each with a coloured square swatch and a short label: (1) Star performers, (2) Steady, (3) Watch, (4) Formal review. Use dark gold for Star, medium navy for Steady, muted amber for Watch, and deep red only for Formal review; keep everything else navy and gold.
-- A grid of 34 small province tiles arranged in six rows, each tile a small rounded square with the province abbreviation and a zone-colour dot in the corner. Leave the abbreviations as placeholders like "PRV-01" through "PRV-34".
-- A regional snapshot table at the bottom with columns Province, Zone, Anomaly Count, Recommended Action, and five placeholder rows.
-- Navy footer strip with the Bureau name.
-
-Typography: sans-serif, small type on the province grid, generous spacing on the snapshot table. No maps, no photographs. The four zones use restrained colours; do not turn the poster into a rainbow.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
-
-<div class="activity">
-<div class="head"><span class="num">Poster 4</span><span class="file">🎨 Copilot Create · year in review</span></div>
-<h4>FY26 Year in Review - thank-you to the Task Force</h4>
-<div class="prompt">Design a one-page landscape celebratory poster titled "FY26 Year in Review: Contoso Integrity Bureau Task Force". Deep navy blue primary, institutional gold as the accent, white background, muted grey supporting text. Warm and celebratory but still institutional; no confetti graphics, no cartoons.
-
-Layout:
-- Navy header bar with the poster title in white and a small gold seal-style circle on the right.
-- A "big numbers" row with three headline numbers side by side, each with a gold underline and a short caption: Cases Closed, State Loss Recovered in IDR, Prevention Interventions Delivered. Leave the numbers as placeholders.
-- Below the numbers, a horizontal timeline strip with four "quarter highlight" cards (Q1, Q2, Q3, Q4), each with a one-line placeholder headline.
-- To the right of the timeline, a small quotes column with three short thank-you quotes from Task Force members. Style each quote with an oversized gold opening quotation mark.
-- A footer strip in navy with the words "Terima kasih, Task Force" in gold and the Bureau name.
-
-Typography: elegant sans-serif, generous white space, gold used sparingly to celebrate the big numbers and the quotes. No emojis. No fireworks or party imagery.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div>
-</div></div><div class="modal-overlay" id="modal-kx-new-b1"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b1ca24dd')">&times;</button><h3>B1 · Prompt tips card (Goal, Context, Source, Expectation)</h3>
-<p class="lead">The G-C-S-E framework used across all major prompts in this immersion. Copy this into any prompt you write.</p>
-<div class="prompt">Goal: [one sentence, what you want back]
-
-Context: [who you are, what decision this feeds, what audience will read the output]
-
-Source: [name the specific files, folders, URLs, or Teams channels Copilot should read; nothing else]
-
-Expectation: [the shape of the output: table columns, section order, length ceiling, tone, do-not-invent rules]
-
-Optional closing rules: no speculation, cite sources, mark "not stated" when a field is silent, STOP before sending anything.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div></div><div class="modal-overlay" id="modal-kx-new-b2"><div class="modal"><button class="modal-close" onclick="closeModal('kx-ccddd213')">&times;</button><h3>B2 · Outlook Copilot · catch up on a long thread</h3>
-<div class="prompt">In Outlook, open the longest unread email thread in your inbox. Click the Copilot icon at the top of the reading pane, choose "Summarise". Then type:
-
-Goal: give me the three things I need to know from this thread and one draft reply.
-
-Expectation: three bullet points, one draft reply of no more than four sentences in a neutral Bureau tone.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div></div><div class="modal-overlay" id="modal-kx-new-b3"><div class="modal"><button class="modal-close" onclick="closeModal('kx-f1cf91dd')">&times;</button><h3>B3 · Outlook Copilot · draft an executive reply</h3>
-<div class="prompt">In Outlook, open the email from the Deputy that needs a reply. Click the Copilot icon in the ribbon of the reply window, then "Draft with Copilot".
-
-Prompt:
-Draft a reply from the Head of the Coordination and Supervision Task Force to the Deputy for Prevention. Acknowledge the request in one sentence, commit to a specific action with a specific date, and note that a full memo will follow. Formal, four sentences maximum, no jargon.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div></div><div class="modal-overlay" id="modal-kx-new-b4"><div class="modal"><button class="modal-close" onclick="closeModal('kx-1ce7208f')">&times;</button><h3>B4 · Word · interrogate a long governance report</h3>
-<div class="prompt">Open a long governance report in Word (for example the polished 05 Contoso_Governance_Report_Draft.docx). Click Copilot, then Ask Copilot.
-
-Prompt:
-Goal: help me interrogate this report before I present it.
-
-Expectation: answer these five questions using only the document, citing section names:
-1. What is the single most important finding?
-2. Which claim in the report is the weakest on evidence?
-3. Are there any numbers that appear in two places with different values?
-4. Which section would a hostile reviewer challenge first, and why?
-5. What is missing from this report that a Task Force board would expect?<button class="copy" onclick="cp(this)">Copy</button></div>
-</div></div><div class="modal-overlay" id="modal-kx-new-b5"><div class="modal"><button class="modal-close" onclick="closeModal('kx-084db287')">&times;</button><h3>B5 · Copilot Chat · quick fact check before you send</h3>
-<div class="prompt">Before you send any memo, paste the paragraph or table you plan to send into Copilot Chat and ask:
-
-Goal: fact-check this paragraph against the source files listed below.
-
-Source: [paste the file names or URLs the paragraph is grounded on]
-
-Expectation: for each numeric claim, quote the sentence in the source that supports it. For any claim you cannot verify from the sources, mark it "unverifiable, remove or add a source". Return one final "cleared" or "revise" verdict.
-
-Rules: only use the listed sources. Do not use general knowledge.<button class="copy" onclick="cp(this)">Copy</button></div>
-</div></div>
-
-<script>
-try{localStorage.removeItem('unlk');}catch(e){}
-const HASH='901b61eb6ba610f2c3bbe81592908d88296e18ec76fa9d6a59901b6b5dc39a02';
-async function sha256(s){const b=new TextEncoder().encode(s);const d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
-async function unlock(){
- const v=document.getElementById('pw').value;
- const h=await sha256(v);
- if(h===HASH){
- document.getElementById('lock').style.display='none';
- document.getElementById('main').style.display='grid';
- sessionStorage.setItem('unlk','1');
- }else{
- const e=document.getElementById('err');e.textContent='Incorrect password. Please try again.';
- setTimeout(()=>e.textContent='',3000);document.getElementById('pw').value='';
- }
-}
-if(sessionStorage.getItem('unlk')==='1'){
- document.getElementById('lock').style.display='none';
- document.getElementById('main').style.display='grid';
-}
-document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
-const EYE_OPEN='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256A144 144 0 1 1 144 256a144 144 0 1 1 288 0zM288 192c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>';
-const EYE_OFF='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg>';
-function togglePw(){
- const i=document.getElementById('pw'),b=document.getElementById('pwToggle');
- if(i.type==='password'){i.type='text';b.innerHTML=EYE_OPEN;b.setAttribute('aria-label','Hide password');b.setAttribute('title','Hide password');}
- else{i.type='password';b.innerHTML=EYE_OFF;b.setAttribute('aria-label','Show password');b.setAttribute('title','Show password');}
- i.focus();
-}
-function cp(btn){
- const txt=btn.parentElement.textContent.replace(/Copy$/,'').replace(/Copied!$/,'').trim();
- navigator.clipboard.writeText(txt).then(()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);});
-}
-</script>
-<script id="bcard-js">
-function openModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.add('open');document.body.style.overflow='hidden';}}
-function closeModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.remove('open');document.body.style.overflow='';}}
-document.addEventListener('click',function(e){if(e.target.classList&&e.target.classList.contains('modal-overlay'))e.target.classList.remove('open');});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
-</script>
-<script>
-(function(){
-  var tabs = document.querySelectorAll('nav.tabs-ihh .tab');
-  var views = document.querySelectorAll('.view-ihh');
-  function switchView(target){
-    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.view === target); });
-    views.forEach(function(v){ v.classList.toggle('active', v.id === 'view-' + target); });
-    window.scrollTo({top:0, behavior:'smooth'});
-    try { history.replaceState(null,'','#tab-'+target); } catch(e){}
-  }
-  tabs.forEach(function(t){ t.addEventListener('click', function(){ switchView(t.dataset.view); }); });
-  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchView(b.dataset.go); }); });
-  // Restore from hash
-  var h = (location.hash||'').replace('#tab-','');
-  if (h && document.getElementById('view-'+h)) switchView(h);
-})();
-</script>
-</body></html>
+import re
+hex_in_prompts = re.findall(r'#[0-9a-fA-F]{6}', txt)
+# Filter out CSS hex codes (in style attributes or <style> tags)
+# We want to check only inside .prompt divs
+prompt_sections = re.findall(r'<div class="prompt">(.*?)</div>', txt, re.DOTALL)
+hex_in_prompt_content = []
+for p in prompt_sections:
+    found = re.findall(r'#[0-9a-fA-F]{6}', p)
+    if found:
+        hex_in_prompt_content.extend(found)
+print(f'Hex codes in prompt content: {hex_in_prompt_content}')
