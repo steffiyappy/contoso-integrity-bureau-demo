@@ -365,7 +365,7 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <table style="width:100%;font-size:13px;color:var(--ink);border-collapse:collapse">
 <tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>OSINT news, structured extraction</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 2 (flagship, uses the Jember bansos article)</td></tr>
 <tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Procurement anomaly detection</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 3 (flagship, six anomaly patterns seeded)</td></tr>
-<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Teams recap saved as Word</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 4 + Bonus B3 (Power Automate flow)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Teams recap saved as Word</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 4 (generic prompts, works with any meeting) + Bonus B3 (Power Automate flow)</td></tr>
 <tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Word polish and PowerPoint auto-gen</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 5</td></tr>
 <tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Excel PivotTables, charts, analysis</b></td><td style="padding:4px 0;color:var(--muted)">Exercise 3 + Bonus B2 (Excel Power Hour)</td></tr>
 <tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Governance infographic and posters</b></td><td style="padding:4px 0;color:var(--muted)">Bonus (four Copilot Create prompts)</td></tr>
@@ -436,9 +436,9 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Meeting Minutes</span>
 </div>
 <div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
-<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Recap and formal minutes</p>
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Any meeting to formal minutes</p>
 <p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Teams + Word Copilot</p>
-<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Turn a 30-minute Task Force coordination meeting into house-style minutes with a decisions box, an action register, and an executive summary. Five minutes end-to-end, not 90.</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Three generic prompts that turn any Teams meeting, budget review, licensing panel, or board update into house-style minutes with a decisions box, action register, and executive summary. Five minutes end-to-end, not 90.</p>
 </div>
 </div>
 <div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
@@ -658,66 +658,67 @@ Rules: use only the data in the workbook. If any observation depends on external
 <div class="callout warn"><b>Reality check:</b> interactive slicers and pivot filters sometimes need to be reapplied after a Copilot Edit run. Before you rely on the Risk_Score for a supervision decision, verify that the six flag formulas match the Bureau's official Q3 scoring rubric, and spot-check three Critical-tier rows against the raw disclosure. Copilot builds the exhibit fast; the auditor still signs it.</div>
 </div>
 </section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← OSINT News Extraction</button><button data-go="ex4">Next: Meeting Minutes →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
-<div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Meeting Minutes<small>Teams Copilot recap · Word Copilot polish · not Cowork</small></h2></div>
-<div class="callout good"><b>The scenario.</b> Pak Bambang just stepped out of the weekly Task Force coordination meeting. Six people, 30 minutes, covering SPDP backlog, three red-flag agencies from this week's procurement sweep, and one urgent OSINT case from Jember. The meeting was recorded with transcript on. This is the fastest path from meeting to house-style minutes.</div>
+<div class="modulehead"><div class="num">4</div><h2>Exercise 4 · Meeting Minutes<small>Teams Copilot recap · Word Copilot polish · not Cowork · works with ANY meeting</small></h2></div>
+<div class="callout good"><b>The scenario.</b> You just stepped out of a meeting, or you are watching a recorded one back. The prompts below are deliberately generic: paste them into any Teams meeting chat or any Word document with a transcript attached, and they will produce a structured recap, formal minutes, and a polished two-page version. Nothing is Task Force-specific; use them for procurement supervision, budget planning, licensing reviews, HR panels, board updates, or any recurring meeting.</div>
 
 <div class="card">
 <div class="activity">
-<div class="head"><span class="num">Task 4.1</span><span class="file">👥 Teams Copilot · post-meeting recap</span></div>
-<h4>Ask Teams Copilot for a structured recap</h4>
-<p class="lead">In the Teams meeting chat, open Copilot from the recap panel. Paste the prompt below.</p>
-<div class="prompt">Goal: give me a structured recap of the Task Force coordination meeting that just ended.
+<div class="head"><span class="num">Task 4.1</span><span class="file">👥 Teams Copilot · post-meeting recap · generic</span></div>
+<h4>Ask Teams Copilot for a structured recap of any meeting</h4>
+<p class="lead">Open the Teams meeting chat (or Chat with Copilot from the meeting recap panel). Paste the prompt below. Works for any meeting where transcription was on.</p>
+<div class="prompt">Goal: give me a structured recap of the meeting that just ended.
 
-Context: I chaired the meeting. The Bureau is looking for clear action items, decisions, risks, and per-attendee commitments so nothing slips through the week.
+Context: I need clear action items, decisions, risks, and per-attendee commitments so nothing slips through the week. Format the recap so it can be pasted into an email or a Word document without further editing.
 
 Expectation:
-1. One-paragraph overall summary (three sentences maximum).
-2. Decisions table: Decision, Who owns follow-through, Confirmed by.
-3. Action items table: Action, Owner, Due date, Status (Open).
-4. Risks and blockers: bullet list, each with a short mitigation suggestion.
-5. Per-attendee commitments: one bullet per named attendee summarising what they personally committed to.
-6. Next steps and next meeting agenda: three to five bullets.
+1. One-paragraph overall summary in three sentences or fewer.
+2. Decisions table with columns: Decision, Who owns follow-through, Confirmed by (person or group).
+3. Action items table with columns: Action, Owner, Due date, Priority (High, Medium, Low), Status (default to Open).
+4. Risks and blockers: bullet list, each with a one-line mitigation suggestion.
+5. Per-attendee commitments: one bullet per named attendee summarising what they personally committed to. Skip attendees who did not commit to anything.
+6. Open questions and next steps: three to five bullets naming what still needs to be answered and by when.
 
-Rules: only cite things actually said in the meeting. If an owner or due date was not stated, mark it "to be confirmed". Do not invent risks that were not raised.<button class="copy" onclick="cp(this)">Copy</button></div>
+Rules: cite only things actually said in the meeting. If an owner or due date was not stated, mark it "to be confirmed". Do not invent risks that were not raised. Neutral tone. Past tense.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 
 <div class="activity">
-<div class="head"><span class="num">Task 4.2</span><span class="file">📝 Word Copilot · formal minutes from transcript</span></div>
-<h4>Draft formal Bureau-house-style minutes</h4>
-<p class="lead">Open a blank Word document. Click the Copilot icon, then Draft with Copilot. Reference the transcript file <code>06 Contoso_Task_Force_Meeting_Transcript.docx</code>.</p>
-<div class="prompt">Goal: draft formal meeting minutes for the Task Force weekly coordination meeting in the Bureau's house style.
+<div class="head"><span class="num">Task 4.2</span><span class="file">📝 Word Copilot · formal minutes from transcript · generic</span></div>
+<h4>Draft formal minutes from any meeting transcript</h4>
+<p class="lead">Open a blank Word document. Click the Copilot icon, then Draft with Copilot. Reference the transcript file with <code>/</code> (paste the transcript, or link the recording's transcript file from OneDrive). Paste the prompt below.</p>
+<div class="prompt">Goal: draft formal meeting minutes from the attached transcript, in a clean corporate house style suitable for wide distribution.
 
-Context: I chair this meeting. Attendees include the Enforcement Lead, Prevention Lead, Data Analyst, Legal Advisor, and OSINT Specialist. Minutes go to the Bureau Secretariat, the Deputy for Prevention, and the Deputy for Enforcement.
+Context: the minutes will go to the meeting chair, all attendees, and any named recipient on the distribution list. Readers will not have attended the meeting, so the minutes must stand on their own.
 
-Source: use the attached transcript file 06 Contoso_Task_Force_Meeting_Transcript.docx as the sole factual basis.
+Source: use the attached transcript as the sole factual basis. Do not add outside information.
 
 Expectation: produce a Word document with these numbered sections in order:
-1. Header block: meeting title, date, time, location, chair, minute taker, attendees, apologies.
-2. Agenda summary (three to five bullets, phrased as topics not verbs).
-3. Discussion notes: one subsection per agenda item, three to six sentences each, past tense, neutral.
-4. Decisions box: a bordered call-out listing each decision on its own numbered line.
-5. Action register: a table with columns Action, Owner, Due Date, Priority (High, Medium, Low), Status.
-6. Risks and escalations: bullet list.
-7. Distribution list: Bureau Secretariat, Deputy for Prevention, Deputy for Enforcement, all attendees.
+1. Header block: meeting title, date, time (start and end), location or platform, chair, minute taker, attendees (name and role if stated), apologies.
+2. Agenda summary: three to seven bullets, phrased as topics or noun phrases, not verbs.
+3. Discussion notes: one subsection per agenda item, three to six sentences each, past tense, neutral third-person voice. No verbatim quotes unless the speaker asked for their exact words to be recorded.
+4. Decisions box: a bordered call-out listing every decision on its own numbered line. Format: "Decision N: [what was decided]. Owner: [name]. Effective: [date or 'immediately']."
+5. Action register: a table with columns Action, Owner, Due Date, Priority (High, Medium, Low), Status (default Open).
+6. Risks and escalations: bullet list. Include only risks explicitly raised in the meeting.
+7. Distribution list: chair, minute taker, all attendees, and any recipient the chair named during the meeting.
 
-Rules: use only content from the transcript. Neutral tone. No opinions. Do not attribute a decision to a person who did not verbally agree to it in the transcript.<button class="copy" onclick="cp(this)">Copy</button></div>
+Rules: use only content from the transcript. Neutral tone. No opinions. Do not attribute a decision to a person who did not verbally agree to it. If a decision was deferred, record it under Discussion notes not Decisions box. Use consistent title case for headings.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div>
 
 <div class="activity">
-<div class="head"><span class="num">Task 4.3</span><span class="file">📝 Word Copilot · polish · two-page ceiling</span></div>
-<h4>Tighten to two pages with an executive summary</h4>
-<div class="prompt">Goal: polish the draft minutes for clarity and length, then add an executive summary paragraph at the top.
+<div class="head"><span class="num">Task 4.3</span><span class="file">📝 Word Copilot · polish · two-page ceiling · generic</span></div>
+<h4>Tighten any draft minutes to two pages with an executive summary</h4>
+<div class="prompt">Goal: polish this draft of the meeting minutes for clarity and length, then add an executive summary paragraph at the top.
 
-Context: the Deputy for Enforcement reads only the first page of any minutes. If the essentials are not on page one, the escalation is missed.
+Context: busy readers scan only the first page of any minutes. If the essentials are not on page one, the follow-up is missed.
 
 Expectation:
 - Improve sentence clarity, reduce jargon, and shorten wordy phrases without changing meaning.
 - Enforce a two-page ceiling. If the draft is longer, trim the discussion notes first (never the decisions box or the action register).
 - Add a three-sentence Executive Summary at the top, immediately after the header block, that names the single most important decision, the single most urgent action, and the single biggest risk raised.
 - Preserve the numbered section structure, the decisions box, and the action register verbatim from the source draft.
+- Convert any passive-voice sentences into active voice where the actor is clear from the transcript.
 
-Rules: do not add facts not in the draft. Do not change any owner name or due date.<button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="callout warn"><b>Reality check:</b> Teams Copilot recap requires a Copilot licence on the meeting organiser, and the transcript must be enabled during the recording. If the recap panel is empty, verify that Transcription was on before you left the meeting. For Word Copilot, the polish quality is only as good as the transcript quality; scrub any obvious speech-to-text errors in the transcript before running Task 4.2.</div>
+Rules: do not add facts not in the draft. Do not change any owner name or due date. Do not remove any row from the action register or the decisions box.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn"><b>Reality check:</b> Teams Copilot recap requires a Copilot licence on the meeting organiser, and transcription must have been enabled during the recording. If the recap panel is empty, verify that Transcription was on before you left the meeting. For Word Copilot, the polish quality is only as good as the transcript quality; scrub any obvious speech-to-text errors in the transcript before running Task 4.2. If you want the recap saved to a specific OneDrive or SharePoint folder automatically, wire the same three prompts into a Power Automate flow triggered by "meeting ended" (see Bonus B3).</div>
 </div>
 </div>
 </section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Procurement Anomalies</button><button data-go="ex5">Next: Report to Deck →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
