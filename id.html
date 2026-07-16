@@ -9,7 +9,7 @@
 <meta content="0" http-equiv="Expires"/>
 <title>Contoso Integrity Bureau · Imersi Task Force M365 Copilot</title>
 <style>
-:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A}
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A;--gcse-g:#0B2A4A;--gcse-c:#123458;--gcse-s:#C89B3C;--gcse-e:#6B7280}
 @media(prefers-color-scheme:dark){:root{--bg:#0B2A4A;--panel:#0F3358;--panel2:#0A2340;--ink:#e2e8f0;--muted:#94a3b8;--border:#1E4472;--sidebar-a:#0B2A4A;--sidebar-b:#082041;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#123458;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
 @media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#0B2A4A;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
 *{box-sizing:border-box}
@@ -50,6 +50,11 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 .task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
 .task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
 .prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
+.gk{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10.5px;font-weight:700;letter-spacing:.6px;margin-right:6px;font-family:"Inter","Segoe UI",system-ui,sans-serif;vertical-align:1px;text-transform:uppercase;user-select:none;-webkit-user-select:none}
+.gk-g{background:var(--gcse-g);color:#fff}
+.gk-c{background:var(--gcse-c);color:#fff}
+.gk-s{background:var(--gcse-s);color:#0B2A4A}
+.gk-e{background:var(--gcse-e);color:#fff}
 .prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
 .prompt .copy:hover{background:var(--brand);color:#fff}.prompt .copy.copied{background:var(--good);color:#0a0f24}
 .callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
@@ -538,13 +543,13 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <div class="head"><span class="num">Tugas 1.1</span><span class="file">&#128172; Copilot Chat · scan pagi lima menit</span></div>
 <h4>Brief pagi cepat - lima menit, tanpa sitasi</h4>
 <p class="lead">Buka Microsoft 365 Copilot Chat di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>. Tempel prompt di bawah ini. Ini varian cepat: Copilot Chat akan memindai inbox, kalender, dan pesan Teams Anda, lalu mengembalikan brief tiga bagian yang ringkas dalam waktu di bawah dua menit.</p>
-<div class="prompt">Goal: berikan saya brief pagi lima menit yang mencakup semua hal yang perlu saya ketahui sebelum mulai bekerja hari ini.
+<div class="prompt"><span class="gk gk-g">Goal:</span>berikan saya brief pagi lima menit yang mencakup semua hal yang perlu saya ketahui sebelum mulai bekerja hari ini.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya memegang dua fungsi: Penindakan (memantau progres perkara tipikor via SPDP dan pemberitaan OSINT) dan Pencegahan (mengevaluasi anomali pengadaan di pemprov dan pemda). Saya butuh scan cepat, bukan analisis mendalam.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya memegang dua fungsi: Penindakan (memantau progres perkara tipikor via SPDP dan pemberitaan OSINT) dan Pencegahan (mengevaluasi anomali pengadaan di pemprov dan pemda). Saya butuh scan cepat, bukan analisis mendalam.
 
-Source: inbox Outlook saya (email yang belum dibaca sejak kemarin pukul 17.00), kalender saya untuk hari ini, dan pesan Teams saya dalam 24 jam terakhir.
+<span class="gk gk-s">Source:</span>inbox Outlook saya (email yang belum dibaca sejak kemarin pukul 17.00), kalender saya untuk hari ini, dan pesan Teams saya dalam 24 jam terakhir.
 
-Expectation: tiga bagian pendek, masing-masing maksimal lima bullet:
+<span class="gk gk-e">Expectation:</span>tiga bagian pendek, masing-masing maksimal lima bullet:
 1. Perkembangan semalam - notifikasi email untuk SPDP baru, berita tipikor yang menyebut perkara yang sedang dipantau Task Force, atau pesan mendesak dari anak buah langsung.
 2. Kalender hari ini - rapat hari ini secara kronologis, masing-masing dengan satu baris topik dan hal yang perlu saya bawa atau putuskan.
 3. Keputusan tertunda - hal apa pun yang kemarin saya janjikan untuk saya putuskan atau saya jawab, yang belum selesai.
@@ -557,11 +562,11 @@ Rules: tidak perlu sitasi. Ini scan cepat. Gunakan bahasa lugas. Kalau tidak ada
 <div class="head"><span class="num">Tugas 1.2</span><span class="file">&#128269; Researcher · brief setingkat audit dalam lima belas menit</span></div>
 <h4>Briefing harian terstruktur - ada sitasi, lebih dalam, layak diarsipkan</h4>
 <p class="lead">Buka Microsoft 365 Copilot di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> lalu klik <b>Researcher</b>. Biarkan pilihan model di <b>Auto</b>. Tempel prompt di bawah ini. Researcher akan membaca inbox, channel Teams, kalender, dan file yang baru Anda akses, kemudian menyerahkan satu briefing terstruktur lengkap dengan sitasi yang bisa Anda simpan sebagai working paper.</p>
-<div class="prompt">Goal: hasilkan briefing harian terstruktur untuk Kepala Task Force Koordinasi dan Supervisi, yang layak diarsipkan sebagai working paper resmi.
+<div class="prompt"><span class="gk gk-g">Goal:</span>hasilkan briefing harian terstruktur untuk Kepala Task Force Koordinasi dan Supervisi, yang layak diarsipkan sebagai working paper resmi.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Briefing ini mencakup dua fungsi: Penindakan (pemantauan perkara SPDP dan berita OSINT) dan Pencegahan (pengawasan anomali pengadaan). Brief ini akan disimpan di OneDrive saya sebagai dokumen rujukan kerja hari ini.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Briefing ini mencakup dua fungsi: Penindakan (pemantauan perkara SPDP dan berita OSINT) dan Pencegahan (pengawasan anomali pengadaan). Brief ini akan disimpan di OneDrive saya sebagai dokumen rujukan kerja hari ini.
 
-Source: inbox Outlook saya (24 jam terakhir), channel Teams saya "Task Force - Daily OSINT" dan "Task Force - Coordination", kalender saya untuk hari ini dan besok, serta dokumen atau thread chat yang masih terbuka dan belum saya jawab.
+<span class="gk gk-s">Source:</span>inbox Outlook saya (24 jam terakhir), channel Teams saya "Task Force - Daily OSINT" dan "Task Force - Coordination", kalender saya untuk hari ini dan besok, serta dokumen atau thread chat yang masih terbuka dan belum saya jawab.
 
 Expectation - empat bagian dengan sitasi:
 1. Update Penindakan - notifikasi SPDP baru yang masuk lewat email atau Teams sejak kemarin, berita tipikor yang secara langsung menyebut perkara di portofolio Task Force, beserta nama perkara dan tahapnya. Cantumkan subject email atau nama thread Teams sebagai sitasi untuk setiap item.
@@ -589,13 +594,13 @@ Rules: cantumkan sumber untuk setiap item (subject email, nama thread Teams, ata
 <p class="lead">Buka Microsoft 365 Copilot di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>, klik <b>Researcher</b>, lalu tempel prompt G-C-S-E di bawah ini. URL contoh adalah artikel Antara News tentang perkara hibah bansos Jember. Jalankan prompt awal dulu, kemudian jalankan prompt refinement untuk menambahkan Tahap, Tingkat Keyakinan, dan URL Sumber.</p>
 
 <div class="task-step"><div class="step-label">Langkah 1 dari 2 · Ekstraksi awal (kolom berbahasa Indonesia)</div></div>
-<div class="prompt">Goal: ekstrak fakta perkara tipikor dari artikel berita di URL berikut dan kembalikan sebagai satu baris tabel terstruktur yang bisa saya tempel ke register perkara SPDP saya.
+<div class="prompt"><span class="gk gk-g">Goal:</span>ekstrak fakta perkara tipikor dari artikel berita di URL berikut dan kembalikan sebagai satu baris tabel terstruktur yang bisa saya tempel ke register perkara SPDP saya.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menyapu sumber berita nasional setiap hari untuk mencari perkara tipikor yang mungkin belum muncul di SPDP Online. Saya butuh data bersih dan terstruktur untuk ditambahkan ke register.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menyapu sumber berita nasional setiap hari untuk mencari perkara tipikor yang mungkin belum muncul di SPDP Online. Saya butuh data bersih dan terstruktur untuk ditambahkan ke register.
 
-Source: https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+<span class="gk gk-s">Source:</span>https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
 
-Expectation: kembalikan tabel Markdown berisi satu baris data dengan kelima kolom berikut, sesuai urutan:
+<span class="gk gk-e">Expectation:</span>kembalikan tabel Markdown berisi satu baris data dengan kelima kolom berikut, sesuai urutan:
 - Nama Perkara (nama perkara ringkas dan deskriptif dalam bahasa Indonesia)
 - Periode Perkara (tahun atau rentang tahun sebagaimana disebut di artikel)
 - Tersangka / Terdakwa (nama tersangka atau terdakwa, dipisah koma, sebagaimana diberitakan)
@@ -624,12 +629,11 @@ Pertahankan kelima kolom awal. Aturan tetap: kalau satu field tidak disebut seca
 <h4>Batch sweep - baca feed RSS, update register, siapkan draft komunikasi</h4>
 <p class="lead"><b>Cowork bersifat on-demand.</b> Pak Bambang menjalankan ulang prompt ini setiap pagi. Prompt ini membaca folder RSS Outlook "OSINT - Google News", mengekstrak field bergaya SPDP dari setiap artikel, melakukan deduplikasi terhadap <code>03 Contoso_SPDP_Case_Register.xlsx</code>, menambahkan baris baru, serta menyiapkan draft posting Teams dan email distribusi. Cowork berhenti sebelum benar-benar mengirim apa pun.</p>
 <p class="lead" style="margin-top:8px">Pola URL RSS Google News yang selama ini dipakai Task Force:<br/><code style="font-size:12px;word-break:break-all">https://news.google.com/rss/search?q=korupsi+OR+tipikor+OR+%22kerugian+negara%22+OR+%22OTT+KPK%22+OR+%22dugaan+korupsi%22+OR+%22tersangka+korupsi%22+OR+SPDP&amp;hl=id&amp;gl=ID&amp;ceid=ID:id</code></p>
-<div class="prompt">Goal: sapu alert tipikor Google News pagi ini, ekstrak field bergaya SPDP dari setiap artikel, update register perkara dengan baris baru, dan siapkan draft komunikasi untuk saya review.
+<div class="prompt"><span class="gk gk-g">Goal:</span>sapu alert tipikor Google News pagi ini, ekstrak field bergaya SPDP dari setiap artikel, update register perkara dengan baris baru, dan siapkan draft komunikasi untuk saya review.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya berlangganan alert Google News via RSS Outlook untuk kata kunci tipikor (korupsi, OTT KPK, kerugian negara, dugaan korupsi, SPDP). Email alert baru masuk sepanjang malam. Saya menjalankan sweep ini setiap pagi sebelum rapat pertama.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya berlangganan alert Google News via RSS Outlook untuk kata kunci tipikor (korupsi, OTT KPK, kerugian negara, dugaan korupsi, SPDP). Email alert baru masuk sepanjang malam. Saya menjalankan sweep ini setiap pagi sebelum rapat pertama.
 
-Source:
-- Outlook: folder RSS "OSINT - Google News", hanya email yang masuk dalam 24 jam terakhir.
+<span class="gk gk-s">Source:</span>- Outlook: folder RSS "OSINT - Google News", hanya email yang masuk dalam 24 jam terakhir.
 - Excel: 03 Contoso_SPDP_Case_Register.xlsx di OneDrive saya, sheet "Cases", baris eksisting.
 - Teams: channel "Task Force - Daily OSINT" di tim Task Force.
 
@@ -650,19 +654,18 @@ Kalimat penutup: setelah saya setujui, run ini menggantikan sekitar 45 menit rut
 <div class="head"><span class="num">Tugas 2.2 alt</span><span class="file">&#128260; Cowork · Varian B: daftar URL yang ditempel (praktis untuk demo)</span></div>
 <h4>Batch sweep - tempel lima URL secara langsung (lebih mudah untuk demo langsung)</h4>
 <p class="lead">Untuk demo di mana folder RSS belum disiapkan, tempel lima URL dari <code>04 Contoso_Sample_News_URLs.md</code> langsung ke dalam prompt. Logika deduplikasi dan draft komunikasi yang sama tetap berlaku.</p>
-<div class="prompt">Goal: ekstrak data perkara bergaya SPDP dari kelima URL artikel di bawah ini, deduplikasi terhadap register perkara eksisting, dan siapkan ringkasan konsolidasi beserta draft komunikasi.
+<div class="prompt"><span class="gk gk-g">Goal:</span>ekstrak data perkara bergaya SPDP dari kelima URL artikel di bawah ini, deduplikasi terhadap register perkara eksisting, dan siapkan ringkasan konsolidasi beserta draft komunikasi.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menjalankan sweep OSINT manual menggunakan sekumpulan URL berita dari file contoh saya.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menjalankan sweep OSINT manual menggunakan sekumpulan URL berita dari file contoh saya.
 
-Source:
-1. https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+<span class="gk gk-s">Source:</span>1. https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
 2. [tempel URL 2 dari 04 Contoso_Sample_News_URLs.md]
 3. [tempel URL 3]
 4. [tempel URL 4]
 5. [tempel URL 5]
 Juga: 03 Contoso_SPDP_Case_Register.xlsx (OneDrive saya), sheet "Cases", baris eksisting.
 
-Expectation: ikuti kelima langkah yang sama dengan Varian A (ekstrak, deduplikasi, siapkan baris, susun draft pesan Teams, susun draft email). Aturan deduplikasi: nama tersangka sama plus periode perkara yang beririsan berarti perkara sudah ada - jangan tambah baris baru; cukup update kolom Catatan.
+<span class="gk gk-e">Expectation:</span>ikuti kelima langkah yang sama dengan Varian A (ekstrak, deduplikasi, siapkan baris, susun draft pesan Teams, susun draft email). Aturan deduplikasi: nama tersangka sama plus periode perkara yang beririsan berarti perkara sudah ada - jangan tambah baris baru; cukup update kolom Catatan.
 
 STOP sebelum benar-benar mengirim pesan atau email apa pun. Tampilkan semua draft dan usulan baris baru terlebih dahulu. Saya sendiri yang akan review dan mengklik kirim setelah memverifikasi baris SPDP baru.
 
@@ -706,14 +709,13 @@ Kalimat penutup: setelah saya setujui, run ini menggantikan sekitar 45 menit rut
 <div class="head"><span class="num">Tugas 3.2</span><span class="file">&#128202; Copilot in Excel · mode Edit · bangun lapisan risiko dan dashboard</span></div>
 <h4>Tambahkan kolom Risk_Score dan bangun Governance Dashboard</h4>
 <p class="lead">Ubah panel Copilot ke mode <b>Edit</b>. Tempel prompt di bawah ini. Ini satu prompt Edit yang menambahkan lapisan risk scoring dan membuat sheet Governance Dashboard. Prosesnya bisa memakan waktu sampai dua menit.</p>
-<div class="prompt">Goal: tambahkan lapisan risk scoring dan bangun sheet Governance Dashboard untuk audit pengadaan Q3.
+<div class="prompt"><span class="gk gk-g">Goal:</span>tambahkan lapisan risk scoring dan bangun sheet Governance Dashboard untuk audit pengadaan Q3.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. File ini berisi 180 kontrak pengadaan langsung. Ambang pengadaan langsung menurut aturan di Indonesia adalah 200 juta IDR. Kontrak yang dipecah tepat di bawah ambang itu oleh vendor yang sama di K/L yang sama merupakan red flag klasik.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. File ini berisi 180 kontrak pengadaan langsung. Ambang pengadaan langsung menurut aturan di Indonesia adalah 200 juta IDR. Kontrak yang dipecah tepat di bawah ambang itu oleh vendor yang sama di K/L yang sama merupakan red flag klasik.
 
-Source: tabel Contracts di workbook ini. Kolomnya: Contract ID, Procurement Year, Agency, Procurement Package Name, Vendor Name, Vendor Address, Vendor NPWP, Contract Value IDR, Award Date, Procurement Method, Contract Start, Contract End, Notes.
+<span class="gk gk-s">Source:</span>tabel Contracts di workbook ini. Kolomnya: Contract ID, Procurement Year, Agency, Procurement Package Name, Vendor Name, Vendor Address, Vendor NPWP, Contract Value IDR, Award Date, Procurement Method, Contract Start, Contract End, Notes.
 
-Expectation:
-1. Tambahkan kolom Risk_Score yang nilainya sama dengan jumlah keenam kolom sinyal berikut (masing-masing bernilai 1 atau 0):
+<span class="gk gk-e">Expectation:</span>1. Tambahkan kolom Risk_Score yang nilainya sama dengan jumlah keenam kolom sinyal berikut (masing-masing bernilai 1 atau 0):
    - Split_Contract_Flag: 1 jika kombinasi Vendor Name dan Agency yang sama memiliki 3 kontrak atau lebih, masing-masing di bawah 200.000.000 IDR, dalam jendela bergulir 30 hari berdasarkan Award Date.
    - Vendor_Concentration_Flag: 1 jika total nilai IDR vendor tersebut di K/L itu untuk Q3 melebihi 60 persen dari total belanja Q3 K/L tersebut.
    - Price_Outlier_Flag: 1 jika Contract Value IDR untuk suatu Procurement Package Name lebih dari 2 kali nilai median untuk nama paket yang sama di seluruh K/L.
@@ -753,12 +755,11 @@ Rules: tambahkan kolom di sebelah kanan tabel yang ada. Jangan hapus baris apa p
 <div class="head"><span class="num">Tugas 4.1</span><span class="file">👥 Teams Copilot · recap pasca-rapat · generik</span></div>
 <h4>Minta Teams Copilot menyusun recap terstruktur untuk rapat apa pun</h4>
 <p class="lead">Buka chat rapat Teams (atau Chat with Copilot dari panel recap rapat). Tempel prompt di bawah ini. Berlaku untuk rapat apa pun yang transkripsinya diaktifkan.</p>
-<div class="prompt">Goal: berikan saya recap terstruktur dari rapat yang baru saja berakhir.
+<div class="prompt"><span class="gk gk-g">Goal:</span>berikan saya recap terstruktur dari rapat yang baru saja berakhir.
 
-Context: saya butuh action item, keputusan, risiko, dan komitmen per peserta yang jelas agar tidak ada yang terlewat sepanjang minggu ini. Format recap-nya supaya bisa langsung ditempel ke email atau dokumen Word tanpa perlu diedit lagi.
+<span class="gk gk-c">Context:</span>saya butuh action item, keputusan, risiko, dan komitmen per peserta yang jelas agar tidak ada yang terlewat sepanjang minggu ini. Format recap-nya supaya bisa langsung ditempel ke email atau dokumen Word tanpa perlu diedit lagi.
 
-Expectation:
-1. Ringkasan menyeluruh satu paragraf, maksimal tiga kalimat.
+<span class="gk gk-e">Expectation:</span>1. Ringkasan menyeluruh satu paragraf, maksimal tiga kalimat.
 2. Tabel Keputusan dengan kolom: Keputusan, Pemilik tindak lanjut, Dikonfirmasi oleh (individu atau kelompok).
 3. Tabel Action Item dengan kolom: Action, Owner, Tenggat, Prioritas (High, Medium, Low), Status (default Open).
 4. Risiko dan hambatan: bullet list, masing-masing dengan usulan mitigasi satu baris.
@@ -772,13 +773,13 @@ Rules: kutip hanya hal yang benar-benar diucapkan dalam rapat. Kalau owner atau 
 <div class="head"><span class="num">Tugas 4.2</span><span class="file">📝 Copilot in Word · notulen formal dari transkrip · generik</span></div>
 <h4>Susun draft notulen formal dari transkrip rapat mana pun</h4>
 <p class="lead">Buka dokumen Word kosong. Klik ikon Copilot, lalu Draft with Copilot. Rujuk file transkrip dengan <code>/</code> (tempel transkripnya, atau tautkan file transkrip rekaman dari OneDrive). Tempel prompt di bawah ini.</p>
-<div class="prompt">Goal: susun draft notulen rapat formal dari transkrip yang dilampirkan, dalam gaya rumah korporat yang rapi dan siap didistribusikan luas.
+<div class="prompt"><span class="gk gk-g">Goal:</span>susun draft notulen rapat formal dari transkrip yang dilampirkan, dalam gaya rumah korporat yang rapi dan siap didistribusikan luas.
 
-Context: notulen akan disampaikan kepada pimpinan rapat, seluruh peserta, dan setiap penerima yang disebut namanya dalam daftar distribusi. Pembaca tidak menghadiri rapat, jadi notulen harus bisa berdiri sendiri.
+<span class="gk gk-c">Context:</span>notulen akan disampaikan kepada pimpinan rapat, seluruh peserta, dan setiap penerima yang disebut namanya dalam daftar distribusi. Pembaca tidak menghadiri rapat, jadi notulen harus bisa berdiri sendiri.
 
-Source: gunakan transkrip terlampir sebagai satu-satunya basis faktual. Jangan menambahkan informasi dari luar.
+<span class="gk gk-s">Source:</span>gunakan transkrip terlampir sebagai satu-satunya basis faktual. Jangan menambahkan informasi dari luar.
 
-Expectation: hasilkan dokumen Word dengan bagian-bagian bernomor berikut, sesuai urutan:
+<span class="gk gk-e">Expectation:</span>hasilkan dokumen Word dengan bagian-bagian bernomor berikut, sesuai urutan:
 1. Blok header: judul rapat, tanggal, waktu (mulai dan selesai), lokasi atau platform, pimpinan rapat, notulis, peserta (nama dan jabatan jika disebut), yang berhalangan hadir.
 2. Ringkasan agenda: tiga sampai tujuh bullet, dirumuskan sebagai topik atau frasa nomina, bukan kata kerja.
 3. Catatan pembahasan: satu subbagian per butir agenda, masing-masing tiga sampai enam kalimat, past tense, suara orang ketiga netral. Tidak ada kutipan verbatim kecuali pembicara meminta kata-katanya dicatat persis.
@@ -793,12 +794,11 @@ Rules: gunakan hanya konten dari transkrip. Nada netral. Tidak ada opini. Jangan
 <div class="activity">
 <div class="head"><span class="num">Tugas 4.3</span><span class="file">📝 Copilot in Word · poles · maksimal dua halaman · generik</span></div>
 <h4>Rapikan draft notulen apa pun ke maksimal dua halaman lengkap dengan ringkasan eksekutif</h4>
-<div class="prompt">Goal: poles draft notulen rapat ini agar lebih jernih dan lebih ringkas, kemudian tambahkan satu paragraf ringkasan eksekutif di bagian atas.
+<div class="prompt"><span class="gk gk-g">Goal:</span>poles draft notulen rapat ini agar lebih jernih dan lebih ringkas, kemudian tambahkan satu paragraf ringkasan eksekutif di bagian atas.
 
-Context: pembaca yang sibuk hanya membaca halaman pertama notulen. Kalau esensinya tidak ada di halaman satu, tindak lanjutnya sering terlewat.
+<span class="gk gk-c">Context:</span>pembaca yang sibuk hanya membaca halaman pertama notulen. Kalau esensinya tidak ada di halaman satu, tindak lanjutnya sering terlewat.
 
-Expectation:
-- Perjelas kalimat, kurangi jargon, dan perpendek frasa yang bertele-tele tanpa mengubah makna.
+<span class="gk gk-e">Expectation:</span>- Perjelas kalimat, kurangi jargon, dan perpendek frasa yang bertele-tele tanpa mengubah makna.
 - Terapkan batas maksimal dua halaman. Kalau draft lebih panjang, potong dulu Catatan Pembahasan (jangan Kotak Keputusan atau Register Action Item).
 - Tambahkan Ringkasan Eksekutif tiga kalimat di bagian paling atas, tepat setelah blok header, yang menyebut satu keputusan paling penting, satu action paling mendesak, dan satu risiko paling besar yang diangkat.
 - Pertahankan struktur bagian bernomor, Kotak Keputusan, dan Register Action Item persis seperti di draft sumber.
@@ -817,14 +817,13 @@ Rules: jangan menambahkan fakta yang tidak ada di draft. Jangan mengubah nama Ow
 <div class="head"><span class="num">Tugas 5.1</span><span class="file">&#128221; Copilot in Word · poles laporan governance</span></div>
 <h4>Ubah draft Q3 menjadi laporan governance yang siap untuk pimpinan</h4>
 <p class="lead">Buka <code>05 Contoso_Governance_Report_Draft.docx</code> di Word. Klik ikon Copilot, lalu Draft with Copilot atau Rewrite. Tempel prompt di bawah ini. <b>Catatan:</b> Anda harus mengetik angka risiko dari Latihan 3 ke dalam teks prompt - Copilot in Word tidak bisa membaca file Excel secara langsung.</p>
-<div class="prompt">Goal: poles laporan governance Q3 ini agar terbaca seperti board paper Task Force, bukan draft kerja.
+<div class="prompt"><span class="gk gk-g">Goal:</span>poles laporan governance Q3 ini agar terbaca seperti board paper Task Force, bukan draft kerja.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Laporan ini akan dibawa ke rapat pimpinan Bureau hari Jumat. Isinya temuan supervisi pengadaan di tiga provinsi untuk Q3. Dari analisis Latihan 3 saya: 12 kontrak berada di tier Critical, 31 kontrak di tier Elevated, tersebar di 7 K/L, dengan total nilai berisiko sekitar IDR 18,4 miliar.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Laporan ini akan dibawa ke rapat pimpinan Bureau hari Jumat. Isinya temuan supervisi pengadaan di tiga provinsi untuk Q3. Dari analisis Latihan 3 saya: 12 kontrak berada di tier Critical, 31 kontrak di tier Elevated, tersebar di 7 K/L, dengan total nilai berisiko sekitar IDR 18,4 miliar.
 
-Source: gunakan hanya konten yang sudah ada di dokumen Word ini, ditambah angka risiko yang saya berikan di atas.
+<span class="gk gk-s">Source:</span>gunakan hanya konten yang sudah ada di dokumen Word ini, ditambah angka risiko yang saya berikan di atas.
 
-Expectation:
-1. Tingkatkan kejernihan dan keterbacaan secara menyeluruh - perpendek frasa bertele-tele, hapus kalimat berulang, ganti jargon dengan bahasa lugas yang bisa diikuti oleh penasihat hukum tanpa latar belakang pengadaan.
+<span class="gk gk-e">Expectation:</span>1. Tingkatkan kejernihan dan keterbacaan secara menyeluruh - perpendek frasa bertele-tele, hapus kalimat berulang, ganti jargon dengan bahasa lugas yang bisa diikuti oleh penasihat hukum tanpa latar belakang pengadaan.
 2. Tulis ulang dengan gaya rumah Bureau yang profesional: suara orang ketiga netral, kata kerja aktif, tanpa frasa informal.
 3. Tambahkan ringkasan eksekutif dua halaman tepat setelah judul laporan, disusun dalam tiga paragraf: (a) temuan tunggal terpenting; (b) dua temuan penting berikutnya dengan angka risiko yang saya sampaikan di atas; (c) satu keputusan yang diminta dari rapat pimpinan Bureau.
 4. Tulis ulang setiap heading bagian sebagai action title yang menyatakan kesimpulan (misalnya, alih-alih "Findings", tulis "Tujuh K/L menunjukkan pola kontrak yang memerlukan eskalasi supervisi").
@@ -837,14 +836,13 @@ Rules: jangan menambahkan angka, nama K/L, atau nama vendor yang belum ada di do
 <div class="head"><span class="num">Tugas 5.2</span><span class="file">&#127775; Copilot in PowerPoint · deck dari file Word yang sudah dipoles</span></div>
 <h4>Generate deck secara otomatis, lalu jalankan pass kritik-dan-tulis-ulang</h4>
 <p class="lead">Buka PowerPoint. Di Copilot, pilih <b>"Create presentation from file"</b> dan arahkan ke <code>05 Contoso_Governance_Report_Draft.docx</code> versi polesan dari Tugas 5.1. Setelah deck jadi, jalankan prompt di bawah ini sebagai pass kritik-dan-tulis-ulang untuk menata dan memadatkannya.</p>
-<div class="prompt">Goal: ubah deck hasil generate otomatis ini menjadi briefing pack untuk Deputi Penindakan - ber-brand, maksimal delapan slide, satu pesan utama per slide.
+<div class="prompt"><span class="gk gk-g">Goal:</span>ubah deck hasil generate otomatis ini menjadi briefing pack untuk Deputi Penindakan - ber-brand, maksimal delapan slide, satu pesan utama per slide.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya akan presentasi di rapat pimpinan Bureau hari Jumat. Alokasi 20 menit, maksimal delapan slide. Audiensnya dua Deputi dan Sekretariat Bureau.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya akan presentasi di rapat pimpinan Bureau hari Jumat. Alokasi 20 menit, maksimal delapan slide. Audiensnya dua Deputi dan Sekretariat Bureau.
 
-Source: deck yang baru saja Anda generate dari 05 Contoso_Governance_Report_Draft.docx (versi polesan).
+<span class="gk gk-s">Source:</span>deck yang baru saja Anda generate dari 05 Contoso_Governance_Report_Draft.docx (versi polesan).
 
-Expectation:
-1. Tulis ulang setiap judul slide menjadi action title: nyatakan kesimpulannya, bukan topiknya. Jangan ada heading topik seperti "Findings" - ganti dengan "Tujuh K/L melampaui ambang anomali di Q3".
+<span class="gk gk-e">Expectation:</span>1. Tulis ulang setiap judul slide menjadi action title: nyatakan kesimpulannya, bukan topiknya. Jangan ada heading topik seperti "Findings" - ganti dengan "Tujuh K/L melampaui ambang anomali di Q3".
 2. Setiap body slide hanya boleh berisi satu pesan utama. Kalau ada slide dengan lebih dari satu poin utama, pecah menjadi dua slide.
 3. Terapkan skema warna: navy tua untuk heading dan pemisah bagian, emas institusional untuk callout dan angka kunci, serta teks abu-abu muted pada latar putih. Hindari warna merah menyala atau hijau menyala.
 4. Tambahkan speaker notes di setiap body slide - tiga bullet pendek yang bisa dibaca presenter dalam 30 detik.
@@ -858,14 +856,13 @@ Rules: jangan mengarang angka yang tidak ada di dokumen Word. Jangan mengubah na
 <div class="head"><span class="num">Tugas 5.3</span><span class="file">&#128202; Copilot in Excel · Edit · pertajam dashboard untuk slide data</span></div>
 <h4>Buat Governance Dashboard siap-screenshot untuk deck</h4>
 <p class="lead">Kembali ke <code>02 Contoso_Direct_Procurement_Q3.xlsx</code>. Pindah ke sheet Governance Dashboard yang dibangun di Latihan 3. Buka Copilot in Excel di mode Edit. Tempel prompt di bawah ini.</p>
-<div class="prompt">Goal: pertajam sheet Governance Dashboard agar siap di-screenshot untuk dilampirkan pada briefing pack pimpinan.
+<div class="prompt"><span class="gk gk-g">Goal:</span>pertajam sheet Governance Dashboard agar siap di-screenshot untuk dilampirkan pada briefing pack pimpinan.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Dashboard harus terlihat seperti bukti audit yang sudah jadi, bukan spreadsheet kerja.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Dashboard harus terlihat seperti bukti audit yang sudah jadi, bukan spreadsheet kerja.
 
-Source: sheet Governance Dashboard di 02 Contoso_Direct_Procurement_Q3.xlsx.
+<span class="gk gk-s">Source:</span>sheet Governance Dashboard di 02 Contoso_Direct_Procurement_Q3.xlsx.
 
-Expectation:
-1. Tambahkan baris KPI callout di bagian atas dashboard berisi empat sel berjejer: Total Contracts Reviewed, Total IDR Value (diformat dalam miliaran dengan satu desimal), Critical-Tier Count, Agencies with Critical Contracts. Format setiap sel dengan angka besar tebal di atas dan label pendek di bawahnya dengan font lebih kecil.
+<span class="gk gk-e">Expectation:</span>1. Tambahkan baris KPI callout di bagian atas dashboard berisi empat sel berjejer: Total Contracts Reviewed, Total IDR Value (diformat dalam miliaran dengan satu desimal), Critical-Tier Count, Agencies with Critical Contracts. Format setiap sel dengan angka besar tebal di atas dan label pendek di bawahnya dengan font lebih kecil.
 2. Format semua sel nilai IDR pada dashboard dalam satuan jutaan dengan pemisah ribuan (misalnya, "18.400" merepresentasikan 18,4 miliar IDR). Tambahkan label "(IDR jutaan)" pada setiap header kolom yang berisi nilai moneter.
 3. Tambahkan text box di bagian bawah dashboard dengan teks: "Sumber: 02 Contoso_Direct_Procurement_Q3.xlsx - sheet Contracts. Risk scoring oleh Copilot in Excel. Tanggal review: [tanggal hari ini]. Untuk penggunaan internal Task Force."
 
@@ -876,16 +873,14 @@ Rules: jangan menghapus data, chart, atau slicer yang sudah ada. Cukup tambahkan
 <div class="head"><span class="num">Tugas 5.4</span><span class="file">&#128260; Cowork · satu prompt untuk seluruh briefing pack</span></div>
 <h4>Alternatif Cowork: Tugas 5.1 + 5.2 + 5.3 dalam satu prompt</h4>
 <p class="lead">Ini menghasilkan tiga artefak yang sama (laporan Word yang dipoles, deck PowerPoint, dashboard Excel yang dipertajam) dalam satu sesi Cowork. Jalankan setelah melihat jalur manual di Tugas 5.1 sampai 5.3 supaya bisa membandingkan trade-off-nya.</p>
-<div class="prompt">Goal: hasilkan briefing pack supervisi Q3 secara lengkap dalam satu run - laporan Word yang sudah dipoles, deck PowerPoint yang sudah ber-brand, dan dashboard Excel yang sudah dipertajam.
+<div class="prompt"><span class="gk gk-g">Goal:</span>hasilkan briefing pack supervisi Q3 secara lengkap dalam satu run - laporan Word yang sudah dipoles, deck PowerPoint yang sudah ber-brand, dan dashboard Excel yang sudah dipertajam.
 
-Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya sedang menyiapkan rapat pimpinan Bureau hari Jumat. Dari analisis Latihan 3 saya: 12 kontrak tier Critical, 31 kontrak tier Elevated, 7 K/L yang ditandai, total nilai berisiko sekitar IDR 18,4 miliar.
+<span class="gk gk-c">Context:</span>saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya sedang menyiapkan rapat pimpinan Bureau hari Jumat. Dari analisis Latihan 3 saya: 12 kontrak tier Critical, 31 kontrak tier Elevated, 7 K/L yang ditandai, total nilai berisiko sekitar IDR 18,4 miliar.
 
-Source:
-- Word: 05 Contoso_Governance_Report_Draft.docx (draft kerja yang akan dipoles, di OneDrive saya).
+<span class="gk gk-s">Source:</span>- Word: 05 Contoso_Governance_Report_Draft.docx (draft kerja yang akan dipoles, di OneDrive saya).
 - Excel: 02 Contoso_Direct_Procurement_Q3.xlsx, sheet Governance Dashboard (dibangun di Latihan 3, di OneDrive saya).
 
-Expectation:
-1. Poles laporan Word: perbaiki kejernihan dan keterbacaan, tulis ulang sesuai gaya rumah Bureau, tambahkan ringkasan eksekutif dua halaman yang merujuk pada angka risiko di atas, tulis ulang heading sebagai action title. Simpan versi polesan dengan nama "05 Contoso_Governance_Report_Polished.docx" di folder OneDrive yang sama.
+<span class="gk gk-e">Expectation:</span>1. Poles laporan Word: perbaiki kejernihan dan keterbacaan, tulis ulang sesuai gaya rumah Bureau, tambahkan ringkasan eksekutif dua halaman yang merujuk pada angka risiko di atas, tulis ulang heading sebagai action title. Simpan versi polesan dengan nama "05 Contoso_Governance_Report_Polished.docx" di folder OneDrive yang sama.
 2. Buat deck PowerPoint dari file Word yang sudah dipoles memakai Create presentation from file. Terapkan heading navy tua, aksen emas institusional, maksimal delapan slide. Tulis ulang semua judul slide sebagai action title. Tambahkan speaker notes tiga bullet di setiap body slide. Simpan sebagai "05 Contoso_Governance_Deck.pptx" di folder OneDrive yang sama.
 3. Pertajam Governance Dashboard di file Excel: tambahkan baris KPI callout di atas berisi empat angka, format nilai IDR dalam jutaan dengan pemisah ribuan, tambahkan text box sumber di bawah.
 
@@ -1056,21 +1051,21 @@ Tipografi: sans-serif elegan, white space lega, emas dipakai secukupnya untuk me
 </div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b1"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b1ca24dd')">&times;</button><h3>B1 · Kartu tips prompt (Goal, Context, Source, Expectation)</h3>
 <p class="lead">Framework G-C-S-E yang dipakai di semua prompt utama dalam imersi ini. Salin ke prompt apa pun yang Anda tulis.</p>
-<div class="prompt">Goal: [satu kalimat, apa yang Anda inginkan sebagai jawaban]
+<div class="prompt"><span class="gk gk-g">Goal:</span>[satu kalimat, apa yang Anda inginkan sebagai jawaban]
 
-Context: [siapa Anda, keputusan apa yang akan didukung, siapa audiens yang akan membaca output]
+<span class="gk gk-c">Context:</span>[siapa Anda, keputusan apa yang akan didukung, siapa audiens yang akan membaca output]
 
-Source: [sebutkan file, folder, URL, atau channel Teams spesifik yang boleh dibaca Copilot; tidak ada yang lain]
+<span class="gk gk-s">Source:</span>[sebutkan file, folder, URL, atau channel Teams spesifik yang boleh dibaca Copilot; tidak ada yang lain]
 
-Expectation: [bentuk output: kolom tabel, urutan bagian, batas panjang, nada, aturan jangan-mengarang]
+<span class="gk gk-e">Expectation:</span>[bentuk output: kolom tabel, urutan bagian, batas panjang, nada, aturan jangan-mengarang]
 
 Aturan penutup opsional: tanpa spekulasi, kutip sumber, tandai "tidak disebut" saat satu field kosong, STOP sebelum mengirim apa pun.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b2"><div class="modal"><button class="modal-close" onclick="closeModal('kx-ccddd213')">&times;</button><h3>B2 · Copilot in Outlook · kejar thread email panjang</h3>
 <div class="prompt">Di Outlook, buka thread email belum dibaca yang paling panjang di inbox. Klik ikon Copilot di bagian atas reading pane, pilih "Summarise". Kemudian ketik:
 
-Goal: berikan saya tiga hal yang perlu saya ketahui dari thread ini dan satu draft balasan.
+<span class="gk gk-g">Goal:</span>berikan saya tiga hal yang perlu saya ketahui dari thread ini dan satu draft balasan.
 
-Expectation: tiga bullet, satu draft balasan maksimal empat kalimat dalam nada Bureau yang netral.<button class="copy" onclick="cp(this)">Copy</button></div>
+<span class="gk gk-e">Expectation:</span>tiga bullet, satu draft balasan maksimal empat kalimat dalam nada Bureau yang netral.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b3"><div class="modal"><button class="modal-close" onclick="closeModal('kx-f1cf91dd')">&times;</button><h3>B3 · Copilot in Outlook · susun balasan eksekutif</h3>
 <div class="prompt">Di Outlook, buka email dari Deputi yang menunggu balasan. Klik ikon Copilot di ribbon jendela balasan, lalu "Draft with Copilot".
 
@@ -1080,9 +1075,9 @@ Susun balasan dari Kepala Task Force Koordinasi dan Supervisi kepada Deputi Penc
 <div class="prompt">Buka laporan governance panjang di Word (misalnya 05 Contoso_Governance_Report_Draft.docx versi polesan). Klik Copilot, lalu Ask Copilot.
 
 Prompt:
-Goal: bantu saya menginterogasi laporan ini sebelum saya presentasikan.
+<span class="gk gk-g">Goal:</span>bantu saya menginterogasi laporan ini sebelum saya presentasikan.
 
-Expectation: jawab kelima pertanyaan berikut hanya menggunakan isi dokumen, sambil menyebutkan nama bagiannya:
+<span class="gk gk-e">Expectation:</span>jawab kelima pertanyaan berikut hanya menggunakan isi dokumen, sambil menyebutkan nama bagiannya:
 1. Apa temuan tunggal yang paling penting?
 2. Klaim mana dalam laporan yang paling lemah dari sisi bukti?
 3. Apakah ada angka yang muncul di dua tempat dengan nilai yang berbeda?
@@ -1091,11 +1086,11 @@ Expectation: jawab kelima pertanyaan berikut hanya menggunakan isi dokumen, samb
 </div></div><div class="modal-overlay" id="modal-kx-new-b5"><div class="modal"><button class="modal-close" onclick="closeModal('kx-084db287')">&times;</button><h3>B5 · Copilot Chat · fact check singkat sebelum kirim</h3>
 <div class="prompt">Sebelum Anda mengirim memo apa pun, tempel paragraf atau tabel yang akan dikirim ke Copilot Chat dan ajukan:
 
-Goal: fact-check paragraf ini terhadap file sumber yang tercantum di bawah.
+<span class="gk gk-g">Goal:</span>fact-check paragraf ini terhadap file sumber yang tercantum di bawah.
 
-Source: [tempel nama file atau URL tempat paragraf ini di-ground]
+<span class="gk gk-s">Source:</span>[tempel nama file atau URL tempat paragraf ini di-ground]
 
-Expectation: untuk setiap klaim angka, kutip kalimat di sumber yang mendasarinya. Untuk klaim apa pun yang tidak bisa diverifikasi dari sumber, tandai "tidak bisa diverifikasi, hapus atau tambahkan sumber". Berikan satu putusan akhir "cleared" atau "revise".
+<span class="gk gk-e">Expectation:</span>untuk setiap klaim angka, kutip kalimat di sumber yang mendasarinya. Untuk klaim apa pun yang tidak bisa diverifikasi dari sumber, tandai "tidak bisa diverifikasi, hapus atau tambahkan sumber". Berikan satu putusan akhir "cleared" atau "revise".
 
 Rules: hanya pakai sumber yang tercantum. Jangan pakai pengetahuan umum.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div>
@@ -1130,7 +1125,9 @@ function togglePw(){
  i.focus();
 }
 function cp(btn){
- const txt=btn.parentElement.textContent.replace(/Copy$/,'').replace(/Copied!$/,'').trim();
+ const clone=btn.parentElement.cloneNode(true);
+ clone.querySelectorAll('.gk, button').forEach(el=>el.remove());
+ const txt=clone.textContent.split('\n').map(l=>l.replace(/^\s+/,'')).join('\n').replace(/\n{3,}/g,'\n\n').trim();
  navigator.clipboard.writeText(txt).then(()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);});
 }
 </script>

@@ -9,7 +9,7 @@
 <meta content="0" http-equiv="Expires"/>
 <title>Contoso Integrity Bureau · M365 Copilot Task Force Immersion</title>
 <style>
-:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A}
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A;--gcse-g:#0B2A4A;--gcse-c:#123458;--gcse-s:#C89B3C;--gcse-e:#6B7280}
 @media(prefers-color-scheme:dark){:root{--bg:#0B2A4A;--panel:#0F3358;--panel2:#0A2340;--ink:#e2e8f0;--muted:#94a3b8;--border:#1E4472;--sidebar-a:#0B2A4A;--sidebar-b:#082041;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#123458;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
 @media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#0B2A4A;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
 *{box-sizing:border-box}
@@ -50,6 +50,11 @@ ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
 .task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
 .task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
 .prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
+.gk{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10.5px;font-weight:700;letter-spacing:.6px;margin-right:6px;font-family:"Inter","Segoe UI",system-ui,sans-serif;vertical-align:1px;text-transform:uppercase;user-select:none;-webkit-user-select:none}
+.gk-g{background:var(--gcse-g);color:#fff}
+.gk-c{background:var(--gcse-c);color:#fff}
+.gk-s{background:var(--gcse-s);color:#0B2A4A}
+.gk-e{background:var(--gcse-e);color:#fff}
 .prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
 .prompt .copy:hover{background:var(--brand);color:#fff}.prompt .copy.copied{background:var(--good);color:#0a0f24}
 .callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
@@ -538,13 +543,13 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 <div class="head"><span class="num">Task 1.1</span><span class="file">&#128172; Copilot Chat &#183; five-minute morning scan</span></div>
 <h4>Fast morning brief - five minutes, no citations</h4>
 <p class="lead">Open Microsoft 365 Copilot Chat at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>. Paste the prompt below. This is the fast variant: Copilot Chat will scan your inbox, calendar, and Teams messages and return a plain three-section brief in under two minutes.</p>
-<div class="prompt">Goal: give me a five-minute morning brief covering everything I need to know before I start work today.
+<div class="prompt"><span class="gk gk-g">Goal:</span>give me a five-minute morning brief covering everything I need to know before I start work today.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. My two functions are Enforcement (tracking corruption case progress via SPDP and OSINT news) and Prevention (evaluating procurement anomalies at provincial and regency agencies). I need a fast scan, not a deep analysis.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. My two functions are Enforcement (tracking corruption case progress via SPDP and OSINT news) and Prevention (evaluating procurement anomalies at provincial and regency agencies). I need a fast scan, not a deep analysis.
 
-Source: my Outlook inbox (unread emails since yesterday 5 pm), my calendar for today, my Teams messages from the last 24 hours.
+<span class="gk gk-s">Source:</span>my Outlook inbox (unread emails since yesterday 5 pm), my calendar for today, my Teams messages from the last 24 hours.
 
-Expectation: three short sections, each under five bullet points:
+<span class="gk gk-e">Expectation:</span>three short sections, each under five bullet points:
 1. Overnight developments - any new SPDP filing notifications received by email, any corruption news that mentions cases my Task Force is tracking, or urgent messages from direct reports.
 2. Today's calendar - meetings today in chronological order, each with a one-line topic and what I need to bring or decide.
 3. Pending decisions - anything I said I would decide or respond to yesterday that is still open.
@@ -557,11 +562,11 @@ Rules: no citations needed. This is a fast scan. Use plain language. If nothing 
 <div class="head"><span class="num">Task 1.2</span><span class="file">&#128269; Researcher &#183; fifteen-minute audit-grade brief</span></div>
 <h4>Structured daily briefing - cited, deeper, suitable for filing</h4>
 <p class="lead">Open Microsoft 365 Copilot at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> and click <b>Researcher</b>. Keep the model picker on <b>Auto</b>. Paste the prompt below. Researcher will read your inbox, Teams channels, calendar, and recent files, then hand you a single structured briefing with citations you can save as a working paper.</p>
-<div class="prompt">Goal: produce a structured daily briefing for the Coordination and Supervision Task Force Head, suitable for filing as an official working paper.
+<div class="prompt"><span class="gk gk-g">Goal:</span>produce a structured daily briefing for the Coordination and Supervision Task Force Head, suitable for filing as an official working paper.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. The briefing covers two functions: Enforcement (SPDP case tracking and OSINT news) and Prevention (procurement anomaly oversight). This brief will be saved to my OneDrive as the reference document for today's work.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. The briefing covers two functions: Enforcement (SPDP case tracking and OSINT news) and Prevention (procurement anomaly oversight). This brief will be saved to my OneDrive as the reference document for today's work.
 
-Source: my Outlook inbox (last 24 hours), my Teams channels "Task Force - Daily OSINT" and "Task Force - Coordination", my calendar for today and tomorrow, and any open documents or chat threads I have not yet responded to.
+<span class="gk gk-s">Source:</span>my Outlook inbox (last 24 hours), my Teams channels "Task Force - Daily OSINT" and "Task Force - Coordination", my calendar for today and tomorrow, and any open documents or chat threads I have not yet responded to.
 
 Expectation - four sections with citations:
 1. Enforcement update - new SPDP filing notifications received by email or Teams since yesterday, any corruption news that directly names a case in my Task Force portfolio, and the name and stage of each. Cite the email subject line or message thread for each item.
@@ -589,13 +594,13 @@ Rules: cite source for every item (email subject line, Teams thread name, or doc
 <p class="lead">Open Microsoft 365 Copilot at <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>, click <b>Researcher</b>, and paste the G-C-S-E prompt below. The sample URL is the Antara News article about the Jember bansos case. Run the initial prompt first, then run the refinement prompt to add Stage, Confidence, and Source URL.</p>
 
 <div class="task-step"><div class="step-label">Step 1 of 2 &#183; Initial extraction (Bahasa Indonesia columns)</div></div>
-<div class="prompt">Goal: extract the corruption case facts from the news article at the URL below and return them as a structured table row I can paste into my SPDP case register.
+<div class="prompt"><span class="gk gk-g">Goal:</span>extract the corruption case facts from the news article at the URL below and return them as a structured table row I can paste into my SPDP case register.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I sweep Indonesian news sources daily for corruption cases that may not yet appear in SPDP Online. I need clean, structured data to add to the register.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I sweep Indonesian news sources daily for corruption cases that may not yet appear in SPDP Online. I need clean, structured data to add to the register.
 
-Source: https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+<span class="gk gk-s">Source:</span>https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
 
-Expectation: return a Markdown table with one data row and these five columns in order:
+<span class="gk gk-e">Expectation:</span>return a Markdown table with one data row and these five columns in order:
 - Nama Perkara (short descriptive case name in Indonesian)
 - Periode Perkara (year or year range as stated in the article)
 - Tersangka / Terdakwa (suspect or defendant names, comma-separated, as reported)
@@ -624,12 +629,11 @@ Keep all five original columns. Maintain the rule: if a field is not explicitly 
 <h4>Batch sweep - read the RSS feed, update the register, draft communications</h4>
 <p class="lead"><b>Cowork is on-demand.</b> Pak Bambang re-runs this prompt each morning. The prompt reads the Outlook RSS folder "OSINT - Google News", extracts SPDP-style fields from each article, deduplicates against <code>03 Contoso_SPDP_Case_Register.xlsx</code>, appends new rows, and drafts a Teams post and a distribution email. It stops before sending anything.</p>
 <p class="lead" style="margin-top:8px">The Google News RSS URL pattern the Task Force already uses:<br/><code style="font-size:12px;word-break:break-all">https://news.google.com/rss/search?q=korupsi+OR+tipikor+OR+%22kerugian+negara%22+OR+%22OTT+KPK%22+OR+%22dugaan+korupsi%22+OR+%22tersangka+korupsi%22+OR+SPDP&amp;hl=id&amp;gl=ID&amp;ceid=ID:id</code></p>
-<div class="prompt">Goal: sweep this morning's Google News corruption alerts, extract SPDP-style fields from each article, update the case register with new rows, and prepare communications for my review.
+<div class="prompt"><span class="gk gk-g">Goal:</span>sweep this morning's Google News corruption alerts, extract SPDP-style fields from each article, update the case register with new rows, and prepare communications for my review.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I subscribe to Google News alerts via Outlook RSS for Indonesian corruption keywords (korupsi, OTT KPK, kerugian negara, dugaan korupsi, SPDP). New alert emails arrive overnight. I run this sweep each morning before my first meeting.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I subscribe to Google News alerts via Outlook RSS for Indonesian corruption keywords (korupsi, OTT KPK, kerugian negara, dugaan korupsi, SPDP). New alert emails arrive overnight. I run this sweep each morning before my first meeting.
 
-Source:
-- Outlook: RSS folder "OSINT - Google News", emails received in the last 24 hours only.
+<span class="gk gk-s">Source:</span>- Outlook: RSS folder "OSINT - Google News", emails received in the last 24 hours only.
 - Excel: 03 Contoso_SPDP_Case_Register.xlsx on my OneDrive, sheet "Cases", existing rows.
 - Teams: channel "Task Force - Daily OSINT" in the Task Force team.
 
@@ -650,19 +654,18 @@ Closing line: once I approve, this run replaces roughly 45 minutes of my morning
 <div class="head"><span class="num">Task 2.2 alt</span><span class="file">&#128260; Cowork &#183; Variant B: pasted URL list (demo-friendly)</span></div>
 <h4>Batch sweep - paste five URLs directly (simpler for live demos)</h4>
 <p class="lead">For demos where the RSS folder is not set up, paste the five URLs from <code>04 Contoso_Sample_News_URLs.md</code> directly into the prompt. The same deduplication and communications logic applies.</p>
-<div class="prompt">Goal: extract SPDP-style case data from the five article URLs below, deduplicate against my existing case register, and prepare a consolidated summary with communications drafts.
+<div class="prompt"><span class="gk gk-g">Goal:</span>extract SPDP-style case data from the five article URLs below, deduplicate against my existing case register, and prepare a consolidated summary with communications drafts.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I am running a manual OSINT sweep using a set of news URLs from my sample file.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force at Contoso Integrity Bureau. I am running a manual OSINT sweep using a set of news URLs from my sample file.
 
-Source:
-1. https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+<span class="gk gk-s">Source:</span>1. https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
 2. [paste URL 2 from 04 Contoso_Sample_News_URLs.md]
 3. [paste URL 3]
 4. [paste URL 4]
 5. [paste URL 5]
 Also: 03 Contoso_SPDP_Case_Register.xlsx (my OneDrive), sheet "Cases", existing rows.
 
-Expectation: follow the same five steps as Variant A (extract, deduplicate, prepare rows, draft Teams message, draft email). Deduplication rule: same suspect names plus overlapping case period equals an existing case - do not append a new row; update the Notes column instead.
+<span class="gk gk-e">Expectation:</span>follow the same five steps as Variant A (extract, deduplicate, prepare rows, draft Teams message, draft email). Deduplication rule: same suspect names plus overlapping case period equals an existing case - do not append a new row; update the Notes column instead.
 
 STOP before sending any message or email. Show me all drafts and the proposed new rows first. I will review and click send myself once I have verified the new SPDP rows.
 
@@ -706,14 +709,13 @@ Closing line: once I approve, this run replaces roughly 45 minutes of my morning
 <div class="head"><span class="num">Task 3.2</span><span class="file">&#128202; Copilot in Excel &#183; Edit mode &#183; build the risk layer and dashboard</span></div>
 <h4>Add Risk_Score column and build the Governance Dashboard</h4>
 <p class="lead">Switch the Copilot pane to <b>Edit</b> mode. Paste the prompt below. This is a single Edit prompt that adds the risk-scoring layer and creates the Governance Dashboard sheet. It may take up to two minutes to complete.</p>
-<div class="prompt">Goal: add a risk-scoring layer and build a Governance Dashboard sheet for the Q3 procurement audit.
+<div class="prompt"><span class="gk gk-g">Goal:</span>add a risk-scoring layer and build a Governance Dashboard sheet for the Q3 procurement audit.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. This file contains 180 direct-procurement contracts. The direct-award threshold under Indonesian rules is 200 million IDR. Contracts split just below that threshold by the same vendor at the same agency are a classic red flag.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. This file contains 180 direct-procurement contracts. The direct-award threshold under Indonesian rules is 200 million IDR. Contracts split just below that threshold by the same vendor at the same agency are a classic red flag.
 
-Source: the Contracts table in this workbook. Columns: Contract ID, Procurement Year, Agency, Procurement Package Name, Vendor Name, Vendor Address, Vendor NPWP, Contract Value IDR, Award Date, Procurement Method, Contract Start, Contract End, Notes.
+<span class="gk gk-s">Source:</span>the Contracts table in this workbook. Columns: Contract ID, Procurement Year, Agency, Procurement Package Name, Vendor Name, Vendor Address, Vendor NPWP, Contract Value IDR, Award Date, Procurement Method, Contract Start, Contract End, Notes.
 
-Expectation:
-1. Add a Risk_Score column equal to the sum of these six signal columns (each returns 1 or 0):
+<span class="gk gk-e">Expectation:</span>1. Add a Risk_Score column equal to the sum of these six signal columns (each returns 1 or 0):
    - Split_Contract_Flag: 1 if the same Vendor Name and Agency combination has 3 or more contracts each under 200,000,000 IDR within any rolling 30-day window by Award Date.
    - Vendor_Concentration_Flag: 1 if the vendor's total IDR value at that agency for Q3 exceeds 60 percent of that agency's total Q3 spend.
    - Price_Outlier_Flag: 1 if Contract Value IDR for a given Procurement Package Name is more than 2 times the median value for the same package name across all agencies.
@@ -753,12 +755,11 @@ Rules: add columns to the right of the existing table. Do not delete any rows. K
 <div class="head"><span class="num">Task 4.1</span><span class="file">👥 Teams Copilot · post-meeting recap · generic</span></div>
 <h4>Ask Teams Copilot for a structured recap of any meeting</h4>
 <p class="lead">Open the Teams meeting chat (or Chat with Copilot from the meeting recap panel). Paste the prompt below. Works for any meeting where transcription was on.</p>
-<div class="prompt">Goal: give me a structured recap of the meeting that just ended.
+<div class="prompt"><span class="gk gk-g">Goal:</span>give me a structured recap of the meeting that just ended.
 
-Context: I need clear action items, decisions, risks, and per-attendee commitments so nothing slips through the week. Format the recap so it can be pasted into an email or a Word document without further editing.
+<span class="gk gk-c">Context:</span>I need clear action items, decisions, risks, and per-attendee commitments so nothing slips through the week. Format the recap so it can be pasted into an email or a Word document without further editing.
 
-Expectation:
-1. One-paragraph overall summary in three sentences or fewer.
+<span class="gk gk-e">Expectation:</span>1. One-paragraph overall summary in three sentences or fewer.
 2. Decisions table with columns: Decision, Who owns follow-through, Confirmed by (person or group).
 3. Action items table with columns: Action, Owner, Due date, Priority (High, Medium, Low), Status (default to Open).
 4. Risks and blockers: bullet list, each with a one-line mitigation suggestion.
@@ -772,13 +773,13 @@ Rules: cite only things actually said in the meeting. If an owner or due date wa
 <div class="head"><span class="num">Task 4.2</span><span class="file">📝 Word Copilot · formal minutes from transcript · generic</span></div>
 <h4>Draft formal minutes from any meeting transcript</h4>
 <p class="lead">Open a blank Word document. Click the Copilot icon, then Draft with Copilot. Reference the transcript file with <code>/</code> (paste the transcript, or link the recording's transcript file from OneDrive). Paste the prompt below.</p>
-<div class="prompt">Goal: draft formal meeting minutes from the attached transcript, in a clean corporate house style suitable for wide distribution.
+<div class="prompt"><span class="gk gk-g">Goal:</span>draft formal meeting minutes from the attached transcript, in a clean corporate house style suitable for wide distribution.
 
-Context: the minutes will go to the meeting chair, all attendees, and any named recipient on the distribution list. Readers will not have attended the meeting, so the minutes must stand on their own.
+<span class="gk gk-c">Context:</span>the minutes will go to the meeting chair, all attendees, and any named recipient on the distribution list. Readers will not have attended the meeting, so the minutes must stand on their own.
 
-Source: use the attached transcript as the sole factual basis. Do not add outside information.
+<span class="gk gk-s">Source:</span>use the attached transcript as the sole factual basis. Do not add outside information.
 
-Expectation: produce a Word document with these numbered sections in order:
+<span class="gk gk-e">Expectation:</span>produce a Word document with these numbered sections in order:
 1. Header block: meeting title, date, time (start and end), location or platform, chair, minute taker, attendees (name and role if stated), apologies.
 2. Agenda summary: three to seven bullets, phrased as topics or noun phrases, not verbs.
 3. Discussion notes: one subsection per agenda item, three to six sentences each, past tense, neutral third-person voice. No verbatim quotes unless the speaker asked for their exact words to be recorded.
@@ -793,12 +794,11 @@ Rules: use only content from the transcript. Neutral tone. No opinions. Do not a
 <div class="activity">
 <div class="head"><span class="num">Task 4.3</span><span class="file">📝 Word Copilot · polish · two-page ceiling · generic</span></div>
 <h4>Tighten any draft minutes to two pages with an executive summary</h4>
-<div class="prompt">Goal: polish this draft of the meeting minutes for clarity and length, then add an executive summary paragraph at the top.
+<div class="prompt"><span class="gk gk-g">Goal:</span>polish this draft of the meeting minutes for clarity and length, then add an executive summary paragraph at the top.
 
-Context: busy readers scan only the first page of any minutes. If the essentials are not on page one, the follow-up is missed.
+<span class="gk gk-c">Context:</span>busy readers scan only the first page of any minutes. If the essentials are not on page one, the follow-up is missed.
 
-Expectation:
-- Improve sentence clarity, reduce jargon, and shorten wordy phrases without changing meaning.
+<span class="gk gk-e">Expectation:</span>- Improve sentence clarity, reduce jargon, and shorten wordy phrases without changing meaning.
 - Enforce a two-page ceiling. If the draft is longer, trim the discussion notes first (never the decisions box or the action register).
 - Add a three-sentence Executive Summary at the top, immediately after the header block, that names the single most important decision, the single most urgent action, and the single biggest risk raised.
 - Preserve the numbered section structure, the decisions box, and the action register verbatim from the source draft.
@@ -817,14 +817,13 @@ Rules: do not add facts not in the draft. Do not change any owner name or due da
 <div class="head"><span class="num">Task 5.1</span><span class="file">&#128221; Word Copilot &#183; polish the governance report</span></div>
 <h4>Turn the Q3 draft into a board-ready governance report</h4>
 <p class="lead">Open <code>05 Contoso_Governance_Report_Draft.docx</code> in Word. Click the Copilot icon, then Draft with Copilot or Rewrite. Paste the prompt below. <b>Note:</b> you must type the risk numbers from Exercise 3 into the prompt text - Word Copilot cannot read the Excel file directly.</p>
-<div class="prompt">Goal: polish this Q3 governance report so it reads like a Task Force board paper, not a working draft.
+<div class="prompt"><span class="gk gk-g">Goal:</span>polish this Q3 governance report so it reads like a Task Force board paper, not a working draft.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. This report goes to the Bureau leadership meeting on Friday. It covers procurement supervision findings across three provinces for Q3. From my Exercise 3 analysis: 12 contracts are at Critical tier, 31 contracts are at Elevated tier, across 7 agencies, with a combined value at risk of approximately IDR 18.4 billion.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. This report goes to the Bureau leadership meeting on Friday. It covers procurement supervision findings across three provinces for Q3. From my Exercise 3 analysis: 12 contracts are at Critical tier, 31 contracts are at Elevated tier, across 7 agencies, with a combined value at risk of approximately IDR 18.4 billion.
 
-Source: use only the content already in this Word document, plus the risk numbers I have provided above.
+<span class="gk gk-s">Source:</span>use only the content already in this Word document, plus the risk numbers I have provided above.
 
-Expectation:
-1. Improve clarity and readability throughout - shorten wordy phrases, remove redundant sentences, replace jargon with plain language that a legal advisor with no procurement background can follow.
+<span class="gk gk-e">Expectation:</span>1. Improve clarity and readability throughout - shorten wordy phrases, remove redundant sentences, replace jargon with plain language that a legal advisor with no procurement background can follow.
 2. Rewrite to a professional Bureau house style: neutral third-person voice, active verbs, no informal phrases.
 3. Add a two-page executive summary immediately after the report title, structured as three paragraphs: (a) the single most important finding; (b) the two next-most-important findings with the risk numbers I provided above; (c) the one decision the Bureau leadership meeting is being asked to make.
 4. Rewrite each section heading as an action title that states the conclusion (for example, instead of "Findings", write "Seven agencies show contract patterns requiring supervision escalation").
@@ -837,14 +836,13 @@ Rules: do not add any figures, agency names, or vendor names not already in the 
 <div class="head"><span class="num">Task 5.2</span><span class="file">&#127775; PowerPoint Copilot &#183; deck from the polished Word doc</span></div>
 <h4>Auto-generate the deck, then run a critique-and-rewrite pass</h4>
 <p class="lead">Open PowerPoint. In Copilot, choose <b>"Create presentation from file"</b> and point it at the polished <code>05 Contoso_Governance_Report_Draft.docx</code> from Task 5.1. After the deck is generated, run the prompt below as a critique-and-rewrite pass to style and tighten it.</p>
-<div class="prompt">Goal: turn this auto-generated deck into the Deputy for Enforcement briefing pack - branded, eight slides maximum, one clear message per slide.
+<div class="prompt"><span class="gk gk-g">Goal:</span>turn this auto-generated deck into the Deputy for Enforcement briefing pack - branded, eight slides maximum, one clear message per slide.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. I am presenting to the Bureau leadership meeting on Friday. Twenty minutes, eight slides maximum. Audience includes two Deputies and the Bureau Secretariat.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. I am presenting to the Bureau leadership meeting on Friday. Twenty minutes, eight slides maximum. Audience includes two Deputies and the Bureau Secretariat.
 
-Source: the deck you just generated from 05 Contoso_Governance_Report_Draft.docx (the polished version).
+<span class="gk gk-s">Source:</span>the deck you just generated from 05 Contoso_Governance_Report_Draft.docx (the polished version).
 
-Expectation:
-1. Rewrite every slide title into action-title format: state the conclusion, not the topic. No topic headings like "Findings" - replace with "Seven agencies exceed the anomaly threshold in Q3".
+<span class="gk gk-e">Expectation:</span>1. Rewrite every slide title into action-title format: state the conclusion, not the topic. No topic headings like "Findings" - replace with "Seven agencies exceed the anomaly threshold in Q3".
 2. Each body slide must have one key message only. If a slide has more than one main point, split it.
 3. Apply a colour scheme using deep navy blue for headings and section dividers, institutional gold as the accent colour for callouts and key numbers, and muted grey body text on white. Do not use bright reds or greens.
 4. Add speaker notes to each body slide - three short bullets that a presenter can read in 30 seconds.
@@ -858,14 +856,13 @@ Rules: do not invent numbers not in the Word document. Do not change any agency 
 <div class="head"><span class="num">Task 5.3</span><span class="file">&#128202; Excel Copilot &#183; Edit &#183; sharpen the dashboard for the data slide</span></div>
 <h4>Make the Governance Dashboard screenshot-ready for the deck</h4>
 <p class="lead">Go back to <code>02 Contoso_Direct_Procurement_Q3.xlsx</code>. Navigate to the Governance Dashboard sheet built in Exercise 3. Open Copilot in Excel in Edit mode. Paste the prompt below.</p>
-<div class="prompt">Goal: sharpen the Governance Dashboard sheet so it is screenshot-ready for inclusion in the leadership briefing pack.
+<div class="prompt"><span class="gk gk-g">Goal:</span>sharpen the Governance Dashboard sheet so it is screenshot-ready for inclusion in the leadership briefing pack.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. The dashboard needs to look like a finished audit exhibit, not a working spreadsheet.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. The dashboard needs to look like a finished audit exhibit, not a working spreadsheet.
 
-Source: the Governance Dashboard sheet in 02 Contoso_Direct_Procurement_Q3.xlsx.
+<span class="gk gk-s">Source:</span>the Governance Dashboard sheet in 02 Contoso_Direct_Procurement_Q3.xlsx.
 
-Expectation:
-1. Add a KPI callout row at the top of the dashboard with four cells in a row: Total Contracts Reviewed, Total IDR Value (formatted in billions with one decimal place), Critical-Tier Count, Agencies with Critical Contracts. Format each cell with a bold large number on top and a short label below in smaller font.
+<span class="gk gk-e">Expectation:</span>1. Add a KPI callout row at the top of the dashboard with four cells in a row: Total Contracts Reviewed, Total IDR Value (formatted in billions with one decimal place), Critical-Tier Count, Agencies with Critical Contracts. Format each cell with a bold large number on top and a short label below in smaller font.
 2. Format all IDR value cells in the dashboard as millions with thousand separators (for example, "18,400" represents 18.4 billion IDR). Add an "(IDR millions)" label to each column header that contains a monetary value.
 3. Add a text box at the bottom of the dashboard with this text: "Source: 02 Contoso_Direct_Procurement_Q3.xlsx - Contracts sheet. Risk scoring by Copilot in Excel. Review date: [today's date]. For Task Force internal use only."
 
@@ -876,16 +873,14 @@ Rules: do not delete any existing data, chart, or slicer. Only add the KPI row, 
 <div class="head"><span class="num">Task 5.4</span><span class="file">&#128260; Cowork &#183; one prompt for the whole briefing pack</span></div>
 <h4>The Cowork alternative: Tasks 5.1 + 5.2 + 5.3 in one prompt</h4>
 <p class="lead">This is the same three artefacts (polished Word report, PowerPoint deck, sharpened Excel dashboard) produced in one Cowork session. Run this after seeing the manual path in Tasks 5.1 to 5.3 so you can compare the tradeoff.</p>
-<div class="prompt">Goal: produce the complete Q3 supervision briefing pack in one run - a polished Word report, a brand-styled PowerPoint deck, and a sharpened Excel dashboard.
+<div class="prompt"><span class="gk gk-g">Goal:</span>produce the complete Q3 supervision briefing pack in one run - a polished Word report, a brand-styled PowerPoint deck, and a sharpened Excel dashboard.
 
-Context: I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. I am preparing for the Bureau leadership meeting on Friday. From my Exercise 3 analysis: 12 Critical-tier contracts, 31 Elevated-tier contracts, 7 flagged agencies, combined value at risk approximately IDR 18.4 billion.
+<span class="gk gk-c">Context:</span>I am Pak Bambang Kusumo, Head of the Coordination and Supervision Task Force. I am preparing for the Bureau leadership meeting on Friday. From my Exercise 3 analysis: 12 Critical-tier contracts, 31 Elevated-tier contracts, 7 flagged agencies, combined value at risk approximately IDR 18.4 billion.
 
-Source:
-- Word: 05 Contoso_Governance_Report_Draft.docx (working draft to be polished, on my OneDrive).
+<span class="gk gk-s">Source:</span>- Word: 05 Contoso_Governance_Report_Draft.docx (working draft to be polished, on my OneDrive).
 - Excel: 02 Contoso_Direct_Procurement_Q3.xlsx, Governance Dashboard sheet (built in Exercise 3, on my OneDrive).
 
-Expectation:
-1. Polish the Word report: improve clarity and readability, rewrite to Bureau house style, add a two-page executive summary referencing the risk numbers above, rewrite headings as action titles. Save the polished version as "05 Contoso_Governance_Report_Polished.docx" in the same OneDrive folder.
+<span class="gk gk-e">Expectation:</span>1. Polish the Word report: improve clarity and readability, rewrite to Bureau house style, add a two-page executive summary referencing the risk numbers above, rewrite headings as action titles. Save the polished version as "05 Contoso_Governance_Report_Polished.docx" in the same OneDrive folder.
 2. Create a PowerPoint deck from the polished Word file using Create presentation from file. Apply deep navy headings, institutional gold accents, maximum eight slides. Rewrite all slide titles as action titles. Add three-bullet speaker notes to each body slide. Save as "05 Contoso_Governance_Deck.pptx" in the same OneDrive folder.
 3. Sharpen the Governance Dashboard in the Excel file: add a KPI callout row at the top with four numbers, format IDR values in millions with thousand separators, add a source text box at the bottom.
 
@@ -1056,21 +1051,21 @@ Typography: elegant sans-serif, generous white space, gold used sparingly to cel
 </div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b1"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b1ca24dd')">&times;</button><h3>B1 · Prompt tips card (Goal, Context, Source, Expectation)</h3>
 <p class="lead">The G-C-S-E framework used across all major prompts in this immersion. Copy this into any prompt you write.</p>
-<div class="prompt">Goal: [one sentence, what you want back]
+<div class="prompt"><span class="gk gk-g">Goal:</span>[one sentence, what you want back]
 
-Context: [who you are, what decision this feeds, what audience will read the output]
+<span class="gk gk-c">Context:</span>[who you are, what decision this feeds, what audience will read the output]
 
-Source: [name the specific files, folders, URLs, or Teams channels Copilot should read; nothing else]
+<span class="gk gk-s">Source:</span>[name the specific files, folders, URLs, or Teams channels Copilot should read; nothing else]
 
-Expectation: [the shape of the output: table columns, section order, length ceiling, tone, do-not-invent rules]
+<span class="gk gk-e">Expectation:</span>[the shape of the output: table columns, section order, length ceiling, tone, do-not-invent rules]
 
 Optional closing rules: no speculation, cite sources, mark "not stated" when a field is silent, STOP before sending anything.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b2"><div class="modal"><button class="modal-close" onclick="closeModal('kx-ccddd213')">&times;</button><h3>B2 · Outlook Copilot · catch up on a long thread</h3>
 <div class="prompt">In Outlook, open the longest unread email thread in your inbox. Click the Copilot icon at the top of the reading pane, choose "Summarise". Then type:
 
-Goal: give me the three things I need to know from this thread and one draft reply.
+<span class="gk gk-g">Goal:</span>give me the three things I need to know from this thread and one draft reply.
 
-Expectation: three bullet points, one draft reply of no more than four sentences in a neutral Bureau tone.<button class="copy" onclick="cp(this)">Copy</button></div>
+<span class="gk gk-e">Expectation:</span>three bullet points, one draft reply of no more than four sentences in a neutral Bureau tone.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div><div class="modal-overlay" id="modal-kx-new-b3"><div class="modal"><button class="modal-close" onclick="closeModal('kx-f1cf91dd')">&times;</button><h3>B3 · Outlook Copilot · draft an executive reply</h3>
 <div class="prompt">In Outlook, open the email from the Deputy that needs a reply. Click the Copilot icon in the ribbon of the reply window, then "Draft with Copilot".
 
@@ -1080,9 +1075,9 @@ Draft a reply from the Head of the Coordination and Supervision Task Force to th
 <div class="prompt">Open a long governance report in Word (for example the polished 05 Contoso_Governance_Report_Draft.docx). Click Copilot, then Ask Copilot.
 
 Prompt:
-Goal: help me interrogate this report before I present it.
+<span class="gk gk-g">Goal:</span>help me interrogate this report before I present it.
 
-Expectation: answer these five questions using only the document, citing section names:
+<span class="gk gk-e">Expectation:</span>answer these five questions using only the document, citing section names:
 1. What is the single most important finding?
 2. Which claim in the report is the weakest on evidence?
 3. Are there any numbers that appear in two places with different values?
@@ -1091,11 +1086,11 @@ Expectation: answer these five questions using only the document, citing section
 </div></div><div class="modal-overlay" id="modal-kx-new-b5"><div class="modal"><button class="modal-close" onclick="closeModal('kx-084db287')">&times;</button><h3>B5 · Copilot Chat · quick fact check before you send</h3>
 <div class="prompt">Before you send any memo, paste the paragraph or table you plan to send into Copilot Chat and ask:
 
-Goal: fact-check this paragraph against the source files listed below.
+<span class="gk gk-g">Goal:</span>fact-check this paragraph against the source files listed below.
 
-Source: [paste the file names or URLs the paragraph is grounded on]
+<span class="gk gk-s">Source:</span>[paste the file names or URLs the paragraph is grounded on]
 
-Expectation: for each numeric claim, quote the sentence in the source that supports it. For any claim you cannot verify from the sources, mark it "unverifiable, remove or add a source". Return one final "cleared" or "revise" verdict.
+<span class="gk gk-e">Expectation:</span>for each numeric claim, quote the sentence in the source that supports it. For any claim you cannot verify from the sources, mark it "unverifiable, remove or add a source". Return one final "cleared" or "revise" verdict.
 
 Rules: only use the listed sources. Do not use general knowledge.<button class="copy" onclick="cp(this)">Copy</button></div>
 </div></div>
@@ -1130,7 +1125,9 @@ function togglePw(){
  i.focus();
 }
 function cp(btn){
- const txt=btn.parentElement.textContent.replace(/Copy$/,'').replace(/Copied!$/,'').trim();
+ const clone=btn.parentElement.cloneNode(true);
+ clone.querySelectorAll('.gk, button').forEach(el=>el.remove());
+ const txt=clone.textContent.split('\n').map(l=>l.replace(/^\s+/,'')).join('\n').replace(/\n{3,}/g,'\n\n').trim();
  navigator.clipboard.writeText(txt).then(()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);});
 }
 </script>
