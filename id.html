@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<title>Contoso Integrity Bureau · Imersi Task Force M365 Copilot</title>
+<style>
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#111827;--brand2:#0B2A4A}
+@media(prefers-color-scheme:dark){:root{--bg:#0B2A4A;--panel:#0F3358;--panel2:#0A2340;--ink:#e2e8f0;--muted:#94a3b8;--border:#1E4472;--sidebar-a:#0B2A4A;--sidebar-b:#082041;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#123458;--badge-bg:#0a0f24;--cp-info:#0e1c2c;--cp-warn:#2b220e;--cp-bad:#2b1414;--cp-good:#0e2418;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
+@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#1e3a5f;--sidebar-b:#0f2545;--accent:#2563eb;--accent2:#1d4ed8;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--cp-info:#eff6ff;--cp-warn:#fffbeb;--cp-bad:#fef2f2;--cp-good:#f0fdf4;--code:#1e2b55;--good:#16a34a;--warn:#0B2A4A;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;color:#e2e8f0}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand .logo{width:36px;height:36px;border-radius:9px;background:var(--brand);display:grid;place-items:center;font-weight:900;color:#fff;font-size:12px;letter-spacing:-.5px}
+.brand h1{font-size:15px;margin:0;letter-spacing:.2px;color:#fff}
+.tag{font-size:11px;color:#94a3b8;margin-bottom:18px}
+nav h3{font-size:10px;letter-spacing:1.2px;color:#94a3b8;text-transform:uppercase;margin:18px 0 8px}
+nav a{display:block;color:#e2e8f0;padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
+nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;border-color:rgba(255,255,255,.2);color:#fff}
+main{padding:28px 48px 80px;max-width:1400px}
+.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(0,48,135,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(0,100,200,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
+.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
+.hero p{color:var(--muted);margin:0;max-width:780px}
+.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
+.meta-row span b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}.card .lead{color:var(--muted);margin:0 0 14px}
+.card h4{margin:18px 0 6px;font-size:15px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
+.modulehead{display:flex;align-items:center;gap:14px;margin:32px 0 12px}
+.modulehead .num{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
+.modulehead h2{margin:0;font-size:22px}.modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--panel)}
+.activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
+.activity .time{color:var(--muted);font-size:12px}
+.activity .file{font-size:12px;color:var(--accent2);background:var(--badge-bg);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
+.activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
+.activity p{margin:6px 0;color:var(--muted);font-size:14px}
+.activity.bonus{border-left:4px solid var(--brand)}
+.task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
+.task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--brand);border-radius:10px;padding:14px 44px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
+.prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
+.prompt .copy:hover{background:var(--brand);color:#fff}.prompt .copy.copied{background:var(--good);color:#0a0f24}
+.callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
+.callout.warn{border-color:var(--warn);background:var(--callout-warn)}
+.callout.good{border-color:var(--good);background:var(--callout-good)}.callout b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--accent2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
+.agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
+.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:var(--panel)}
+.agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
+.agenda>div:nth-last-child(-n+3){border-bottom:0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.tool-card .icon{font-size:22px;margin-bottom:6px}
+.tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px}
+.badge.blue{background:rgba(0,100,200,.2);color:var(--accent2);border:1px solid var(--accent)}
+.badge.green{background:rgba(34,197,94,.15);color:var(--good);border:1px solid var(--good)}
+.badge.yellow{background:rgba(245,158,11,.15);color:var(--warn);border:1px solid var(--warn)}
+#lock{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(0,48,135,.5),transparent 60%),#0b1020;z-index:9999;display:flex;align-items:center;justify-content:center}
+.lock-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lock-box .blogo{width:56px;height:56px;border-radius:14px;background:var(--brand);display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff;margin:0 auto 18px}
+.lock-box h2{margin:0 0 6px;font-size:22px}.lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
+.pw-wrap{position:relative;margin-bottom:12px}
+.lock-box input{width:100%;background:var(--badge-bg);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 44px 12px 16px;outline:none;font-family:inherit;transition:border-color .2s}
+.lock-box input:focus{border-color:var(--brand)}
+.pw-toggle{position:absolute!important;right:12px;top:50%;transform:translateY(-50%);background:none!important;border:none!important;width:auto!important;padding:0!important;cursor:pointer;opacity:.7;color:var(--muted)}
+.pw-toggle:hover{background:none!important;opacity:1}
+.pw-toggle svg{width:18px;height:18px;fill:currentColor;display:block}
+.lock-box button{width:100%;background:var(--brand);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer}
+.lock-box .err{color:var(--danger);font-size:13px;margin-top:8px;min-height:18px}
+.lock-box .conf{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:900px){
+ .layout{grid-template-columns:1fr}
+ aside{display:none}
+ main{padding:16px 14px 60px;max-width:100%;min-width:0}
+ .hero{padding:20px 16px;border-radius:14px;background:var(--panel)}
+ .hero h2{font-size:20px;line-height:1.25}
+ .hero p{font-size:13.5px}
+ .hero .pill{font-size:10px}
+ .meta-row{gap:10px;font-size:12px}
+ .modulehead{gap:10px;margin:24px 0 10px}
+ .modulehead .num{width:38px;height:38px;font-size:15px;flex:0 0 auto}
+ .modulehead h2{font-size:17px}
+ .activity{padding:14px}
+ .activity .head{gap:8px}
+ .card{padding:16px;border-radius:12px}
+ .card h3{font-size:16px}
+ .card h4{font-size:13px}
+ .agenda{grid-template-columns:1fr}.agenda>div:nth-child(3n+3){text-align:left}
+ .tools-grid{grid-template-columns:1fr}
+ .prompt{font-size:12px;padding:42px 12px 12px;border-left-width:3px;overflow-wrap:anywhere;word-break:break-word}
+ .prompt .copy{top:6px;right:6px}
+ pre,code{overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap}
+ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .lock-box{padding:28px 22px;border-radius:16px;max-width:92%}
+ .lock-box h2{font-size:19px}
+ img,svg{max-width:100%;height:auto}
+ h1,h2,h3,h4{overflow-wrap:anywhere}
+}
+@media(max-width:480px){
+ main{padding:12px 10px 50px}
+ .hero{padding:16px 14px}
+ .hero h2{font-size:18px}
+ body{font-size:13.5px}
+ .modulehead h2{font-size:16px}
+}
+</style><style id="bcard-css">
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:14px}
+.bcard{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .18s;box-shadow:0 1px 3px rgba(0,0,0,.04);text-align:left;font-family:inherit;color:#111827;width:100%}
+.bcard:hover{transform:translateY(-2px);border-color:#0f766e;box-shadow:0 6px 18px rgba(15,118,110,.15)}
+.bcard .ico{font-size:22px;margin-bottom:6px;display:block}
+.bcard h4{margin:0 0 4px;font-size:15px;color:#111827;line-height:1.3}
+.bcard p{margin:0;font-size:12.5px;color:#4b5563;line-height:1.4}
+.modal-overlay{position:fixed;inset:0;background:rgba(8,12,28,.78);z-index:8000;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:14px;max-width:1100px;width:100%;padding:28px 32px;margin:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.modal-close{position:absolute;top:12px;right:16px;font-size:28px;background:transparent;border:none;cursor:pointer;color:#6b7280;line-height:1}
+.modal-close:hover{color:#111827}
+.modal h3{margin:0 0 12px;font-size:22px;color:#0f172a}
+</style><style id="ihh-override">
+/* ========== IHH-STYLE OVERRIDES ========== */
+.layout { grid-template-columns: 1fr !important; }
+aside { display:none !important; }
+main { max-width:100% !important; margin:0 !important; padding:0 !important; }
+
+/* Kill original hero + files inline (they now live inside tabs) */
+main > .modulehead,
+main > #files,
+main > #overview,
+main > #story { /* handled via wrapping */ }
+
+body.ihh-active { background:#f7fafa; }
+body.ihh-active .hero-ihh {
+  background:linear-gradient(135deg, #111827 0%, #374151 100%);
+  color:#fff; padding:36px 32px 60px; position:relative; overflow:hidden;
+  margin:0 0 0; border-radius:0;
+}
+body.ihh-active .hero-ihh::before {
+  content:''; position:absolute; right:-100px; top:-50px;
+  width:400px; height:400px; background:rgba(255,255,255,0.06); border-radius:50%;
+}
+body.ihh-active .hero-ihh::after {
+  content:''; position:absolute; right:80px; bottom:-80px;
+  width:200px; height:200px; background:rgba(255,255,255,0.04); border-radius:50%;
+}
+body.ihh-active .hero-ihh-inner {
+  max-width:1600px; margin:0 auto; position:relative; z-index:2;
+  padding:0 40px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+}
+body.ihh-active .hero-brand-ihh { display:flex; align-items:center; gap:18px; }
+body.ihh-active .hero-logo-ihh {
+  width:72px; height:72px; background:#fff; border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18); flex-shrink:0;
+  color:#111827; font-weight:900; font-size:26px; letter-spacing:-1px;
+}
+body.ihh-active .hero-brand-ihh h1 {
+  margin:0; font-size:13px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; opacity:0.85; color:#fff;
+}
+body.ihh-active .hero-brand-ihh h2 {
+  margin:0; font-size:26px; font-weight:700; color:#fff;
+}
+body.ihh-active .brand-rule-ihh {
+  width:1px; height:46px; background:rgba(255,255,255,0.25); margin:0 2px;
+}
+body.ihh-active .hero-meta-ihh { font-size:13px; opacity:0.9; text-align:right; }
+body.ihh-active .hero-meta-ihh .pill {
+  display:inline-block; padding:4px 12px; background:rgba(255,255,255,0.15);
+  border-radius:12px; margin-left:8px; font-weight:600;
+}
+body.ihh-active .lang-toggle {
+  display:inline-flex; align-items:center; gap:2px; padding:3px;
+  background:rgba(255,255,255,0.12); border-radius:14px; margin-bottom:8px;
+}
+body.ihh-active .lang-toggle a {
+  display:inline-block; padding:3px 12px; border-radius:11px;
+  font-size:12px; font-weight:700; letter-spacing:.5px;
+  color:#fff; text-decoration:none; opacity:0.7;
+}
+body.ihh-active .lang-toggle a:hover { opacity:1; }
+body.ihh-active .lang-toggle a.active {
+  background:#0B2A4A; color:#C89B3C; opacity:1;
+}
+body.ihh-active .hero-title-ihh {
+  max-width:1600px; margin:32px auto 0; position:relative; z-index:2;
+  padding:0 40px;
+}
+body.ihh-active .hero-title-ihh h3 { margin:0 0 10px; font-size:38px; font-weight:700; line-height:1.2; color:#fff; }
+body.ihh-active .hero-title-ihh p { margin:0; font-size:17px; opacity:0.92; max-width:800px; color:#fff; }
+
+/* Sticky tab bar */
+body.ihh-active nav.tabs-ihh {
+  background:#fff; border-bottom:1px solid #e5e7eb;
+  padding:0; position:sticky; top:0; z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+body.ihh-active nav.tabs-ihh::-webkit-scrollbar { display:none; }
+body.ihh-active nav.tabs-ihh .tabs-inner {
+  max-width:1600px; margin:0 auto; padding:0 40px;
+  display:flex; flex-wrap:wrap; gap:4px; border-bottom:2px solid #e5e7eb;
+}
+body.ihh-active nav.tabs-ihh .tab {
+  padding:14px 14px; background:transparent; border:none;
+  color:#5e7480; cursor:pointer; font-size:13px; font-weight:600;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+  display:flex; align-items:center; gap:8px; white-space:nowrap;
+  transition:all 0.2s; font-family:inherit;
+}
+body.ihh-active nav.tabs-ihh .tab:hover { color:#111827; background:#f9fafb; }
+body.ihh-active nav.tabs-ihh .tab.active {
+  color:#111827; border-bottom-color:#0B2A4A; background:#fff;
+}
+body.ihh-active nav.tabs-ihh .tab .tab-num {
+  min-width:24px; height:24px; padding:0 6px;
+  background:#e5e7eb; color:#111827;
+  border-radius:12px;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700;
+}
+body.ihh-active nav.tabs-ihh .tab.active .tab-num { background:#0B2A4A; color:#fff; }
+
+/* Main container after tabs */
+body.ihh-active .ihh-main { max-width:1600px; margin:0 auto; padding:32px 40px; }
+
+/* Widen modal popouts (was 780px in original) */
+body.ihh-active .modal { max-width:1200px !important; }
+body.ihh-active .modal-overlay { padding:40px 30px !important; }
+body.ihh-active .hero p { max-width:none !important; }
+
+/* Whitespace + typography polish */
+body.ihh-active .card { padding:22px 24px !important; margin:14px 0 !important; }
+body.ihh-active .card p, body.ihh-active .card li { font-size:15.5px !important; line-height:1.55 !important; }
+body.ihh-active .card h3 { font-size:20px !important; margin:2px 0 12px !important; }
+body.ihh-active .card h4 { font-size:16px !important; margin:8px 0 6px !important; }
+body.ihh-active .prompt { font-size:14.5px !important; line-height:1.5 !important; padding:16px 56px 16px 18px !important; }
+body.ihh-active .prompt .copy { top:8px !important; right:8px !important; z-index:2 !important; background:#374151 !important; color:#fff !important; border-color:transparent !important; padding:5px 12px !important; font-size:12px !important; font-weight:600 !important; }
+body.ihh-active .prompt .copy:hover { background:#111827 !important; }
+body.ihh-active .callout { padding:14px 18px !important; margin:8px 0 16px !important; font-size:15px !important; }
+body.ihh-active .activity { padding:14px 16px !important; margin:10px 0 !important; }
+body.ihh-active .activity .head { margin-bottom:6px !important; font-size:13px !important; }
+body.ihh-active .modulehead { padding:14px 18px !important; margin:0 0 12px !important; }
+body.ihh-active .modulehead h2 { font-size:22px !important; }
+body.ihh-active .modulehead h2 small { font-size:13px !important; }
+body.ihh-active .modulehead .num { width:44px !important; height:44px !important; font-size:20px !important; }
+
+/* Views */
+body.ihh-active .view-ihh { display:none; animation:fadeInIhh 0.4s ease; }
+body.ihh-active .view-ihh.active { display:block; }
+@keyframes fadeInIhh {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Prev/Next nav */
+body.ihh-active .lab-nav-ihh {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:32px; gap:16px;
+}
+body.ihh-active .lab-nav-ihh button {
+  background:#374151; color:#fff; border:none; padding:12px 20px;
+  border-radius:8px; cursor:pointer; font-size:14px; font-weight:600;
+  font-family:inherit; transition:background 0.2s;
+}
+body.ihh-active .lab-nav-ihh button:hover { background:#111827; }
+body.ihh-active .lab-nav-ihh button.secondary {
+  background:transparent; color:#5e7480; border:1px solid #e5e7eb;
+}
+body.ihh-active .lab-nav-ihh button.secondary:hover { background:#f9fafb; color:#111827; }
+body.ihh-active .lab-nav-ihh button:disabled { opacity:0.4; cursor:not-allowed; }
+
+/* Force original exercise sections to look right inside tab views */
+body.ihh-active .view-ihh > section { display:block !important; margin:0 !important; }
+body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
+
+/* Force main to show even before auth (auth JS toggles display) - keep original behaviour */
+</style></head>
+<body class="ihh-active">
+<div id="lock">
+<div class="lock-box">
+<div class="blogo">CC</div>
+<h2>Contoso Integrity Bureau · Imersi Copilot</h2>
+<p>Workshop Eksekutif M365 Copilot<br/>Masukkan kata sandi sesi untuk melanjutkan.</p>
+<div class="pw-wrap">
+<input autocomplete="off" id="pw" placeholder="Kata sandi sesi" type="password"/>
+<button aria-label="Tampilkan kata sandi" class="pw-toggle" id="pwToggle" onclick="togglePw()" title="Tampilkan kata sandi" type="button"><svg id="eye-svg" viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"></path></svg></button>
+</div>
+<button onclick="unlock()">Masuk Workshop →</button>
+<div class="err" id="err"></div>
+<div class="conf">Rahasia · Hanya untuk workshop eksekutif</div>
+</div>
+</div>
+<div class="layout" id="main" style="display:none">
+<aside>
+<div class="brand"><div class="logo">CC</div><h1>M365 Copilot<br/>Imersi GM</h1></div>
+<div class="tag">Imersi Eksekutif</div>
+<nav>
+<h3>Ringkasan</h3>
+<a href="#files">&#128193; File contoh (mulai di sini)</a>
+<a href="#overview">Tentang sesi ini</a>
+<a href="#story">Alur Cerita</a>
+<h3>Latihan</h3>
+<a href="#ex1">1 · Briefing Harian</a>
+<a href="#ex2">2 · OSINT: Scraping + Sweep</a>
+<a href="#ex3">3 · Anomali Pengadaan</a>
+<a href="#ex4">4 · Notulen Rapat</a>
+<a href="#ex5">5 · Dari Analisis ke Deliverable</a>
+<a href="#ex6">6 · Bangun Agent Anda Sendiri</a>
+<h3>Tambahan</h3>
+<a href="#extras">&#65291; Tab Bonus (6 trik Copilot tambahan)</a>
+<h3>Referensi</h3>
+<a href="#tips">Tips prompt</a>
+</nav>
+</aside>
+<main>
+<!--IHH-INJECT-START-->
+<header class="hero-ihh">
+<div class="hero-ihh-inner">
+<div class="hero-brand-ihh">
+<div class="hero-logo-ihh">CR</div>
+<div class="brand-rule-ihh"></div>
+<div>
+<h1>Contoso Integrity Bureau</h1>
+<h2>Microsoft 365 Copilot · Imersi GM</h2>
+</div>
+</div>
+<div class="hero-meta-ihh">
+<div class="lang-toggle"><a href="index.html">EN</a><a href="id.html" class="active">ID</a></div>
+<div>Edisi Workshop · 2026</div>
+<div style="margin-top:6px">
+<span class="pill">6 Latihan + Bonus</span>
+</div>
+</div>
+</div>
+<div class="hero-title-ihh">
+<h3>Satu hari kerja, satu Kepala Task Force, enam momen Copilot</h3>
+<p>Imersi langsung untuk jajaran eksekutif Contoso Integrity Bureau, dirancang khusus untuk Task Force Koordinasi dan Supervisi (Korsup). Semua prompt siap salin-tempel. Semua latihan dilandasi file contoh yang telah disiapkan.</p>
+</div>
+</header>
+<nav class="tabs-ihh"><div class="tabs-inner"><button class="tab active" data-view="intro"><span class="tab-num">0</span> Mulai</button>
+<button class="tab" data-view="files"><span class="tab-num">&#128193;</span> File Contoh</button>
+<button class="tab" data-view="ex1"><span class="tab-num">1</span> Briefing Harian</button>
+<button class="tab" data-view="ex2"><span class="tab-num">2</span> OSINT: Scraping + Sweep</button>
+<button class="tab" data-view="ex3"><span class="tab-num">3</span> Anomali Pengadaan</button>
+<button class="tab" data-view="ex4"><span class="tab-num">4</span> Notulen Rapat</button>
+<button class="tab" data-view="ex5"><span class="tab-num">5</span> Dari Analisis ke Deliverable</button>
+<button class="tab" data-view="ex6"><span class="tab-num">6</span> Bangun Agent Sendiri</button>
+<button class="tab" data-view="extras"><span class="tab-num">&#65291;</span> Bonus</button>
+</div></nav><div class="ihh-main"><div class="view-ihh active" id="view-intro"><section id="overview">
+<div class="hero">
+<h2>Contoso Integrity Bureau · Imersi Copilot Task Force</h2>
+<p>Lembaga anti-korupsi nasional yang dimodelkan berdasarkan Direktorat Koordinasi dan Supervisi. Imersi langsung setingkat Task Force yang mencakup kedua fungsi misi: Penindakan (mengolah pemberitaan open-source menjadi kasus SPDP terstruktur) dan Pencegahan (mengolah keterbukaan pengadaan pemda menjadi red flag anomali), ditutup dengan agent Copilot deklaratif yang bisa dipakai tim setiap hari.</p>
+<div class="meta-row">
+<span><b>Audiens</b> Kepala Task Force, Ketua Penindakan, Ketua Pencegahan, Data Analyst, Penasihat Hukum, Spesialis OSINT</span>
+<span><b>Durasi</b> 90 menit</span>
+<span><b>Format</b> Enam latihan langsung plus tab Bonus berisi 6 trik Copilot tambahan</span>
+</div>
+</div>
+</section>
+<section id="story">
+<div style="margin:8px 0 20px;background:rgba(200,155,60,.10);border-left:4px solid #C89B3C;padding:14px 18px;border-radius:8px">
+<div style="font-size:13px;font-weight:700;color:#C89B3C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Pemetaan kebutuhan Anda</div>
+<table style="width:100%;font-size:13px;color:var(--ink);border-collapse:collapse">
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Ekstraksi terstruktur dari berita OSINT</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 2, Tugas 2.1 (unggulan - Researcher scraping satu URL dengan prompt G-C-S-E)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Batch sweep OSINT + update register SPDP</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 2, Tugas 2.2 (Cowork - istilah yang dipakai sendiri dalam dokumen kebutuhan. Hanya on-demand; Pak Bambang menjalankannya ulang setiap pagi.)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Deteksi anomali pengadaan</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 3 (unggulan - Copilot in Excel mode Chat + Edit, enam pola anomali sudah disiapkan di data)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Recap Teams disimpan sebagai notulen Word</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 4 (prompt generik, cocok untuk rapat apa pun)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Poles dokumen Word + PowerPoint auto-generate</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 5, Tugas 5.1 dan 5.2 (plus alternatif Cowork di Tugas 5.4)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Dashboard tata kelola di Excel</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 3 Tugas 3.2 (membangun) dan Latihan 5 Tugas 5.3 (memperhalus untuk deck)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Infografis dan poster tata kelola</b></td><td style="padding:4px 0;color:var(--muted)">Bonus B0 (empat prompt Copilot Create - hasilnya berupa gambar statis, bukan slide yang bisa diedit)</td></tr>
+<tr><td style="padding:4px 12px 4px 0;vertical-align:top;white-space:nowrap;color:var(--ink)"><b>Membangun Copilot agent deklaratif</b></td><td style="padding:4px 0;color:var(--muted)">Latihan 6 (agent builder Copilot Chat - tidak butuh lisensi Copilot Studio)</td></tr>
+</table>
+</div>
+<div class="modulehead" style="margin-top:8px">
+<div class="num" style="background:linear-gradient(135deg,var(--brand),var(--accent));font-size:14px">&#9658;</div>
+<h2>Alur Cerita<small>Satu hari kerja Task Force, enam momen Copilot, plus tab Bonus</small></h2>
+</div>
+<div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px;background:var(--panel)">
+<div style="background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));padding:22px 26px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center">
+<div>
+<p style="margin:0;font-size:10px;letter-spacing:2px;font-weight:700;color:var(--brand);text-transform:uppercase">Microsoft 365 Copilot</p>
+<h3 style="margin:4px 0 0;font-size:22px;font-weight:800;color:#fff;line-height:1.15">Dari AI Assistant<br/>ke AI Doer</h3>
+</div>
+<div>
+<p style="margin:0 0 4px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">Persona</p>
+<p style="margin:0;font-size:15px;font-weight:700;color:#fff">Pak Bambang Kusumo</p>
+<p style="margin:3px 0 10px;font-size:12px;color:#94a3b8">Kepala Task Force Koordinasi dan Supervisi, Contoso Integrity Bureau</p>
+<p style="margin:0 0 4px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">Misinya</p>
+<p style="margin:0;font-size:12px;color:#cbd5e1;line-height:1.55">Dua fungsi berjalan paralel: (1) Penindakan - mengoordinasikan dan mensupervisi penanganan perkara tipikor oleh Kejaksaan dan Polri, menggunakan data SPDP plus sweep OSINT; (2) Pencegahan - mengevaluasi tata kelola pemprov dan pemkot/pemkab untuk mengidentifikasi anomali di anggaran, pengadaan, dan perizinan.</p>
+</div>
+<div style="padding:14px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.1)">
+<p style="margin:0 0 5px;font-size:9.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">Intinya</p>
+<p style="margin:0;font-size:14px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">Satu hari kerja Task Force.<br/>Enam momen Copilot.<br/>Dari sweep OSINT sampai agent deklaratif.</p>
+</div>
+</div>
+<div style="padding:22px 22px 18px">
+<h3 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--ink)">Enam momen Copilot untuk Task Force <span style="font-size:12px;color:var(--muted);font-weight:500">+ 6 trik tambahan di tab Bonus</span></h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">01</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Briefing Harian</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Dua varian briefing</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot Chat (5 menit) + Researcher (15 menit)</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Tugas 1.1 adalah scan cepat Copilot Chat tanpa sitasi. Tugas 1.2 adalah brief Researcher terstruktur dengan sitasi, update SPDP, persiapan kalender, dan daftar keputusan tertunda. Pilih versi yang sesuai dengan kondisi pagi Anda.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">02</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">OSINT: Scraping + Sweep</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Dari satu URL sampai update register lengkap</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Researcher (Tugas 2.1) + Cowork (Tugas 2.2)</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Tugas 2.1 memakai Researcher untuk mengekstrak field bergaya SPDP dari satu artikel. Tugas 2.2 memakai Cowork untuk menyapu seluruh feed RSS Google News, melakukan deduplikasi terhadap register perkara, dan menyusun draft posting Teams pagi hari.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">03</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Anomali Pengadaan</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Red flag di seluruh wilayah provinsi</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot in Excel mode Chat + Edit</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Tugas 3.1 memakai mode Chat untuk empat pertanyaan spesifik. Tugas 3.2 memakai mode Edit untuk membangun kolom Risk_Score dan sheet Governance Dashboard. Dashboard yang dihasilkan di latihan ini adalah input langsung untuk Latihan 5.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">04</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Notulen Rapat</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Dari rapat apa pun menjadi notulen formal</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Teams + Copilot in Word</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Tiga prompt generik yang mengubah rapat Teams apa pun - rapat pembahasan anggaran, panel perizinan, atau update pimpinan - menjadi notulen bergaya resmi lengkap dengan kotak keputusan, daftar tindak lanjut, dan ringkasan eksekutif. Lima menit selesai, bukan sembilan puluh.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">05</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Dari Analisis ke Deliverable</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Dari output Latihan 3 ke briefing pack Deputi</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Word + PowerPoint + Excel + Cowork</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Poles laporan Word (5.1), buat deck dari dokumen Word yang sudah dipoles (5.2), pertajam dashboard Excel (5.3), lalu lihat ketiga artefak yang sama dihasilkan lewat satu prompt Cowork (5.4) sehingga Anda bisa melihat trade-off-nya.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#0B2A4A;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">06</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Bangun Agent Anda Sendiri</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Agent tanya-jawab yang di-ground pada data Task Force</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Copilot Chat agent builder (deklaratif)</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Bangun agent Copilot Chat deklaratif yang di-ground pada file pengadaan dan file SPDP. Tidak butuh lisensi Copilot Studio. Empat starter prompt yang siap dipakai seluruh Task Force. Jujur mengenai apa yang bisa dan tidak bisa dilakukan agent deklaratif.</p>
+</div>
+</div>
+<div style="min-height:230px;border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;background:var(--panel2)">
+<div style="background:#C89B3C;padding:10px 14px;display:flex;align-items:center;gap:8px;flex:0 0 auto">
+<span style="font-size:22px;font-weight:800;color:rgba(255,255,255,.95);line-height:1">+</span>
+<span style="font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.2">Tab Bonus</span>
+</div>
+<div style="padding:14px;display:flex;flex-direction:column;gap:6px;flex:1 1 auto">
+<p style="margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">6 trik Copilot tambahan untuk Task Force</p>
+<p style="margin:0;font-size:12px;font-style:italic;color:var(--brand);font-weight:600">Poster, tips prompt, Outlook, Word</p>
+<p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">Empat prompt poster tata kelola untuk Copilot Create, kartu referensi framework prompt G-C-S-E, dua trik Outlook Copilot, satu prompt interogasi dokumen Word, dan satu prompt fact-check sebelum kirim.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="lab-nav-ihh"><button class="secondary" disabled="">← Sebelumnya</button><button data-go="files">Berikutnya: File Contoh →</button></div></div><div class="view-ihh" id="view-files"><section id="files">
+<div class="modulehead"><div class="num">&#128193;</div><h2>File contoh - mulai di sini<small>Unduh dulu file-file ini, lalu jalankan latihannya</small></h2></div>
+<div class="card">
+<p class="lead">Seluruh data bersifat fiktif dan diberi label <b>Contoso</b>. Jangan digunakan untuk pengambilan keputusan operasional. <b>Langkah 1:</b> unduh setiap file. <b>Langkah 2:</b> unggah keenam file ke OneDrive Anda dan folder <b>Applicants/</b> ke library dokumen SharePoint mana pun. <b>Langkah 3:</b> tunggu sekitar 2 menit sampai Microsoft Graph selesai mengindeks. Kemudian mulai Latihan 1.</p>
+<div style="margin:14px 0 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+<a download="" href="samples.zip" id="dl-all-btn" style="display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:#0B2A4A;color:#fff;font-weight:700;font-size:15px;border-radius:10px;text-decoration:none;box-shadow:var(--shadow);transition:transform .12s ease">
+  &#11015;&#65039; Unduh semua file contoh (ZIP)
+ </a>
+<span style="font-size:12.5px;color:var(--muted)">Satu klik, semua file dalam satu ZIP. Ekstrak, lalu unggah isinya ke OneDrive dan SharePoint.</span>
+</div>
+<table>
+<tr><th>#</th><th>File</th><th>Jenis</th><th>Dipakai di</th><th>Isinya</th></tr>
+<tr><td>01</td><td><a href="samples/01 Contoso_Task_Force_Overview.docx">01 Contoso_Task_Force_Overview.docx</a></td><td><span class="badge yellow">Word</span></td><td>Semua latihan (konteks)</td><td>Brief konteks satu halaman tentang Contoso Integrity Bureau, Task Force Koordinasi dan Supervisi, dan kedua fungsi misinya. Berisi bio persona Pak Bambang Kusumo.</td></tr>
+<tr><td>02</td><td><a href="samples/02 Contoso_Direct_Procurement_Q3.xlsx">02 Contoso_Direct_Procurement_Q3.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Latihan 3, 5, 6</td><td>180 baris data keterbukaan pengadaan langsung tingkat provinsi dan kabupaten/kota. Enam pola anomali sengaja ditanam: kontrak yang dipecah agar tetap di bawah ambang 200 juta IDR, konsentrasi vendor, price outlier, vendor baru dengan nilai kontrak besar, alamat vendor yang sama, dan tanggal award di akhir pekan.</td></tr>
+<tr><td>03</td><td><a href="samples/03 Contoso_SPDP_Case_Register.xlsx">03 Contoso_SPDP_Case_Register.xlsx</a></td><td><span class="badge blue">Excel</span></td><td>Latihan 2, 6</td><td>Case tracker SPDP eksisting yang dipakai Task Force, sekitar 40 baris. Ini adalah tujuan penambahan baris untuk sweep OSINT di Latihan 2 Tugas 2.2 dan sumber grounding untuk agent di Latihan 6.</td></tr>
+<tr><td>04</td><td><a href="samples/04 Contoso_Sample_News_URLs.md">04 Contoso_Sample_News_URLs.md</a></td><td><span class="badge yellow">Markdown</span></td><td>Latihan 2</td><td>Lima URL berita tipikor berbahasa Indonesia, termasuk artikel bansos Jember dari Antara News. Dipakai untuk latihan ekstraksi OSINT.</td></tr>
+<tr><td>05</td><td><a href="samples/05 Contoso_Governance_Report_Draft.docx">05 Contoso_Governance_Report_Draft.docx</a></td><td><span class="badge yellow">Word</span></td><td>Latihan 5</td><td>Draft laporan supervisi pengadaan Q3 sepanjang empat halaman, sengaja dibuat bertele-tele, dengan heading yang lemah (hanya topik) dan tanpa ringkasan eksekutif. Menjadi input untuk latihan poles naskah dan auto-generate PowerPoint.</td></tr>
+<tr><td>06</td><td><a href="samples/06 Contoso_Task_Force_Meeting_Transcript.docx">06 Contoso_Task_Force_Meeting_Transcript.docx</a></td><td><span class="badge yellow">Word</span></td><td>Latihan 4</td><td>Transkrip realistis 40 giliran bicara dari rapat koordinasi mingguan 30 menit antara Pak Bambang dan lima anak buah langsung. Membahas backlog SPDP, K/L red-flag, dan satu kasus OSINT mendesak dari Jember.</td></tr>
+<tr><td>07</td><td><a href="samples/Applicants/">samples/Applicants/ (12 files)</a></td><td><span class="badge yellow">Word &#215;12</span></td><td>Tidak dipakai di edisi ini</td><td>Dua belas profil integritas kandidat (Applicant_01 sampai Applicant_12). Latihan screening kandidat sudah dihapus di edisi ini. File dipertahankan sebagai referensi.</td></tr>
+</table>
+<div class="callout warn" style="margin-top:14px"><b>Kenapa OneDrive dan SharePoint?</b> Microsoft 365 Copilot hanya bisa menganalisis file yang tersimpan di OneDrive atau SharePoint. File di Desktop lokal tidak akan terbaca oleh Copilot.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="intro">← Mulai</button><button data-go="ex1">Berikutnya: Briefing Harian →</button></div></div><div class="view-ihh" id="view-ex1"><section id="ex1">
+<div class="modulehead"><div class="num">1</div><h2>Latihan 1 · Briefing Harian<small>Dua varian · Pola Petrosea · Copilot Chat (5 menit) + Researcher (15 menit)</small></h2></div>
+<div class="callout good"><b>Cara Pak Bambang memulai hari.</b> Dua alat, pertanyaan sama, tingkat kedalaman berbeda. Tugas 1.1 adalah scan cepat lima menit di Copilot Chat - tanpa sitasi, tanpa menunggu. Tugas 1.2 adalah brief Researcher terstruktur lima belas menit dengan sumber, SPDP baru, persiapan kalender, dan daftar keputusan tertunda yang bisa disimpan sebagai working paper. Pilih yang sesuai dengan kondisi pagi Anda.</div>
+<div class="card">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px">
+<div style="background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px">
+<div style="font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Tugas 1.1 · Copilot Chat</div>
+<div style="font-size:13px;color:var(--muted)">5 menit · Cepat · Tanpa sitasi</div>
+<div style="font-size:13px;color:var(--muted);margin-top:4px">Gunakan saat Anda punya lima menit sebelum rapat pertama</div>
+</div>
+<div style="background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px">
+<div style="font-size:11px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Tugas 1.2 · Researcher</div>
+<div style="font-size:13px;color:var(--muted)">15 menit · Terstruktur · Ada sitasi</div>
+<div style="font-size:13px;color:var(--muted);margin-top:4px">Gunakan saat Anda butuh working paper setingkat pengarsipan untuk memulai hari</div>
+</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 1.1</span><span class="file">&#128172; Copilot Chat · scan pagi lima menit</span></div>
+<h4>Brief pagi cepat - lima menit, tanpa sitasi</h4>
+<p class="lead">Buka Microsoft 365 Copilot Chat di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>. Tempel prompt di bawah ini. Ini varian cepat: Copilot Chat akan memindai inbox, kalender, dan pesan Teams Anda, lalu mengembalikan brief tiga bagian yang ringkas dalam waktu di bawah dua menit.</p>
+<div class="prompt">Goal: berikan saya brief pagi lima menit yang mencakup semua hal yang perlu saya ketahui sebelum mulai bekerja hari ini.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya memegang dua fungsi: Penindakan (memantau progres perkara tipikor via SPDP dan pemberitaan OSINT) dan Pencegahan (mengevaluasi anomali pengadaan di pemprov dan pemda). Saya butuh scan cepat, bukan analisis mendalam.
+
+Source: inbox Outlook saya (email yang belum dibaca sejak kemarin pukul 17.00), kalender saya untuk hari ini, dan pesan Teams saya dalam 24 jam terakhir.
+
+Expectation: tiga bagian pendek, masing-masing maksimal lima bullet:
+1. Perkembangan semalam - notifikasi email untuk SPDP baru, berita tipikor yang menyebut perkara yang sedang dipantau Task Force, atau pesan mendesak dari anak buah langsung.
+2. Kalender hari ini - rapat hari ini secara kronologis, masing-masing dengan satu baris topik dan hal yang perlu saya bawa atau putuskan.
+3. Keputusan tertunda - hal apa pun yang kemarin saya janjikan untuk saya putuskan atau saya jawab, yang belum selesai.
+
+Rules: tidak perlu sitasi. Ini scan cepat. Gunakan bahasa lugas. Kalau tidak ada temuan di satu bagian, tulis "tidak ada yang perlu ditandai" alih-alih membiarkan kosong.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Indikator berhasil:</b> brief tiga bagian yang bersih muncul di layar dalam waktu di bawah dua menit. Tidak ada catatan kaki, tidak ada tautan sumber - hanya tiga hal yang Pak Bambang butuhkan sebelum rapat pertamanya.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 1.2</span><span class="file">&#128269; Researcher · brief setingkat audit dalam lima belas menit</span></div>
+<h4>Briefing harian terstruktur - ada sitasi, lebih dalam, layak diarsipkan</h4>
+<p class="lead">Buka Microsoft 365 Copilot di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a> lalu klik <b>Researcher</b>. Biarkan pilihan model di <b>Auto</b>. Tempel prompt di bawah ini. Researcher akan membaca inbox, channel Teams, kalender, dan file yang baru Anda akses, kemudian menyerahkan satu briefing terstruktur lengkap dengan sitasi yang bisa Anda simpan sebagai working paper.</p>
+<div class="prompt">Goal: hasilkan briefing harian terstruktur untuk Kepala Task Force Koordinasi dan Supervisi, yang layak diarsipkan sebagai working paper resmi.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Briefing ini mencakup dua fungsi: Penindakan (pemantauan perkara SPDP dan berita OSINT) dan Pencegahan (pengawasan anomali pengadaan). Brief ini akan disimpan di OneDrive saya sebagai dokumen rujukan kerja hari ini.
+
+Source: inbox Outlook saya (24 jam terakhir), channel Teams saya "Task Force - Daily OSINT" dan "Task Force - Coordination", kalender saya untuk hari ini dan besok, serta dokumen atau thread chat yang masih terbuka dan belum saya jawab.
+
+Expectation - empat bagian dengan sitasi:
+1. Update Penindakan - notifikasi SPDP baru yang masuk lewat email atau Teams sejak kemarin, berita tipikor yang secara langsung menyebut perkara di portofolio Task Force, beserta nama perkara dan tahapnya. Cantumkan subject email atau nama thread Teams sebagai sitasi untuk setiap item.
+2. Update Pencegahan - laporan anomali pengadaan, respons K/L, atau tenggat surat supervisi dalam 24 jam terakhir. Cantumkan sumber.
+3. Kalender hari ini - tabel dengan kolom: Waktu, Judul Rapat, Penyelenggara, Persiapan yang Disarankan (masing-masing satu kalimat). Tandai setiap rapat di mana saya menjadi pengambil keputusan.
+4. Tindak lanjut tertunda dari kemarin - hal apa pun yang ditugaskan kepada saya lewat Teams atau email dan belum saya selesaikan. Cantumkan sumber dan tanggal permintaan awal.
+
+Rules: cantumkan sumber untuk setiap item (subject email, nama thread Teams, atau nama dokumen). Kalau satu bagian tidak ada item baru, sebutkan itu secara jelas. Gunakan nada netral, orang ketiga, untuk item 1 dan 2. Jangan berspekulasi tentang perkara yang tidak disebut dalam sumber.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Indikator berhasil:</b> brief empat bagian dengan sitasi inline untuk setiap item. Setiap item di bagian Penindakan dan Pencegahan bisa ditelusuri kembali ke email atau thread Teams tertentu. Tabel kalender menampilkan catatan persiapan untuk rapat hari ini. Daftar tindak lanjut tertunda memuat semua yang belum dijawab.</div>
+</div>
+
+<div class="callout warn"><b>Yang perlu diketahui · Latihan 1.</b>
+<br/>Copilot Chat (Tugas 1.1): membaca data tenant Anda dengan andal, tetapi tidak mencantumkan sumber - ini scan cepat, bukan jejak audit.
+<br/>Researcher (Tugas 1.2): kesegaran hasil web bervariasi. Item yang di-ground pada data tenant Anda (inbox, kalender, Teams) tergolong andal. Setiap klaim yang mengutip hasil web eksternal sebaiknya diperlakukan sebagai titik awal dan diverifikasi. Researcher tidak memiliki akses real-time ke SPDP Online - SPDP baru dalam brief ini berasal dari notifikasi email di inbox Anda, bukan dari koneksi database langsung.
+<br/>Kedua varian tidak menggantikan sistem SPDP Online resmi. Gunakan sebagai orientasi pagi, lalu verifikasi item krusial dari sumber primernya.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="files">← File Contoh</button><button data-go="ex2">Berikutnya: OSINT Scraping + Sweep →</button></div></div><div class="view-ihh" id="view-ex2"><section id="ex2">
+<div class="modulehead"><div class="num">2</div><h2>Latihan 2 · OSINT: Scraping + Sweep<small>Tugas 2.1: Researcher · Tugas 2.2: Cowork · Unggulan untuk fungsi Penindakan</small></h2></div>
+<div class="callout good"><b>Kenapa ini penting.</b> Banyak perkara tipikor tidak masuk ke SPDP Online tepat waktu untuk review pagi. Task Force harus menyapu pemberitaan open-source, mengekstrak faktanya, dan meng-update register perkara. Tugas 2.1 memakai Researcher untuk mengekstrak data setingkat audit dari satu artikel. Tugas 2.2 memakai Cowork untuk menyapu seluruh feed RSS Google News, melakukan deduplikasi terhadap register eksisting, dan menyusun draft komunikasi pagi.</div>
+
+<div class="card">
+<div class="activity">
+<div class="head"><span class="num">Tugas 2.1</span><span class="file">&#128269; Researcher · ekstraksi setingkat audit dari satu URL</span></div>
+<h4>Ekstrak field bergaya SPDP dari satu artikel berita</h4>
+<p class="lead">Buka Microsoft 365 Copilot di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>, klik <b>Researcher</b>, lalu tempel prompt G-C-S-E di bawah ini. URL contoh adalah artikel Antara News tentang perkara hibah bansos Jember. Jalankan prompt awal dulu, kemudian jalankan prompt refinement untuk menambahkan Tahap, Tingkat Keyakinan, dan URL Sumber.</p>
+
+<div class="task-step"><div class="step-label">Langkah 1 dari 2 · Ekstraksi awal (kolom berbahasa Indonesia)</div></div>
+<div class="prompt">Goal: ekstrak fakta perkara tipikor dari artikel berita di URL berikut dan kembalikan sebagai satu baris tabel terstruktur yang bisa saya tempel ke register perkara SPDP saya.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menyapu sumber berita nasional setiap hari untuk mencari perkara tipikor yang mungkin belum muncul di SPDP Online. Saya butuh data bersih dan terstruktur untuk ditambahkan ke register.
+
+Source: https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+
+Expectation: kembalikan tabel Markdown berisi satu baris data dengan kelima kolom berikut, sesuai urutan:
+- Nama Perkara (nama perkara ringkas dan deskriptif dalam bahasa Indonesia)
+- Periode Perkara (tahun atau rentang tahun sebagaimana disebut di artikel)
+- Tersangka / Terdakwa (nama tersangka atau terdakwa, dipisah koma, sebagaimana diberitakan)
+- Jumlah Kerugian Keuangan Negara (perkiraan kerugian keuangan negara dalam IDR - nilai angka plus bentuk yang mudah dibaca, misalnya "104 miliar IDR")
+- APH Menangani (aparat penegak hukum yang menangani - KPK, Kejaksaan, Polri, atau sebagaimana diberitakan)
+
+Rules: gunakan hanya fakta yang secara eksplisit disebut di artikel. Kalau satu field tidak disebut, tulis "tidak disebutkan". Jangan menebak atau menyimpulkan.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Langkah 2 dari 2 · Refinement - tambahkan Tahap, Tingkat Keyakinan, URL Sumber, Catatan</div></div>
+<div class="prompt">Perhalus tabel ekstraksi dari artikel di:
+https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+
+Perluas tabel dengan menambahkan empat kolom setelah APH Menangani:
+- Tahap Perkara (tahap perkara saat ini - penyidikan, penuntutan, persidangan, putusan, banding, atau sebagaimana diberitakan)
+- Tingkat Keyakinan (tingkat keyakinan ekstraksi: Tinggi kalau artikel menyebut field itu secara jelas, Sedang kalau tersirat, Rendah kalau meragukan)
+- URL Sumber (URL sumber, diulang)
+- Catatan (satu catatan pendek atas ambiguitas apa pun - misalnya, kalau angka kerugian negara masih atributif ke keterangan saksi dan bukan amar putusan)
+
+Pertahankan kelima kolom awal. Aturan tetap: kalau satu field tidak disebut secara eksplisit, tulis "tidak disebutkan" dan set Tingkat Keyakinan ke Rendah untuk field tersebut.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="callout"><b>Indikator berhasil:</b> tabel sembilan kolom dengan setiap field ter-ground pada teks artikel. Jumlah Kerugian dan APH Menangani seharusnya Tinggi. Tahap Perkara bisa Sedang atau Rendah kalau artikel tidak menyebut tahap secara tegas. Kolom Catatan seharusnya menandai bahwa angka kerugian masih berasal dari keterangan saksi BPKP.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 2.2</span><span class="file">&#128260; Cowork · batch sweep · Varian A: folder RSS Outlook</span></div>
+<h4>Batch sweep - baca feed RSS, update register, siapkan draft komunikasi</h4>
+<p class="lead"><b>Cowork bersifat on-demand.</b> Pak Bambang menjalankan ulang prompt ini setiap pagi. Prompt ini membaca folder RSS Outlook "OSINT - Google News", mengekstrak field bergaya SPDP dari setiap artikel, melakukan deduplikasi terhadap <code>03 Contoso_SPDP_Case_Register.xlsx</code>, menambahkan baris baru, serta menyiapkan draft posting Teams dan email distribusi. Cowork berhenti sebelum benar-benar mengirim apa pun.</p>
+<p class="lead" style="margin-top:8px">Pola URL RSS Google News yang selama ini dipakai Task Force:<br/><code style="font-size:12px;word-break:break-all">https://news.google.com/rss/search?q=korupsi+OR+tipikor+OR+%22kerugian+negara%22+OR+%22OTT+KPK%22+OR+%22dugaan+korupsi%22+OR+%22tersangka+korupsi%22+OR+SPDP&amp;hl=id&amp;gl=ID&amp;ceid=ID:id</code></p>
+<div class="prompt">Goal: sapu alert tipikor Google News pagi ini, ekstrak field bergaya SPDP dari setiap artikel, update register perkara dengan baris baru, dan siapkan draft komunikasi untuk saya review.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya berlangganan alert Google News via RSS Outlook untuk kata kunci tipikor (korupsi, OTT KPK, kerugian negara, dugaan korupsi, SPDP). Email alert baru masuk sepanjang malam. Saya menjalankan sweep ini setiap pagi sebelum rapat pertama.
+
+Source:
+- Outlook: folder RSS "OSINT - Google News", hanya email yang masuk dalam 24 jam terakhir.
+- Excel: 03 Contoso_SPDP_Case_Register.xlsx di OneDrive saya, sheet "Cases", baris eksisting.
+- Teams: channel "Task Force - Daily OSINT" di tim Task Force.
+
+Expectation - selesaikan langkah-langkah berikut secara berurutan dan berhenti di ujung untuk review saya:
+1. Di Outlook, tampilkan setiap item RSS yang belum dibaca di "OSINT - Google News" dari 24 jam terakhir. Untuk setiap item, ikuti tautan artikelnya dan ekstrak field berikut: Nama Perkara, Periode Perkara, Tersangka/Terdakwa, Jumlah Kerugian Keuangan Negara, APH Menangani, Tahap Perkara, Tingkat Keyakinan, URL Sumber, Catatan.
+2. Buka 03 Contoso_SPDP_Case_Register.xlsx. Untuk setiap perkara hasil ekstraksi, cek apakah sudah ada baris yang cocok di sheet "Cases" dengan nama tersangka yang sama DAN periode perkara yang beririsan. Kalau cocok: jangan tambah baris baru; sebagai gantinya, update kolom Catatan pada baris yang cocok itu dengan URL sumber baru dan tanggal hari ini. Kalau tidak cocok: siapkan baris baru untuk ditambahkan.
+3. Tambahkan seluruh baris perkara baru ke sheet "Cases". Pertahankan urutan kolom yang ada. Set kolom Owner ke "Pak Bambang - untuk ditugaskan".
+4. Susun draft pesan Teams ringkasan untuk channel "Task Force - Daily OSINT" dengan isi: total artikel yang dibaca, total perkara baru yang ditambahkan, total perkara yang di-update, tabel perkara baru, dan catatan yang menandai perkara baru dengan nilai kerugian tertinggi untuk review prioritas.
+5. Susun draft email Outlook ke milis distribusi Task Force. Subject: "Laporan OSINT Sweep - [tanggal hari ini] - [N] kasus baru". Body: ringkasan yang sama dengan langkah 4.
+
+STOP sebelum benar-benar mengirim pesan Teams atau email. Tampilkan semua draft dan daftar baris yang akan ditambahkan terlebih dahulu. Saya yang akan review dan menyetujui sebelum apa pun dikirim.
+
+Kalimat penutup: setelah saya setujui, run ini menggantikan sekitar 45 menit rutinitas pagi saya.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn" style="margin-top:8px"><b>Rambu STOP.</b> Cowork tidak akan mengirim apa pun sampai Pak Bambang menyetujui secara eksplisit. Draft pesan Teams dan draft email ditampilkan untuk direview terlebih dahulu. Baris yang akan ditambahkan ke file Excel juga didaftar sebelum penulisan dilakukan. Ini adalah safety check yang membuat pipeline layak dipercaya dalam konteks pemerintahan.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 2.2 alt</span><span class="file">&#128260; Cowork · Varian B: daftar URL yang ditempel (praktis untuk demo)</span></div>
+<h4>Batch sweep - tempel lima URL secara langsung (lebih mudah untuk demo langsung)</h4>
+<p class="lead">Untuk demo di mana folder RSS belum disiapkan, tempel lima URL dari <code>04 Contoso_Sample_News_URLs.md</code> langsung ke dalam prompt. Logika deduplikasi dan draft komunikasi yang sama tetap berlaku.</p>
+<div class="prompt">Goal: ekstrak data perkara bergaya SPDP dari kelima URL artikel di bawah ini, deduplikasi terhadap register perkara eksisting, dan siapkan ringkasan konsolidasi beserta draft komunikasi.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Saya menjalankan sweep OSINT manual menggunakan sekumpulan URL berita dari file contoh saya.
+
+Source:
+1. https://jatim.antaranews.com/berita/261998/saksi-bpkp-sebut-kerugian-negara-korupsi-hibah-bansos-jember-capai-rp104-miliar
+2. [tempel URL 2 dari 04 Contoso_Sample_News_URLs.md]
+3. [tempel URL 3]
+4. [tempel URL 4]
+5. [tempel URL 5]
+Juga: 03 Contoso_SPDP_Case_Register.xlsx (OneDrive saya), sheet "Cases", baris eksisting.
+
+Expectation: ikuti kelima langkah yang sama dengan Varian A (ekstrak, deduplikasi, siapkan baris, susun draft pesan Teams, susun draft email). Aturan deduplikasi: nama tersangka sama plus periode perkara yang beririsan berarti perkara sudah ada - jangan tambah baris baru; cukup update kolom Catatan.
+
+STOP sebelum benar-benar mengirim pesan atau email apa pun. Tampilkan semua draft dan usulan baris baru terlebih dahulu. Saya sendiri yang akan review dan mengklik kirim setelah memverifikasi baris SPDP baru.
+
+Kalimat penutup: setelah saya setujui, run ini menggantikan sekitar 45 menit rutinitas pagi saya.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="callout warn"><b>Yang perlu diketahui · Latihan 2.</b>
+<br/><b>Researcher (Tugas 2.1):</b> tidak berhasil pada halaman berbayar atau situs berita yang berat JavaScript sehingga memblokir rendering di sisi server. Kalau Researcher tidak berhasil memuat halaman, jalur cadangannya adalah menyalin teks artikel secara manual dan menempelnya ke jendela Copilot Chat dengan prompt ekstraksi yang sama.
+<br/><b>Cowork (Tugas 2.2):</b> Cowork hanya bersifat on-demand. Tidak ada setting "jalankan ini otomatis setiap pagi" di Cowork. Pak Bambang menjalankan prompt yang sama setiap pagi. Kalau pelanggan ingin sweep berjalan tanpa pengawasan sesuai jadwal, kebutuhan itu memerlukan tier produk yang berbeda (di luar M365 Copilot murni) - dan kapabilitas itu bukan yang kami tawarkan hari ini.
+<br/><b>Deduplikasi:</b> aturan deduplikasi berbasis tersangka plus periode berjalan baik untuk perkara yang jelas. Untuk perkara dengan beberapa tersangka yang dituliskan berbeda antar artikel, review manual tetap dibutuhkan sebelum baris ditambahkan ke register. Baris dengan Tingkat Keyakinan Rendah harus selalu direview manusia sebelum diarsipkan.
+<br/><b>Cowork adalah istilah yang dipakai pelanggan sendiri</b> dalam dokumen kebutuhan. Kapabilitas itulah yang kami demokan di sini.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex1">← Briefing Harian</button><button data-go="ex3">Berikutnya: Anomali Pengadaan →</button></div></div><div class="view-ihh" id="view-ex3"><section id="ex3">
+<div class="modulehead"><div class="num">3</div><h2>Latihan 3 · Anomali Pengadaan<small>Copilot in Excel · mode Chat (Tugas 3.1) + mode Edit (Tugas 3.2) · Unggulan untuk fungsi Pencegahan</small></h2></div>
+<div class="callout good"><b>Kenapa ini penting.</b> Pemprov dan pemkot/pemkab menyampaikan keterbukaan pengadaan berformat Excel setiap kuartal. Terselip di antara 180 baris file Q3 adalah pola-pola yang justru diperhatikan Task Force: kontrak yang dipecah agar tetap di bawah ambang pengadaan langsung, satu vendor mendominasi satu K/L, price outlier, vendor baru yang memenangkan kontrak besar, alamat vendor yang sama, dan tanggal award di hari Minggu. <b>Penting:</b> data dan dashboard yang Anda bangun di sini menjadi input langsung untuk Latihan 5 - di situlah analisis ini akan Anda ubah menjadi briefing pack untuk Deputi.</div>
+
+<div class="card">
+<p class="lead">Buka <code>02 Contoso_Direct_Procurement_Q3.xlsx</code> di Excel. File harus dalam bentuk Excel Table bernama (pilih sel mana pun, lalu Insert - Table). Ini syarat wajib agar Copilot in Excel bisa bekerja. Klik ikon <b>Copilot</b> di ribbon.</p>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 3.1</span><span class="file">&#128202; Copilot in Excel · mode Chat · eksplorasi data</span></div>
+<h4>Empat pertanyaan Chat yang terarah untuk memunculkan pola utama</h4>
+<p class="lead">Di panel Copilot, pastikan mode diatur ke <b>Chat</b> (bukan Edit). Ajukan keempat pertanyaan berikut satu per satu. Masing-masing memakan waktu sekitar 20 detik. Salin hasilnya ke dokumen catatan sambil berjalan.</p>
+
+<div class="task-step"><div class="step-label">Chat pertanyaan 1 · konsentrasi vendor</div></div>
+<div class="prompt">Lima vendor mana yang memiliki total nilai kontrak tertinggi di seluruh K/L pada file ini? Tampilkan nama vendor, total nilai dalam IDR, jumlah kontrak, dan K/L tempat mereka muncul.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Chat pertanyaan 2 · award di akhir pekan</div></div>
+<div class="prompt">Tampilkan seluruh kontrak di file ini yang Award Date-nya jatuh pada hari Sabtu atau Minggu dan Contract Value-nya di atas 500.000.000 IDR. Tampilkan Contract ID, Agency, Vendor Name, Contract Value IDR, dan Award Date.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Chat pertanyaan 3 · penggerombolan di bawah ambang pengadaan langsung</div></div>
+<div class="prompt">K/L mana yang paling banyak memiliki kontrak dengan Contract Value di bawah 200.000.000 IDR? Tampilkan lima K/L teratas berdasarkan jumlah kontrak semacam itu. Angka 200 juta IDR adalah ambang pengadaan langsung di Indonesia - kontrak yang menggerombol tepat di bawah ambang ini adalah indikator klasik pemecahan kontrak.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Chat pertanyaan 4 · alamat vendor yang sama</div></div>
+<div class="prompt">Temukan record vendor di mana satu Vendor Address yang sama muncul di dua atau lebih Vendor Name yang berbeda. Tampilkan alamat yang sama itu, semua Vendor Name yang berbagi alamat tersebut, serta jumlah kontrak dan total nilai IDR untuk masing-masing vendor pada alamat itu.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="callout"><b>Indikator berhasil:</b> empat jawaban dalam bahasa lugas, masing-masing muncul di bawah 30 detik. Pertanyaan alamat vendor kemungkinan mengembalikan 2-3 klaster vendor. Catat alamat dan nama vendornya - keduanya akan muncul lagi sebagai flag di Tugas 3.2.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 3.2</span><span class="file">&#128202; Copilot in Excel · mode Edit · bangun lapisan risiko dan dashboard</span></div>
+<h4>Tambahkan kolom Risk_Score dan bangun Governance Dashboard</h4>
+<p class="lead">Ubah panel Copilot ke mode <b>Edit</b>. Tempel prompt di bawah ini. Ini satu prompt Edit yang menambahkan lapisan risk scoring dan membuat sheet Governance Dashboard. Prosesnya bisa memakan waktu sampai dua menit.</p>
+<div class="prompt">Goal: tambahkan lapisan risk scoring dan bangun sheet Governance Dashboard untuk audit pengadaan Q3.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. File ini berisi 180 kontrak pengadaan langsung. Ambang pengadaan langsung menurut aturan di Indonesia adalah 200 juta IDR. Kontrak yang dipecah tepat di bawah ambang itu oleh vendor yang sama di K/L yang sama merupakan red flag klasik.
+
+Source: tabel Contracts di workbook ini. Kolomnya: Contract ID, Procurement Year, Agency, Procurement Package Name, Vendor Name, Vendor Address, Vendor NPWP, Contract Value IDR, Award Date, Procurement Method, Contract Start, Contract End, Notes.
+
+Expectation:
+1. Tambahkan kolom Risk_Score yang nilainya sama dengan jumlah keenam kolom sinyal berikut (masing-masing bernilai 1 atau 0):
+   - Split_Contract_Flag: 1 jika kombinasi Vendor Name dan Agency yang sama memiliki 3 kontrak atau lebih, masing-masing di bawah 200.000.000 IDR, dalam jendela bergulir 30 hari berdasarkan Award Date.
+   - Vendor_Concentration_Flag: 1 jika total nilai IDR vendor tersebut di K/L itu untuk Q3 melebihi 60 persen dari total belanja Q3 K/L tersebut.
+   - Price_Outlier_Flag: 1 jika Contract Value IDR untuk suatu Procurement Package Name lebih dari 2 kali nilai median untuk nama paket yang sama di seluruh K/L.
+   - New_Vendor_High_Value_Flag: 1 jika tanggal registrasi NPWP di kolom Notes kurang dari 6 bulan sebelum Award Date DAN Contract Value IDR melebihi 1.000.000.000 IDR. Kalau tanggal NPWP tidak bisa di-parse dari Notes, biarkan 0.
+   - Shared_Address_Flag: 1 jika Vendor Address yang persis sama dibagi oleh dua atau lebih Vendor Name yang berbeda di mana pun dalam file.
+   - Weekend_Award_Flag: 1 jika Award Date jatuh pada hari Sabtu atau Minggu.
+2. Tambahkan kolom Risk_Tier: 0 = Clean, 1 sampai 2 = Watch, 3 sampai 4 = Elevated, 5 sampai 6 = Critical.
+3. Terapkan conditional formatting pada Risk_Score: hijau untuk 0, kuning untuk 1 sampai 2, oranye untuk 3 sampai 4, merah untuk 5 sampai 6.
+4. Buat sheet baru bernama "Governance Dashboard" dengan isi:
+   - Sel judul: "Q3 Procurement Governance Scorecard - Contoso Integrity Bureau".
+   - Slicer Agency dan slicer Risk_Tier yang terhubung ke data.
+   - Bar chart yang menampilkan jumlah kontrak tier Critical per K/L, diurutkan menurun, dengan warna navy tua.
+   - Tabel callout 10 kontrak berisiko tertinggi: Contract ID, Agency, Vendor Name, Contract Value IDR, Risk_Score, diurutkan dari Risk_Score menurun lalu Contract Value menurun.
+   - Text box ringkasan "Where to look first" yang menyebut satu K/L dengan jumlah kontrak tier Critical terbanyak.
+
+Rules: tambahkan kolom di sebelah kanan tabel yang ada. Jangan hapus baris apa pun. Pertahankan sheet Contracts. Kalau formula flag tidak bisa dihitung, biarkan flag = 0 dan beri catatan di sel komentar.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Indikator berhasil:</b> sheet Contracts bertambah delapan kolom baru (enam flag, Risk_Score, Risk_Tier) dengan conditional formatting berwarna. Sheet Governance Dashboard menunjukkan K/L mana yang menggerombol di tier Elevated dan Critical, dengan bar chart dan tabel callout top-10 siap di-screenshot untuk lampiran surat supervisi.</div>
+</div>
+
+<div style="background:rgba(11,42,74,.08);border-left:4px solid #0B2A4A;border-radius:8px;padding:14px 18px;margin:12px 0">
+<div style="font-size:12px;font-weight:700;color:#0B2A4A;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">&#128279; Jembatan menuju Latihan 5</div>
+<p style="margin:0;font-size:14px;color:var(--ink);line-height:1.55">Workbook yang sudah dilengkapi risk flag dan sheet Governance Dashboard yang baru saja Anda bangun di Latihan 3 adalah input langsung untuk Latihan 5. Di Latihan 5, analisis ini akan Anda ubah menjadi briefing pack untuk Deputi Penindakan: laporan Word yang sudah dipoles (Tugas 5.1), executive deck (Tugas 5.2), dan dashboard yang dipertajam (Tugas 5.3). Anda juga akan melihat ketiga artefak tersebut dihasilkan lewat satu prompt Cowork (Tugas 5.4) untuk memahami trade-off antara kecepatan dan kendali iterasi.</p>
+</div>
+
+<div class="callout warn"><b>Yang perlu diketahui · Latihan 3.</b>
+<br/><b>Format Table wajib.</b> Copilot in Excel hanya bekerja pada Excel Table bernama. Kalau file belum dalam format Table sebelum Anda membuka Copilot, buka Insert - Table terlebih dahulu.
+<br/><b>Mode Plan di Excel:</b> mode ini masih bertahap dirilis dan mungkin belum tersedia di semua tenant. Kalau opsi "Plan" tidak terlihat di panel Copilot, berarti belum tersedia di tenant Anda. Tugas 3.1 (Chat) dan Tugas 3.2 (Edit) tidak butuh mode Plan dan tetap jalan di tenant M365 Copilot mana pun.
+<br/><b>Verifikasi formulanya:</b> sebelum Risk_Score dijadikan dasar keputusan supervisi, spot-check tiga baris tier Critical terhadap dokumen asli untuk memastikan formula flag sesuai dengan rubrik skoring Q3 resmi Bureau. Copilot membangun bukti dengan cepat; auditor tetap yang membubuhkan tanda tangannya.
+<br/><b>Slicer:</b> slicer interaktif kadang perlu di-apply ulang setelah run Edit dari Copilot. Kalau slicer tidak menyaring chart, klik ikon koneksi slicer pada chart dan hubungkan ulang secara manual.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex2">← OSINT Scraping + Sweep</button><button data-go="ex4">Berikutnya: Notulen Rapat →</button></div></div><div class="view-ihh" id="view-ex4"><section id="ex4">
+<div class="modulehead"><div class="num">4</div><h2>Latihan 4 · Notulen Rapat<small>Recap Teams Copilot · poles dengan Copilot in Word · bukan Cowork · cocok untuk RAPAT APA PUN</small></h2></div>
+<div class="callout good"><b>Skenarionya.</b> Anda baru selesai rapat, atau sedang menonton ulang rekamannya. Prompt di bawah ini sengaja dibuat generik: tempelkan ke chat rapat Teams mana pun atau dokumen Word mana pun yang berisi transkrip, dan hasilnya berupa recap terstruktur, notulen formal, dan versi dua halaman yang sudah dipoles. Tidak ada yang spesifik untuk Task Force; pakai untuk supervisi pengadaan, penyusunan anggaran, panel perizinan, panel SDM, update pimpinan, atau rapat rutin apa pun.</div>
+
+<div class="card">
+<div class="activity">
+<div class="head"><span class="num">Tugas 4.1</span><span class="file">👥 Teams Copilot · recap pasca-rapat · generik</span></div>
+<h4>Minta Teams Copilot menyusun recap terstruktur untuk rapat apa pun</h4>
+<p class="lead">Buka chat rapat Teams (atau Chat with Copilot dari panel recap rapat). Tempel prompt di bawah ini. Berlaku untuk rapat apa pun yang transkripsinya diaktifkan.</p>
+<div class="prompt">Goal: berikan saya recap terstruktur dari rapat yang baru saja berakhir.
+
+Context: saya butuh action item, keputusan, risiko, dan komitmen per peserta yang jelas agar tidak ada yang terlewat sepanjang minggu ini. Format recap-nya supaya bisa langsung ditempel ke email atau dokumen Word tanpa perlu diedit lagi.
+
+Expectation:
+1. Ringkasan menyeluruh satu paragraf, maksimal tiga kalimat.
+2. Tabel Keputusan dengan kolom: Keputusan, Pemilik tindak lanjut, Dikonfirmasi oleh (individu atau kelompok).
+3. Tabel Action Item dengan kolom: Action, Owner, Tenggat, Prioritas (High, Medium, Low), Status (default Open).
+4. Risiko dan hambatan: bullet list, masing-masing dengan usulan mitigasi satu baris.
+5. Komitmen per peserta: satu bullet per peserta yang tersebut namanya, meringkas apa yang secara pribadi ia komitmenkan. Lewati peserta yang tidak berkomitmen apa pun.
+6. Pertanyaan terbuka dan langkah berikutnya: tiga sampai lima bullet yang menyebut apa yang masih perlu dijawab dan kapan.
+
+Rules: kutip hanya hal yang benar-benar diucapkan dalam rapat. Kalau owner atau tenggat belum disebut, tulis "menunggu konfirmasi". Jangan mengarang risiko yang tidak diangkat. Nada netral. Kalimat past tense.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 4.2</span><span class="file">📝 Copilot in Word · notulen formal dari transkrip · generik</span></div>
+<h4>Susun draft notulen formal dari transkrip rapat mana pun</h4>
+<p class="lead">Buka dokumen Word kosong. Klik ikon Copilot, lalu Draft with Copilot. Rujuk file transkrip dengan <code>/</code> (tempel transkripnya, atau tautkan file transkrip rekaman dari OneDrive). Tempel prompt di bawah ini.</p>
+<div class="prompt">Goal: susun draft notulen rapat formal dari transkrip yang dilampirkan, dalam gaya rumah korporat yang rapi dan siap didistribusikan luas.
+
+Context: notulen akan disampaikan kepada pimpinan rapat, seluruh peserta, dan setiap penerima yang disebut namanya dalam daftar distribusi. Pembaca tidak menghadiri rapat, jadi notulen harus bisa berdiri sendiri.
+
+Source: gunakan transkrip terlampir sebagai satu-satunya basis faktual. Jangan menambahkan informasi dari luar.
+
+Expectation: hasilkan dokumen Word dengan bagian-bagian bernomor berikut, sesuai urutan:
+1. Blok header: judul rapat, tanggal, waktu (mulai dan selesai), lokasi atau platform, pimpinan rapat, notulis, peserta (nama dan jabatan jika disebut), yang berhalangan hadir.
+2. Ringkasan agenda: tiga sampai tujuh bullet, dirumuskan sebagai topik atau frasa nomina, bukan kata kerja.
+3. Catatan pembahasan: satu subbagian per butir agenda, masing-masing tiga sampai enam kalimat, past tense, suara orang ketiga netral. Tidak ada kutipan verbatim kecuali pembicara meminta kata-katanya dicatat persis.
+4. Kotak Keputusan: callout berbingkai yang menampilkan setiap keputusan pada baris bernomor sendiri. Format: "Keputusan N: [apa yang diputuskan]. Owner: [nama]. Berlaku: [tanggal atau 'segera']."
+5. Register Action Item: tabel dengan kolom Action, Owner, Tenggat, Prioritas (High, Medium, Low), Status (default Open).
+6. Risiko dan eskalasi: bullet list. Sertakan hanya risiko yang secara eksplisit diangkat dalam rapat.
+7. Daftar distribusi: pimpinan rapat, notulis, seluruh peserta, dan siapa pun yang disebut namanya oleh pimpinan rapat.
+
+Rules: gunakan hanya konten dari transkrip. Nada netral. Tidak ada opini. Jangan mengatributkan satu keputusan kepada orang yang tidak menyetujui secara lisan. Kalau satu keputusan ditunda, catat di bawah Catatan Pembahasan, bukan di Kotak Keputusan. Gunakan title case yang konsisten untuk heading.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 4.3</span><span class="file">📝 Copilot in Word · poles · maksimal dua halaman · generik</span></div>
+<h4>Rapikan draft notulen apa pun ke maksimal dua halaman lengkap dengan ringkasan eksekutif</h4>
+<div class="prompt">Goal: poles draft notulen rapat ini agar lebih jernih dan lebih ringkas, kemudian tambahkan satu paragraf ringkasan eksekutif di bagian atas.
+
+Context: pembaca yang sibuk hanya membaca halaman pertama notulen. Kalau esensinya tidak ada di halaman satu, tindak lanjutnya sering terlewat.
+
+Expectation:
+- Perjelas kalimat, kurangi jargon, dan perpendek frasa yang bertele-tele tanpa mengubah makna.
+- Terapkan batas maksimal dua halaman. Kalau draft lebih panjang, potong dulu Catatan Pembahasan (jangan Kotak Keputusan atau Register Action Item).
+- Tambahkan Ringkasan Eksekutif tiga kalimat di bagian paling atas, tepat setelah blok header, yang menyebut satu keputusan paling penting, satu action paling mendesak, dan satu risiko paling besar yang diangkat.
+- Pertahankan struktur bagian bernomor, Kotak Keputusan, dan Register Action Item persis seperti di draft sumber.
+- Ubah kalimat pasif menjadi kalimat aktif jika pelaku sudah jelas dari transkrip.
+
+Rules: jangan menambahkan fakta yang tidak ada di draft. Jangan mengubah nama Owner atau tanggal Tenggat. Jangan menghapus baris apa pun dari Register Action Item atau Kotak Keputusan.<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn"><b>Yang perlu diketahui:</b> Teams Copilot recap membutuhkan lisensi Copilot pada penyelenggara rapat, dan transkripsi harus sudah diaktifkan saat rekaman berlangsung. Kalau panel recap kosong, pastikan Transcription sudah aktif sebelum Anda meninggalkan rapat. Untuk Copilot in Word, kualitas polesan sangat bergantung pada kualitas transkrip; bersihkan dulu kesalahan speech-to-text yang mencolok di transkrip sebelum menjalankan Tugas 4.2. Catatan: saat ini di Microsoft 365 Copilot murni belum ada trigger first-party "rapat Teams selesai", jadi langkah simpan-ke-Word masih rutinitas dua klik (simpan transkrip, lalu jalankan prompt di Word), bukan sepenuhnya otonom.</div>
+</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex3">← Anomali Pengadaan</button><button data-go="ex5">Berikutnya: Dari Analisis ke Deliverable →</button></div></div><div class="view-ihh" id="view-ex5"><section id="ex5">
+<div class="modulehead"><div class="num">5</div><h2>Latihan 5 · Analisis menjadi Deliverable<small>Word + PowerPoint + Excel + Cowork · Empat tugas, satu briefing pack</small></h2></div>
+<div class="callout good"><b>Kerangkanya.</b> Ambil hasil Latihan 3 - workbook yang sudah ditandai risiko dan Governance Dashboard - lalu ubah menjadi briefing pack untuk Deputi Penindakan: laporan Word yang sudah dipoles, executive deck, dan dashboard yang dipertajam. Tugas 5.1 sampai 5.3 menempuh jalur manual, satu artefak per kali. Tugas 5.4 menghasilkan ketiga artefak yang sama lewat satu prompt Cowork sehingga Anda bisa membandingkan trade-off antara kecepatan dan kendali iterasi per artefak. Tidak ada pendekatan yang "benar" - pilihannya tergantung seberapa banyak polesan manual yang dibutuhkan pack.</div>
+
+<div class="card">
+<div class="activity">
+<div class="head"><span class="num">Tugas 5.1</span><span class="file">&#128221; Copilot in Word · poles laporan governance</span></div>
+<h4>Ubah draft Q3 menjadi laporan governance yang siap untuk pimpinan</h4>
+<p class="lead">Buka <code>05 Contoso_Governance_Report_Draft.docx</code> di Word. Klik ikon Copilot, lalu Draft with Copilot atau Rewrite. Tempel prompt di bawah ini. <b>Catatan:</b> Anda harus mengetik angka risiko dari Latihan 3 ke dalam teks prompt - Copilot in Word tidak bisa membaca file Excel secara langsung.</p>
+<div class="prompt">Goal: poles laporan governance Q3 ini agar terbaca seperti board paper Task Force, bukan draft kerja.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Laporan ini akan dibawa ke rapat pimpinan Bureau hari Jumat. Isinya temuan supervisi pengadaan di tiga provinsi untuk Q3. Dari analisis Latihan 3 saya: 12 kontrak berada di tier Critical, 31 kontrak di tier Elevated, tersebar di 7 K/L, dengan total nilai berisiko sekitar IDR 18,4 miliar.
+
+Source: gunakan hanya konten yang sudah ada di dokumen Word ini, ditambah angka risiko yang saya berikan di atas.
+
+Expectation:
+1. Tingkatkan kejernihan dan keterbacaan secara menyeluruh - perpendek frasa bertele-tele, hapus kalimat berulang, ganti jargon dengan bahasa lugas yang bisa diikuti oleh penasihat hukum tanpa latar belakang pengadaan.
+2. Tulis ulang dengan gaya rumah Bureau yang profesional: suara orang ketiga netral, kata kerja aktif, tanpa frasa informal.
+3. Tambahkan ringkasan eksekutif dua halaman tepat setelah judul laporan, disusun dalam tiga paragraf: (a) temuan tunggal terpenting; (b) dua temuan penting berikutnya dengan angka risiko yang saya sampaikan di atas; (c) satu keputusan yang diminta dari rapat pimpinan Bureau.
+4. Tulis ulang setiap heading bagian sebagai action title yang menyatakan kesimpulan (misalnya, alih-alih "Findings", tulis "Tujuh K/L menunjukkan pola kontrak yang memerlukan eskalasi supervisi").
+
+Rules: jangan menambahkan angka, nama K/L, atau nama vendor yang belum ada di dokumen atau di angka risiko yang saya berikan. Kalau ada klaim di dokumen yang tidak didukung data dalam dokumen, tandai inline dengan "(sumber tidak disebut di draft)".<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout"><b>Indikator berhasil:</b> heading berformat action title, ringkasan eksekutif tiga paragraf di halaman satu yang merujuk pada angka risiko, dan kejernihan kalimat yang meningkat di seluruh dokumen. Laporan seharusnya terbaca seperti board paper yang siap diarsipkan.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 5.2</span><span class="file">&#127775; Copilot in PowerPoint · deck dari file Word yang sudah dipoles</span></div>
+<h4>Generate deck secara otomatis, lalu jalankan pass kritik-dan-tulis-ulang</h4>
+<p class="lead">Buka PowerPoint. Di Copilot, pilih <b>"Create presentation from file"</b> dan arahkan ke <code>05 Contoso_Governance_Report_Draft.docx</code> versi polesan dari Tugas 5.1. Setelah deck jadi, jalankan prompt di bawah ini sebagai pass kritik-dan-tulis-ulang untuk menata dan memadatkannya.</p>
+<div class="prompt">Goal: ubah deck hasil generate otomatis ini menjadi briefing pack untuk Deputi Penindakan - ber-brand, maksimal delapan slide, satu pesan utama per slide.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya akan presentasi di rapat pimpinan Bureau hari Jumat. Alokasi 20 menit, maksimal delapan slide. Audiensnya dua Deputi dan Sekretariat Bureau.
+
+Source: deck yang baru saja Anda generate dari 05 Contoso_Governance_Report_Draft.docx (versi polesan).
+
+Expectation:
+1. Tulis ulang setiap judul slide menjadi action title: nyatakan kesimpulannya, bukan topiknya. Jangan ada heading topik seperti "Findings" - ganti dengan "Tujuh K/L melampaui ambang anomali di Q3".
+2. Setiap body slide hanya boleh berisi satu pesan utama. Kalau ada slide dengan lebih dari satu poin utama, pecah menjadi dua slide.
+3. Terapkan skema warna: navy tua untuk heading dan pemisah bagian, emas institusional untuk callout dan angka kunci, serta teks abu-abu muted pada latar putih. Hindari warna merah menyala atau hijau menyala.
+4. Tambahkan speaker notes di setiap body slide - tiga bullet pendek yang bisa dibaca presenter dalam 30 detik.
+5. Jaga jumlah slide di angka delapan atau kurang, di luar title slide dan lampiran.
+
+Rules: jangan mengarang angka yang tidak ada di dokumen Word. Jangan mengubah nama K/L. Kalau satu slide tidak bisa dihasilkan dari isi dokumen, biarkan placeholder dengan catatan "(butuh konten)".<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="callout warn"><b>Urutan penting:</b> "Create presentation from file" di Copilot in PowerPoint mengikuti struktur heading dokumen Word. Selalu jalankan Tugas 5.1 dulu (poles dokumen Word dan simpan), baru kemudian umpankan file yang sudah dipoles itu ke PowerPoint. Kalau Anda mengumpankan draft mentahnya, deck akan mewarisi heading topik-saja yang lemah. Juga: Copilot in PowerPoint tidak bisa membaca Excel secara langsung - angka risiko harus sudah ada di body dokumen Word, bukan sekadar tertaut ke spreadsheet.</div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 5.3</span><span class="file">&#128202; Copilot in Excel · Edit · pertajam dashboard untuk slide data</span></div>
+<h4>Buat Governance Dashboard siap-screenshot untuk deck</h4>
+<p class="lead">Kembali ke <code>02 Contoso_Direct_Procurement_Q3.xlsx</code>. Pindah ke sheet Governance Dashboard yang dibangun di Latihan 3. Buka Copilot in Excel di mode Edit. Tempel prompt di bawah ini.</p>
+<div class="prompt">Goal: pertajam sheet Governance Dashboard agar siap di-screenshot untuk dilampirkan pada briefing pack pimpinan.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Dashboard harus terlihat seperti bukti audit yang sudah jadi, bukan spreadsheet kerja.
+
+Source: sheet Governance Dashboard di 02 Contoso_Direct_Procurement_Q3.xlsx.
+
+Expectation:
+1. Tambahkan baris KPI callout di bagian atas dashboard berisi empat sel berjejer: Total Contracts Reviewed, Total IDR Value (diformat dalam miliaran dengan satu desimal), Critical-Tier Count, Agencies with Critical Contracts. Format setiap sel dengan angka besar tebal di atas dan label pendek di bawahnya dengan font lebih kecil.
+2. Format semua sel nilai IDR pada dashboard dalam satuan jutaan dengan pemisah ribuan (misalnya, "18.400" merepresentasikan 18,4 miliar IDR). Tambahkan label "(IDR jutaan)" pada setiap header kolom yang berisi nilai moneter.
+3. Tambahkan text box di bagian bawah dashboard dengan teks: "Sumber: 02 Contoso_Direct_Procurement_Q3.xlsx - sheet Contracts. Risk scoring oleh Copilot in Excel. Tanggal review: [tanggal hari ini]. Untuk penggunaan internal Task Force."
+
+Rules: jangan menghapus data, chart, atau slicer yang sudah ada. Cukup tambahkan baris KPI, format ulang kolom moneter, dan tambahkan text box sumber.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Tugas 5.4</span><span class="file">&#128260; Cowork · satu prompt untuk seluruh briefing pack</span></div>
+<h4>Alternatif Cowork: Tugas 5.1 + 5.2 + 5.3 dalam satu prompt</h4>
+<p class="lead">Ini menghasilkan tiga artefak yang sama (laporan Word yang dipoles, deck PowerPoint, dashboard Excel yang dipertajam) dalam satu sesi Cowork. Jalankan setelah melihat jalur manual di Tugas 5.1 sampai 5.3 supaya bisa membandingkan trade-off-nya.</p>
+<div class="prompt">Goal: hasilkan briefing pack supervisi Q3 secara lengkap dalam satu run - laporan Word yang sudah dipoles, deck PowerPoint yang sudah ber-brand, dan dashboard Excel yang sudah dipertajam.
+
+Context: saya Pak Bambang Kusumo, Kepala Task Force Koordinasi dan Supervisi. Saya sedang menyiapkan rapat pimpinan Bureau hari Jumat. Dari analisis Latihan 3 saya: 12 kontrak tier Critical, 31 kontrak tier Elevated, 7 K/L yang ditandai, total nilai berisiko sekitar IDR 18,4 miliar.
+
+Source:
+- Word: 05 Contoso_Governance_Report_Draft.docx (draft kerja yang akan dipoles, di OneDrive saya).
+- Excel: 02 Contoso_Direct_Procurement_Q3.xlsx, sheet Governance Dashboard (dibangun di Latihan 3, di OneDrive saya).
+
+Expectation:
+1. Poles laporan Word: perbaiki kejernihan dan keterbacaan, tulis ulang sesuai gaya rumah Bureau, tambahkan ringkasan eksekutif dua halaman yang merujuk pada angka risiko di atas, tulis ulang heading sebagai action title. Simpan versi polesan dengan nama "05 Contoso_Governance_Report_Polished.docx" di folder OneDrive yang sama.
+2. Buat deck PowerPoint dari file Word yang sudah dipoles memakai Create presentation from file. Terapkan heading navy tua, aksen emas institusional, maksimal delapan slide. Tulis ulang semua judul slide sebagai action title. Tambahkan speaker notes tiga bullet di setiap body slide. Simpan sebagai "05 Contoso_Governance_Deck.pptx" di folder OneDrive yang sama.
+3. Pertajam Governance Dashboard di file Excel: tambahkan baris KPI callout di atas berisi empat angka, format nilai IDR dalam jutaan dengan pemisah ribuan, tambahkan text box sumber di bawah.
+
+STOP setelah ketiga artefak selesai. Tampilkan ringkasan satu paragraf tentang apa yang dihasilkan dan tautan ketiga file sebelum saya review.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div style="background:rgba(200,155,60,.1);border-left:4px solid #C89B3C;border-radius:8px;padding:14px 18px;margin:10px 0">
+<div style="font-size:12px;font-weight:700;color:#C89B3C;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Trade-off-nya</div>
+<p style="margin:0;font-size:14px;color:var(--ink);line-height:1.55"><b>Cowork (Tugas 5.4):</b> lebih cepat - satu prompt, tiga artefak berurutan, tanpa perlu berpindah antar aplikasi. Tetapi Anda kehilangan kendali iterasi per artefak seperti pada Tugas 5.1 sampai 5.3. Kalau polesan Word belum pas, tidak mudah menjalankan ulang hanya langkah itu tanpa memulai ulang seluruh sesi Cowork.</p>
+<p style="margin:8px 0 0;font-size:14px;color:var(--ink);line-height:1.55"><b>Jalur manual (Tugas 5.1 sampai 5.3):</b> lebih banyak langkah, tetapi Anda bisa memeriksa dan menyempurnakan setiap artefak sebelum lanjut. Kalau Pack ini akan diserahkan ke Deputi Penindakan, jalur manual memberikan checkpoint review yang Anda butuhkan. Kedua pendekatan tidak ada yang salah - pilihannya tergantung seberapa banyak polesan yang dibutuhkan pack dan seberapa banyak waktu yang Anda punya.</p>
+</div>
+</div>
+
+<div class="callout warn"><b>Yang perlu diketahui · Latihan 5.</b>
+<br/><b>PowerPoint tidak bisa membaca Excel secara langsung.</b> Agar angka risiko masuk ke deck, angka itu harus lebih dulu ada di body dokumen Word. Selalu jalankan Tugas 5.1 (poles Word, termasuk angka risikonya) sebelum Tugas 5.2 (generate deck dari Word). Tidak bisa melewati Word dan langsung dari Excel ke PowerPoint.
+<br/><b>Copilot in Word tidak bisa membaca Excel.</b> Angka risiko (12 Critical, 31 Elevated, 7 K/L, IDR 18,4 miliar) diketik secara eksplisit ke dalam prompt Tugas 5.1. Kalau angka riil Anda dari Latihan 3 berbeda, update dulu teks prompt-nya sebelum dijalankan.
+<br/><b>Output Copilot Create berupa gambar flat.</b> Kalau Anda memakai Copilot Create (Bonus B0) untuk membuat poster governance yang dipajang di dinding pimpinan, output-nya berupa gambar siap cetak, bukan slide PowerPoint yang bisa diedit. Jangan berharap bisa mengeditnya di PowerPoint.
+<br/><b>Cowork hanya on-demand.</b> Tugas 5.4 adalah satu run Cowork on-demand. Tidak ada setting "hasilkan briefing pack ini otomatis setiap minggu" di Cowork. Pak Bambang menjalankannya setiap kali ia butuh pack.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex4">← Notulen Rapat</button><button data-go="ex6">Berikutnya: Bangun Agent Sendiri →</button></div></div><div class="view-ihh" id="view-ex6"><section id="ex6">
+<div class="modulehead"><div class="num">6</div><h2>Latihan 6 · Bangun Agent Sendiri<small>agent builder di Copilot Chat · Deklaratif · Tanpa lisensi Copilot Studio</small></h2></div>
+<div class="callout good"><b>Puncaknya.</b> Bangun agent deklaratif di Copilot Chat yang di-ground pada dua file data utama Task Force. Setiap anggota Task Force kemudian bisa mengajukan pertanyaan bahasa alami terhadap register pengadaan dan register perkara SPDP tanpa membuka Excel. Tanpa kode, tanpa panggilan tool, tanpa lisensi Copilot Studio.</div>
+
+<div class="card">
+<p class="lead">Sebelum mulai, unggah <code>02 Contoso_Direct_Procurement_Q3.xlsx</code> dan <code>03 Contoso_SPDP_Case_Register.xlsx</code> ke site SharePoint yang bisa diakses tim Task Force. Catat URL SharePoint untuk kedua file - keduanya dibutuhkan sebagai grounding source. Opsional, unggah juga <code>01 Contoso_Task_Force_Overview.docx</code> sebagai file konteks glosarium.</p>
+
+<div class="activity">
+<div class="head"><span class="num">Langkah 1</span><span class="file">&#128172; Copilot Chat · Buka agent builder</span></div>
+<h4>Mulai agent builder di Copilot Chat</h4>
+<p class="lead">Buka Microsoft 365 Copilot di <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a>. Di panel kiri, cari <b>Agents</b> atau ikon pensil/create. Pilih <b>"Create an agent"</b> atau <b>"Build your own agent"</b>. Anda akan diarahkan ke antarmuka agent builder. Lisensi Copilot Studio tidak dibutuhkan - ini adalah agent builder bawaan Copilot Chat.</p>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Langkah 2</span><span class="file">&#128172; Konfigurasi agent</span></div>
+<h4>Nama, instruksi, dan grounding source</h4>
+<p class="lead">Isi field konfigurasi agent seperti di bawah ini. Salin teks instruksi lalu tempel ke field "Instructions" di agent builder.</p>
+
+<div class="task-step"><div class="step-label">Nama agent</div></div>
+<div class="prompt">Korsup Integrity Analyst<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Deskripsi agent</div></div>
+<div class="prompt">Asisten data untuk Task Force Koordinasi dan Supervisi. Menjawab pertanyaan seputar kontrak pengadaan Q3 dan perkara tipikor SPDP yang di-ground pada dua file register Task Force.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Instruksi agent (tempel ke field Instructions)</div></div>
+<div class="prompt">Anda adalah Korsup Integrity Analyst, asisten data untuk Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau.
+
+Peran Anda: menjawab pertanyaan seputar kontrak pengadaan dan perkara tipikor SPDP hanya menggunakan grounding source yang disediakan. Jangan memakai pengetahuan umum tentang perkara tipikor di Indonesia di luar isi file.
+
+Suara dan gaya: netral, presisi, register audit pemerintahan. Jawab dalam bahasa yang sama dengan pertanyaan (Indonesia atau Inggris). Selalu kutip row ID atau referensi sel spesifik yang mendasari jawaban (contoh: "Contracts row 47, Contract ID CON-2025-047"). Tandai setiap isu kualitas data yang Anda perhatikan, misalnya nilai yang kosong, format yang tidak konsisten, atau entri yang tampak duplikat.
+
+Kalau jawaban membutuhkan informasi yang tidak ada di file grounding, sampaikan: "Data ini tidak tersedia di register saya".
+
+Rules: kutip baris dan sel spesifik untuk setiap klaim faktual. Jangan menebak. Jangan menyebut nama individu yang belum ada di file data. Kalau satu pertanyaan menuntut penilaian, sajikan data relevannya dan biarkan Kepala Task Force yang memutuskan.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Grounding source - tambahkan di bagian Knowledge</div></div>
+<p class="lead">Di bagian Knowledge pada agent builder, klik "Add" dan tempel URL SharePoint untuk setiap file:</p>
+<ul>
+<li><code>02 Contoso_Direct_Procurement_Q3.xlsx</code> - register pengadaan Q3 dengan kolom Risk_Score dari Latihan 3</li>
+<li><code>03 Contoso_SPDP_Case_Register.xlsx</code> - tracker perkara SPDP</li>
+<li><code>01 Contoso_Task_Force_Overview.docx</code> - opsional, memberikan konteks glosarium untuk terminologi</li>
+</ul>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Langkah 3</span><span class="file">&#128172; Starter prompts · empat pertanyaan siap pakai</span></div>
+<h4>Tambahkan empat starter prompt agar Task Force langsung bisa memakai agent-nya</h4>
+<p class="lead">Di agent builder, cari bagian "Starter prompts" atau "Conversation starters". Tambahkan keempat prompt berikut satu per satu. Prompt-prompt ini akan muncul sebagai tombol yang bisa diklik saat anggota tim membuka agent.</p>
+
+<div class="task-step"><div class="step-label">Starter prompt 1</div></div>
+<div class="prompt">K/L mana yang memiliki kontrak tier Critical terbanyak kuartal ini? Tampilkan nama K/L, jumlah kontrak tier Critical, dan total nilai IDR-nya.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Starter prompt 2</div></div>
+<div class="prompt">Tampilkan setiap kontrak yang ditandatangani hari Sabtu atau Minggu dengan Contract Value di atas 500 juta IDR. Sebutkan Contract ID, Agency, Vendor Name, Contract Value IDR, dan Award Date.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Starter prompt 3</div></div>
+<div class="prompt">Tampilkan vendor yang Vendor Address-nya muncul di dua atau lebih Vendor Name berbeda pada register pengadaan. Tampilkan alamat yang sama itu, semua nama vendornya, serta total jumlah kontrak dan total nilai IDR untuk masing-masing.<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="task-step"><div class="step-label">Starter prompt 4</div></div>
+<div class="prompt">Perkara SPDP mana saja di register yang tidak memiliki catatan update dalam 30 hari terakhir? Silangkan dengan register pengadaan: apakah ada nama tersangka atau K/L pada perkara SPDP yang mandek itu yang juga muncul sebagai vendor atau K/L pada kontrak tier Critical?<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Langkah 4</span><span class="file">&#128172; Share · buka aksesnya untuk tim Task Force</span></div>
+<h4>Bagikan agent kepada Task Force</h4>
+<p class="lead">Setelah agent disimpan dan diuji, gunakan tombol Share di agent builder untuk membagikannya ke tim Microsoft Teams Task Force atau ke individu tertentu. Anggota tim akan menemukan agent di daftar agent Copilot Chat mereka dan langsung bisa memakai keempat starter prompt.</p>
+</div>
+
+<div class="callout warn"><b>Yang perlu diketahui · Latihan 6.</b>
+<br/><b>Agent deklaratif hanya melakukan tanya-jawab yang ter-ground.</b> Korsup Integrity Analyst akan menjawab pertanyaan seputar data di file grounding. Ia tidak akan otonom memindai anomali baru, mengirim alert, atau berjalan semalaman. Setiap interaksi membutuhkan manusia yang mengajukan pertanyaan.
+<br/><b>Belum ada run otonom semalaman.</b> Kalau pelanggan menginginkan agent yang "mendeteksi anomali semalaman dan mengirim alert Teams", kebutuhan itu masuk kategori produk yang berbeda - autonomous agent Copilot Studio, yang berada di roadmap Microsoft. Kapabilitas itu bukan yang kami tawarkan hari ini.
+<br/><b>Tanpa kode, tanpa panggilan tool.</b> Agent builder di Copilot Chat hanya menghasilkan agent deklaratif: instruksi ditambah grounding source ditambah starter prompt. Tidak ada panggilan API, tidak ada eksekusi kode, tidak ada loop.
+<br/><b>Kesegaran grounding:</b> agent membaca file sebagaimana adanya di SharePoint pada saat setiap percakapan. Kalau Anda meng-update file Excel dengan data baru, agent akan otomatis mengambil data baru itu pada percakapan berikutnya - tidak perlu rebuild.
+<br/><b>Cakupan jawaban:</b> agent hanya bisa menjawab pertanyaan seputar data yang secara eksplisit ada di file grounding. Ia tidak bisa memanggil SPDP Online secara langsung, menjelajah web untuk mencari berita, atau mengakses file yang tidak ada di daftar grounding source.</div>
+</div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex5">← Dari Analisis ke Deliverable</button><button data-go="extras">Berikutnya: Bonus →</button></div></div><div class="view-ihh" id="view-extras"><section id="extras">
+<div class="modulehead"><div class="num">+</div><h2>Tab Bonus<small>Poster governance + lima jurus Copilot tambahan untuk Task Force</small></h2></div>
+<div class="callout good"><b>Isi tab ini.</b> Empat prompt poster governance untuk Copilot Create (B0), kartu framework prompt G-C-S-E (B1), dua jurus Copilot in Outlook (B2, B3), prompt interogasi dokumen Word (B4), dan prompt fact-check pra-kirim (B5).</div>
+
+<div class="bonus-grid"><button class="bcard" onclick="openModal('kx-b56798a9')"><span class="ico">&#127912;</span><h4>B0 · Poster Governance (Copilot Create · empat prompt)</h4><p>Buka Copilot Create. Tempel salah satu dari empat prompt untuk menghasilkan infografis ber-brand Bureau: prioritas Q3, journey perkara, heatmap regional, atau poster year-in-review. Output-nya berupa gambar flat, bukan slide yang bisa diedit.</p></button><button class="bcard" onclick="openModal('kx-new-b1')"><span class="ico">&#128196;</span><h4>B1 · Kartu tips prompt (framework G-C-S-E)</h4><p>Framework Goal, Context, Source, Expectation yang dipakai di semua prompt utama dalam imersi ini. Salin ke prompt apa pun yang Anda tulis.</p></button><button class="bcard" onclick="openModal('kx-new-b2')"><span class="ico">&#128236;</span><h4>B2 · Copilot in Outlook · kejar thread email panjang</h4><p>Di Outlook, buka thread email belum dibaca yang paling panjang. Copilot meringkasnya dan menyusun draft balasan dalam nada Bureau.</p></button><button class="bcard" onclick="openModal('kx-new-b3')"><span class="ico">&#8617;&#65039;</span><h4>B3 · Copilot in Outlook · susun balasan eksekutif</h4><p>Susun draft balasan dari Kepala Task Force kepada Deputi Pencegahan. Formal, empat kalimat, dengan komitmen tanggal yang spesifik.</p></button><button class="bcard" onclick="openModal('kx-new-b4')"><span class="ico">&#128214;</span><h4>B4 · Word · interogasi laporan governance panjang</h4><p>Lima pertanyaan yang bisa diajukan ke Copilot atas dokumen Word apa pun sebelum dipresentasikan. Membongkar klaim yang lemah, angka yang bentrok, dan bagian yang hilang.</p></button><button class="bcard" onclick="openModal('kx-new-b5')"><span class="ico">&#9989;</span><h4>B5 · Copilot Chat · fact check singkat sebelum kirim</h4><p>Tempel paragraf atau tabel apa pun ke Copilot Chat sebelum dikirim. Mengembalikan putusan "cleared" atau "revise" beserta sitasi sumbernya.</p></button></div>
+</section><div class="lab-nav-ihh"><button class="secondary" data-go="ex6">&#8592; Bangun Agent Sendiri</button><button data-go="intro">Kembali ke awal &#8634;</button></div></div></div>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;text-align:center">
+ Contoso Integrity Bureau · Imersi GM M365 Copilot · Session ID 112e253a-7fd6-48b4-80b3-e89c7d7914fd
+</div>
+</main>
+</div>
+
+<div class="modal-overlay" id="modal-kx-b56798a9"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b56798a9')">&times;</button><h3>B0 · Poster Governance (Copilot Create · empat prompt)</h3>
+<p class="lead">Buka Copilot Create (dulu dikenal sebagai Designer). Pilih "Design an image" atau template poster. Tempel salah satu prompt di bawah ini. Copilot Create menghasilkan beberapa variasi; iterasikan sampai Anda punya poster yang layak dipajang di dinding Task Force atau dimasukkan ke deck pimpinan Bureau.</p>
+
+<div class="activity">
+<div class="head"><span class="num">Poster 1</span><span class="file">🎨 Copilot Create · prioritas Q3</span></div>
+<h4>Prioritas Anti-Korupsi Q3 untuk Kepala Task Force</h4>
+<div class="prompt">Rancang poster infografis satu halaman berorientasi portrait dengan judul "Prioritas Anti-Korupsi Q3" untuk Kepala Task Force Koordinasi dan Supervisi di Contoso Integrity Bureau. Gunakan navy tua sebagai warna utama, emas institusional sebagai aksen, dan putih sebagai latar. Abu-abu muted untuk teks pendukung. Kesan serius, government-grade, institusional; tidak flashy.
+
+Layout, atas ke bawah:
+- Header bar navy tipis dengan nama Bureau di kiri dan "Prioritas Q3" di kanan berwarna emas.
+- Strip "angka besar" berisi empat angka berjejer, masing-masing dengan garis bawah emas: Kasus Aktif, Kasus Dilimpahkan ke Pengadilan, Kerugian Negara yang Dipulihkan dalam IDR, K/L Ber-red-flag. Biarkan angkanya sebagai placeholder "XX" dulu.
+- Tiga kartu prioritas berjejer, masing-masing dengan lingkaran ikon emas di atas dan caption pendek di bawahnya: (1) OSINT Sweep, (2) Review Anomali Pengadaan, (3) Surat Supervisi Provinsi.
+- Tabel perbandingan K/L kecil dengan tiga baris dan tiga kolom: K/L, Tier Risiko, Langkah Berikutnya. Biarkan isi sel sebagai placeholder.
+- Footer strip navy dengan nama Bureau dan lingkaran kecil bergaya segel emas di kanan.
+
+Tipografi: sans-serif, line height lega, all-caps untuk label bagian. Tanpa foto, tanpa logo selain placeholder segel Bureau. Tanpa emoji dekoratif.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Poster 2</span><span class="file">🎨 Copilot Create · journey perkara</span></div>
+<h4>Dari Laporan sampai Putusan - perjalanan enam tahap perkara tipikor</h4>
+<div class="prompt">Rancang poster infografis satu halaman berorientasi landscape dengan judul "Dari Laporan sampai Putusan: perjalanan enam tahap perkara tipikor di Contoso Integrity Bureau". Warna utama navy tua, aksen emas institusional, latar putih, teks pendukung abu-abu muted. Institusional, autoritatif tetapi tenang, tidak flashy.
+
+Layout:
+- Title bar navy di atas dengan judul poster berwarna putih dan nama Bureau berwarna emas di kanan.
+- Strip journey enam tahap horizontal di tengah: (1) Laporan diterima, (2) Telaah awal, (3) Penyidikan dibuka, (4) Tersangka ditetapkan, (5) Dilimpahkan ke pengadilan, (6) Putusan. Setiap tahap berupa persegi panjang membulat berwarna navy dengan lingkaran nomor emas di atas dan caption pendek di bawah. Hubungkan keenam tahap dengan garis panah emas tipis.
+- Di bawah strip, bar chart kecil "Di mana perkara mandek" yang menunjukkan tahap mana dari enam tahap itu yang menampung paling banyak perkara. Bar berwarna emas, label sumbu berwarna abu-abu muted.
+- Di kanan bar chart, tabel ringkas "Rata-rata waktu per tahap" berisi enam nama tahap dan placeholder jumlah hari.
+- Footer strip navy dengan nama Bureau.
+
+Tipografi: sans-serif, spasi rapat di strip journey, spasi lega di sekitar chart. Tanpa foto, tanpa emoji dekoratif.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Poster 3</span><span class="file">🎨 Copilot Create · heatmap regional</span></div>
+<h4>Heatmap Governance Regional - 34 provinsi sekilas pandang</h4>
+<div class="prompt">Rancang poster infografis satu halaman berorientasi portrait dengan judul "Heatmap Governance Regional: 34 provinsi sekilas pandang" untuk Task Force Contoso Integrity Bureau. Navy tua sebagai warna utama, emas institusional sebagai aksen, latar putih, teks pendukung abu-abu muted. Tampilan institusional, government-grade.
+
+Layout, atas ke bawah:
+- Title bar navy dengan judul poster berwarna putih dan lingkaran kecil bergaya segel emas di kanan.
+- Empat kartu zona berjejer, masing-masing dengan swatch persegi berwarna dan label pendek: (1) Bintang, (2) Stabil, (3) Perlu diperhatikan, (4) Review formal. Pakai emas tua untuk Bintang, navy sedang untuk Stabil, kuning kecoklatan muted untuk Perlu diperhatikan, dan merah tua khusus untuk Review formal; sisanya tetap navy dan emas.
+- Grid 34 tile provinsi kecil disusun dalam enam baris, setiap tile berupa persegi membulat kecil dengan singkatan provinsi dan titik warna zona di sudutnya. Biarkan singkatannya sebagai placeholder "PRV-01" sampai "PRV-34".
+- Tabel snapshot regional di bawah dengan kolom Provinsi, Zona, Jumlah Anomali, Rekomendasi Tindak Lanjut, dan lima baris placeholder.
+- Footer strip navy dengan nama Bureau.
+
+Tipografi: sans-serif, ukuran kecil untuk grid provinsi, spasi lega untuk tabel snapshot. Tanpa peta, tanpa foto. Keempat zona memakai warna yang tertahan; jangan membuat posternya jadi pelangi.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+
+<div class="activity">
+<div class="head"><span class="num">Poster 4</span><span class="file">🎨 Copilot Create · year in review</span></div>
+<h4>Year in Review TA 2026 - terima kasih untuk Task Force</h4>
+<div class="prompt">Rancang poster satu halaman berorientasi landscape yang bernada perayaan dengan judul "Year in Review TA 2026: Task Force Contoso Integrity Bureau". Warna utama navy tua, aksen emas institusional, latar putih, teks pendukung abu-abu muted. Hangat dan meriah tetapi tetap institusional; tanpa grafis konfeti, tanpa kartun.
+
+Layout:
+- Header bar navy dengan judul poster berwarna putih dan lingkaran kecil bergaya segel emas di kanan.
+- Baris "angka besar" berisi tiga angka headline berjejer, masing-masing dengan garis bawah emas dan caption pendek: Perkara yang Ditutup, Kerugian Negara yang Dipulihkan dalam IDR, Intervensi Pencegahan yang Dijalankan. Biarkan angkanya sebagai placeholder.
+- Di bawah angka, strip timeline horizontal berisi empat kartu "highlight kuartal" (Q1, Q2, Q3, Q4), masing-masing dengan headline placeholder satu baris.
+- Di kanan timeline, kolom kutipan kecil berisi tiga kutipan pendek ucapan terima kasih dari anggota Task Force. Beri gaya pada setiap kutipan dengan tanda kutip pembuka emas berukuran besar.
+- Footer strip navy bertuliskan "Terima kasih, Task Force" dalam warna emas dan nama Bureau.
+
+Tipografi: sans-serif elegan, white space lega, emas dipakai secukupnya untuk merayakan angka besar dan kutipan. Tanpa emoji. Tanpa citra kembang api atau pesta.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div>
+</div></div><div class="modal-overlay" id="modal-kx-new-b1"><div class="modal"><button class="modal-close" onclick="closeModal('kx-b1ca24dd')">&times;</button><h3>B1 · Kartu tips prompt (Goal, Context, Source, Expectation)</h3>
+<p class="lead">Framework G-C-S-E yang dipakai di semua prompt utama dalam imersi ini. Salin ke prompt apa pun yang Anda tulis.</p>
+<div class="prompt">Goal: [satu kalimat, apa yang Anda inginkan sebagai jawaban]
+
+Context: [siapa Anda, keputusan apa yang akan didukung, siapa audiens yang akan membaca output]
+
+Source: [sebutkan file, folder, URL, atau channel Teams spesifik yang boleh dibaca Copilot; tidak ada yang lain]
+
+Expectation: [bentuk output: kolom tabel, urutan bagian, batas panjang, nada, aturan jangan-mengarang]
+
+Aturan penutup opsional: tanpa spekulasi, kutip sumber, tandai "tidak disebut" saat satu field kosong, STOP sebelum mengirim apa pun.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div></div><div class="modal-overlay" id="modal-kx-new-b2"><div class="modal"><button class="modal-close" onclick="closeModal('kx-ccddd213')">&times;</button><h3>B2 · Copilot in Outlook · kejar thread email panjang</h3>
+<div class="prompt">Di Outlook, buka thread email belum dibaca yang paling panjang di inbox. Klik ikon Copilot di bagian atas reading pane, pilih "Summarise". Kemudian ketik:
+
+Goal: berikan saya tiga hal yang perlu saya ketahui dari thread ini dan satu draft balasan.
+
+Expectation: tiga bullet, satu draft balasan maksimal empat kalimat dalam nada Bureau yang netral.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div></div><div class="modal-overlay" id="modal-kx-new-b3"><div class="modal"><button class="modal-close" onclick="closeModal('kx-f1cf91dd')">&times;</button><h3>B3 · Copilot in Outlook · susun balasan eksekutif</h3>
+<div class="prompt">Di Outlook, buka email dari Deputi yang menunggu balasan. Klik ikon Copilot di ribbon jendela balasan, lalu "Draft with Copilot".
+
+Prompt:
+Susun balasan dari Kepala Task Force Koordinasi dan Supervisi kepada Deputi Pencegahan. Akui permintaannya dalam satu kalimat, komitmenkan satu tindakan spesifik dengan tanggal spesifik, dan sampaikan bahwa memo lengkap akan menyusul. Formal, maksimal empat kalimat, tanpa jargon.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div></div><div class="modal-overlay" id="modal-kx-new-b4"><div class="modal"><button class="modal-close" onclick="closeModal('kx-1ce7208f')">&times;</button><h3>B4 · Word · interogasi laporan governance panjang</h3>
+<div class="prompt">Buka laporan governance panjang di Word (misalnya 05 Contoso_Governance_Report_Draft.docx versi polesan). Klik Copilot, lalu Ask Copilot.
+
+Prompt:
+Goal: bantu saya menginterogasi laporan ini sebelum saya presentasikan.
+
+Expectation: jawab kelima pertanyaan berikut hanya menggunakan isi dokumen, sambil menyebutkan nama bagiannya:
+1. Apa temuan tunggal yang paling penting?
+2. Klaim mana dalam laporan yang paling lemah dari sisi bukti?
+3. Apakah ada angka yang muncul di dua tempat dengan nilai yang berbeda?
+4. Bagian mana yang paling mungkin diserang lebih dulu oleh reviewer kritis, dan kenapa?
+5. Apa yang hilang dari laporan ini yang justru diharapkan oleh board Task Force?<button class="copy" onclick="cp(this)">Copy</button></div>
+</div></div><div class="modal-overlay" id="modal-kx-new-b5"><div class="modal"><button class="modal-close" onclick="closeModal('kx-084db287')">&times;</button><h3>B5 · Copilot Chat · fact check singkat sebelum kirim</h3>
+<div class="prompt">Sebelum Anda mengirim memo apa pun, tempel paragraf atau tabel yang akan dikirim ke Copilot Chat dan ajukan:
+
+Goal: fact-check paragraf ini terhadap file sumber yang tercantum di bawah.
+
+Source: [tempel nama file atau URL tempat paragraf ini di-ground]
+
+Expectation: untuk setiap klaim angka, kutip kalimat di sumber yang mendasarinya. Untuk klaim apa pun yang tidak bisa diverifikasi dari sumber, tandai "tidak bisa diverifikasi, hapus atau tambahkan sumber". Berikan satu putusan akhir "cleared" atau "revise".
+
+Rules: hanya pakai sumber yang tercantum. Jangan pakai pengetahuan umum.<button class="copy" onclick="cp(this)">Copy</button></div>
+</div></div>
+
+<script>
+try{localStorage.removeItem('unlk');}catch(e){}
+const HASH='901b61eb6ba610f2c3bbe81592908d88296e18ec76fa9d6a59901b6b5dc39a02';
+async function sha256(s){const b=new TextEncoder().encode(s);const d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function unlock(){
+ const v=document.getElementById('pw').value;
+ const h=await sha256(v);
+ if(h===HASH){
+ document.getElementById('lock').style.display='none';
+ document.getElementById('main').style.display='grid';
+ sessionStorage.setItem('unlk','1');
+ }else{
+ const e=document.getElementById('err');e.textContent='Kata sandi salah. Silakan coba lagi.';
+ setTimeout(()=>e.textContent='',3000);document.getElementById('pw').value='';
+ }
+}
+if(sessionStorage.getItem('unlk')==='1'){
+ document.getElementById('lock').style.display='none';
+ document.getElementById('main').style.display='grid';
+}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+const EYE_OPEN='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256A144 144 0 1 1 144 256a144 144 0 1 1 288 0zM288 192c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>';
+const EYE_OFF='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"/></svg>';
+function togglePw(){
+ const i=document.getElementById('pw'),b=document.getElementById('pwToggle');
+ if(i.type==='password'){i.type='text';b.innerHTML=EYE_OPEN;b.setAttribute('aria-label','Sembunyikan kata sandi');b.setAttribute('title','Sembunyikan kata sandi');}
+ else{i.type='password';b.innerHTML=EYE_OFF;b.setAttribute('aria-label','Tampilkan kata sandi');b.setAttribute('title','Tampilkan kata sandi');}
+ i.focus();
+}
+function cp(btn){
+ const txt=btn.parentElement.textContent.replace(/Copy$/,'').replace(/Copied!$/,'').trim();
+ navigator.clipboard.writeText(txt).then(()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);});
+}
+</script>
+<script id="bcard-js">
+function openModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.add('open');document.body.style.overflow='hidden';}}
+function closeModal(id){var el=document.getElementById('modal-'+id);if(el){el.classList.remove('open');document.body.style.overflow='';}}
+document.addEventListener('click',function(e){if(e.target.classList&&e.target.classList.contains('modal-overlay'))e.target.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open');document.body.style.overflow='';});});
+</script>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('nav.tabs-ihh .tab');
+  var views = document.querySelectorAll('.view-ihh');
+  function switchView(target){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.view === target); });
+    views.forEach(function(v){ v.classList.toggle('active', v.id === 'view-' + target); });
+    window.scrollTo({top:0, behavior:'smooth'});
+    try { history.replaceState(null,'','#tab-'+target); } catch(e){}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ switchView(t.dataset.view); }); });
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchView(b.dataset.go); }); });
+  // Restore from hash
+  var h = (location.hash||'').replace('#tab-','');
+  if (h && document.getElementById('view-'+h)) switchView(h);
+})();
+</script>
+</body></html>

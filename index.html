@@ -187,6 +187,19 @@ body.ihh-active .hero-meta-ihh .pill {
   display:inline-block; padding:4px 12px; background:rgba(255,255,255,0.15);
   border-radius:12px; margin-left:8px; font-weight:600;
 }
+body.ihh-active .lang-toggle {
+  display:inline-flex; align-items:center; gap:2px; padding:3px;
+  background:rgba(255,255,255,0.12); border-radius:14px; margin-bottom:8px;
+}
+body.ihh-active .lang-toggle a {
+  display:inline-block; padding:3px 12px; border-radius:11px;
+  font-size:12px; font-weight:700; letter-spacing:.5px;
+  color:#fff; text-decoration:none; opacity:0.7;
+}
+body.ihh-active .lang-toggle a:hover { opacity:1; }
+body.ihh-active .lang-toggle a.active {
+  background:#0B2A4A; color:#C89B3C; opacity:1;
+}
 body.ihh-active .hero-title-ihh {
   max-width:1600px; margin:32px auto 0; position:relative; z-index:2;
   padding:0 40px;
@@ -330,6 +343,7 @@ body.ihh-active .view-ihh > section .modulehead { margin-top:8px !important; }
 </div>
 </div>
 <div class="hero-meta-ihh">
+<div class="lang-toggle"><a href="index.html" class="active">EN</a><a href="id.html">ID</a></div>
 <div>Workshop Edition &#183; 2026</div>
 <div style="margin-top:6px">
 <span class="pill">6 Exercises + Bonus</span>
